@@ -7,12 +7,14 @@ allprojects {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
     implementation 'com.grack:nanojson:1.1'
     implementation 'org.jsoup:jsoup:1.9.2'
     implementation 'org.mozilla:rhino:1.7.7.1'
+    compile 'org.msgpack:msgpack-core:0.8.13' 
 
     testImplementation 'junit:junit:4.12'
 }
@@ -20,6 +22,13 @@ dependencies {
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
+}
+
+android {
+    sourceSets.main {
+        jni.srcDirs = []
+        jniLibs.srcDir 'src/main/libs'
+    }
 }
 
 artifacts {
