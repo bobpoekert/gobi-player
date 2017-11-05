@@ -1,4 +1,6 @@
 
+execute_process(COMMAND python init.py)
+
 # build libpybridge.so
 
 include $(CLEAR_VARS)

@@ -43,14 +43,14 @@ class PyThread implements Runnable {
 
     LinkedBlockingQueue<Job> jobQueue;
     HashMap<Integer,CompletableFuture> pendingJobs;
-    String datapath;
+    AssetManager assetManager; // IMPORTANT: this reference must be held as long as python is running
     public synchronized boolean running;
 
     public PyThread(String datapath, LinkedBlockingQueue jobQueue, LinkedBlockingQueue resultQueue) {
         this.jobQueue = jobQueue;
         this.resultQueue = resultQueue;
         this.running = true;
-        this.datapath = datapath;
+        this.assetManager = assetManager;
         this.pendingJobs = new HashMap<Integer,CompletableFuture>();
     }
 
@@ -89,7 +89,7 @@ class PyThread implements Runnable {
     }
 
     public void run() {
-        PyBridge.start(this.datapath);
+        PyBridge.start(this.assetManager);
         while(this.running) {
             Job job = this.jobQueue.poll(10, TimeUnit.MILLISECONDS);
             if (job != null) {
@@ -118,7 +118,7 @@ class PyThread implements Runnable {
 
 public class PyBridge {
 
-     static native int start(String datapath);
+     static native int start(AssetManager assetManager);
      static native int shutdown();
      static native int send(byte[] data);
      static native byte[] recv();
@@ -128,21 +128,16 @@ public class PyBridge {
      Thread pythonThread;
      AtomicInteger idCtr;
 
-     static String getPythonPath(Context context) {
-         AssetExtractor extractor = new AssetExtractor(context);
-         extractor.removeAssets("python");
-         extractor.copyAssets("python");
-         return extractor.getAssetsDataDir() + "python";
-     }
+     public PyBridge() {
+         Context context = Context.getApplicationContext();
+         AssetManager assetManager = context.getAssets();
 
-     public PyBridge(Context context) {
-        String pythonPath = getPythonPath(context);
 
-        jobQueue = new LinkedBlockingQueue();
-        runner = new PyThread(pythonPath, jobQueue, resultQueue);
-        pythonThread = new Thread(runner);
-        idCtr = new AtomicInteger();
-        pythonThread.start();
+         jobQueue = new LinkedBlockingQueue();
+         runner = new PyThread(pythonPath, jobQueue, resultQueue);
+         pythonThread = new Thread(runner);
+         idCtr = new AtomicInteger();
+         pythonThread.start(assetManager);
      }
 
      int newId() {
