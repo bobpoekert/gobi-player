@@ -11,9 +11,9 @@
 
 static AAssetManager *bootstrap_asset_manager;
 static jobject bootstrap_pythread;
-static jclass boostrap_class;
-static jmethodID boostrap_getJob_id;
-static jmethodID boostrap_isRunning_id;
+static jclass bootstrap_class;
+static jmethodID bootstrap_getJob_id;
+static jmethodID bootstrap_isRunning_id;
 static jmethodID bootstrap_processResult_id;
 static JNIEnv *bootstrap_jni_env;
 
@@ -40,7 +40,7 @@ static PyObject *load_asset(PyObject *self, PyObject *args) {
     }
 
     PyObject *res = PyBuffer_New(asset_length);
-    PyBuffer res_view;
+    Py_buffer res_view;
     PyObject_GetBuffer(res, &res_view, PyBUF_WRITABLE);
     char *res_ptr = res_view.buf;
     size_t offset = 0;
@@ -58,7 +58,7 @@ static PyObject *load_asset(PyObject *self, PyObject *args) {
             current_chunk_size = asset_length - offset;
         }
 
-        char *chunk = res_ptr[offset];
+        char *chunk = res_ptr + offset;
         int bump = AAsset_read(asset, chunk, current_chunk_size);
         offset += bump;
         remaining = AAsset_getRemainingLength64(asset);
@@ -77,10 +77,10 @@ static PyObject *asset_filenames(PyObject *self, PyObject *args) {
     AAssetDir *dir = AAssetManager_openDir(bootstrap_asset_manager, ASSET_DIRNAME);
     PyObject *res = PyList_New(0);
 
-    char *current_fname = AAssetDir_getNextFilename(dir);
+    const char *current_fname = AAssetDir_getNextFileName(dir);
     while(current_fname) {
         PyList_Append(res, PyString_FromString(current_fname));
-        current_fname = AAssetDir_getNextFilename(dir);
+        current_fname = AAssetDir_getNextFileName(dir);
     }
 
     AAssetDir_close(dir);
@@ -93,11 +93,12 @@ static PyObject *java_bytes_to_python(jbyteArray data) {
     jbyte *bytes = (*bootstrap_jni_env)->GetByteArrayElements(bootstrap_jni_env, data, 0);
     jsize array_length = (*bootstrap_jni_env)->GetArrayLength(bootstrap_jni_env, data);
     PyObject *res = PyBuffer_New(array_length);
-    PyBuffer res_view;
+    Py_buffer res_view;
     PyObject_GetBuffer(res, &res_view, PyBUF_WRITABLE);
     memcpy(res_view.buf, bytes, array_length);
     PyBuffer_Release(&res_view);
-    (*bootstrap_jni_env)->ReleaseByteArrayElements(bootstrap_jni_env, data, JNI_ABORT);
+    (*bootstrap_jni_env)->ReleaseByteArrayElements(
+            bootstrap_jni_env, data, bytes, JNI_ABORT);
     return res;
 }
 
@@ -105,7 +106,7 @@ static jbyteArray python_to_java_bytes(PyObject *data) {
     Py_buffer buf_view;
     PyObject_GetBuffer(data, &buf_view, PyBUF_SIMPLE);
 
-    jbyteArray res = (*bootstrap_jni_env)->NewByteArray(bootstrap_jni_env, size);
+    jbyteArray res = (*bootstrap_jni_env)->NewByteArray(bootstrap_jni_env, buf_view.len);
     (*bootstrap_jni_env)->SetByteArrayRegion(bootstrap_jni_env, res,
             0, buf_view.len, buf_view.buf);
     PyBuffer_Release(&buf_view);
@@ -113,7 +114,7 @@ static jbyteArray python_to_java_bytes(PyObject *data) {
 }
 
 static PyObject *get_job(PyObject *self, PyObject *args) {
-    jbyteArray arr = (*bootstrap_jni_env)->CallVoidMethod(
+    jbyteArray arr = (*bootstrap_jni_env)->CallObjectMethod(
             bootstrap_jni_env, bootstrap_pythread, bootstrap_getJob_id);
     if (arr) {
         return java_bytes_to_python(arr);
@@ -123,7 +124,7 @@ static PyObject *get_job(PyObject *self, PyObject *args) {
 }
 
 static PyObject *is_running(PyObject *self, PyObject *args) {
-    jboolean res = (*bootstrap_jni_env)->CallVoidMethod(
+    jboolean res = (*bootstrap_jni_env)->CallBooleanMethod(
             bootstrap_jni_env, bootstrap_pythread, bootstrap_isRunning_id);
     if (res) {
         Py_RETURN_TRUE;
@@ -149,23 +150,14 @@ static PyMethodDef AndroidbridgeMethods[] = {
     {"asset_filenames", asset_filenames, METH_VARARGS, "Return a list of asset filenames"},
     {"get_job", get_job, METH_VARARGS, "Get the next job to run"},
     {"is_running", is_running, METH_VARARGS, "Returns whether python should continue running"},
-    {"process_result", process_result, "Pass the result of a job back to java"},
+    {"process_result", process_result, METH_VARARGS, "Pass the result of a job back to java"},
     {NULL, NULL, 0, NULL}
-};
-
-
-static struct PyModuleDef AndroidbridgeModule = {
-    PyModuleDef_HEAD_INIT,
-    "androidbridge",        /* m_name */
-    "Bridge into androidland",   /* m_doc */
-    -1,                  /* m_size */
-    AndroidbridgeMethods    /* m_methods */
 };
 
 
 PyMODINIT_FUNC PyInit_androidbridge(void)
 {
-    return PyModule_Create(&AndroidlogModule);
+    (void) Py_InitModule("androidbridge", AndroidbridgeMethods);
 }
 
 #define JNIMETH(name) Java_org_schabi_newpipe_extractor_pybridge_PyBridge_ ## name
@@ -186,11 +178,11 @@ JNIEXPORT jint JNICALL JNIMETH(run)
     bootstrap_processResult_id =
         (*env)->GetMethodID(env, bootstrap_class, "processResult", "([B)V");
 
-    PyImport_AppendInittab("androidbridge", PyInit_androidbridge);
     Py_NoSiteFlag = 1;
     Py_SetProgramName("NewPipeExtractor");
     
     Py_Initialize();
+    PyInit_androidbridge();
     PyRun_SimpleString(
             "import androidbridge, marshal\n"
             "exec(marshal.loads(androidbridge.load_asset('"

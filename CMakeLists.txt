@@ -21,4 +21,5 @@ find_library(log-lib log)
 target_link_libraries(
     pybridge
     python2.7
+    android
     ${log-lib})
