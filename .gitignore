@@ -4,6 +4,7 @@ build/
 local.properties
 out/
 *.pyc
+.externalNativeBuild/
 
 # Ignore Gradle GUI config
 gradle-app.setting

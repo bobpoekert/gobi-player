@@ -4,10 +4,10 @@
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 #include <stdlib.h>
-#include "python_monkeypatches.h"
 
 #define LOG(x) __android_log_write(ANDROID_LOG_INFO, "pybridge", (x))
 
+#define ASSET_DIRNAME "org_schabi_newpipe_extractor_PyBridge"
 
 static AAssetManager *bootstrap_asset_manager;
 static jobject bootstrap_pythread;
@@ -36,7 +36,7 @@ static PyObject *load_asset(PyObject *self, PyObject *args) {
 
     if (asset_length < 1) {
         AAsset_close(asset);
-        return 0;
+        Py_RETURN_NONE;
     }
 
     PyObject *res = PyBuffer_New(asset_length);
@@ -61,6 +61,7 @@ static PyObject *load_asset(PyObject *self, PyObject *args) {
         char *chunk = res_ptr[offset];
         int bump = AAsset_read(asset, chunk, current_chunk_size);
         offset += bump;
+        remaining = AAsset_getRemainingLength64(asset);
     }
 
     PyBuffer_Release(&res_view);
@@ -73,7 +74,7 @@ static PyObject *load_asset(PyObject *self, PyObject *args) {
 static PyObject *asset_filenames(PyObject *self, PyObject *args) {
     if (!bootstrap_asset_manager) return 0;
 
-    AAssetDir *dir = AAssetManager_openDir(bootstrap_asset_manager, "org_schabi_newpipe_extractor_PyBridge");
+    AAssetDir *dir = AAssetManager_openDir(bootstrap_asset_manager, ASSET_DIRNAME);
     PyObject *res = PyList_New(0);
 
     char *current_fname = AAssetDir_getNextFilename(dir);
@@ -188,63 +189,24 @@ JNIEXPORT jint JNICALL JNIMETH(run)
     PyImport_AppendInittab("androidbridge", PyInit_androidbridge);
     Py_NoSiteFlag = 1;
     Py_SetProgramName("NewPipeExtractor");
+    
     Py_Initialize();
-    PyRun_SimpleString(python_monkeypatches);
+    PyRun_SimpleString(
+            "import androidbridge, marshal\n"
+            "exec(marshal.loads(androidbridge.load_asset('"
+                ASSET_DIRNAME
+                "/monkeypatches.pyc')))");
+   
+    (*env)->DeleteLocalRef(env, asset_manager_obj);
+    (*env)->DeleteLocalRef(env, pythread);
+    bootstrap_pythread = 0;
+    bootstrap_jni_env = 0;
+    bootstrap_class = 0;
+    bootstrap_getJob_id = 0;
+    bootstrap_isRunning_id = 0;
+    bootstrap_processResult_id = 0;
 
-    return 0;
-}
-
-JNIEXPORT jint JNICALL JNIMETH(send)
-    (JNIEnv *env, jclass jc, jbyteArray data)
-{
-    if (!bootstrap_send) return 0;
-
-    jbyte *bytes = (*env)->GetByteArrayElements(env, data, 0);
-    jsize array_length = (*env)->GetArrayLength(env, data);
-
-    PyObject *py_buffer = PyBuffer_FromMemory(bytes, array_length);
-    PyObject *py_arg_tuple = Py_BuildValue("(O)", py_buffer);
-    PyObject_CallObject(bootstrap_send, py_arg_tuple);
-
-    Py_DECREF(py_arg_tuple);
-    Py_DECREF(py_buffer);
-    (*env)->ReleaseByteArrayElements(env, data, 0);
-
-    return 0;
-}
-
-JNIEXPORT jbyteArray JNICALL JNIMETH(recv)
-    (JNIEnv *env, jclass jc)
-{
-    if (!bootstrap_recv) return 0;
-
-    PyObject *result = PyObject_CallObject(bootstrap_recv, 0);
-    if (PyObject_CheckBuffer(result)) {
-        Py_buffer buf;
-        if (!PyObject_GetBuffer(result, buf, 0)) {
-            PyBuffer_Release(&buf);
-            Py_DECREF(result);
-            return 0;
-        }
-        jbyteArray res = (*env)->NewByteArray(env, buf.len);
-        (*env)->SetByteArrayRegion(env, res, 0, buf.len, buf.buf);
-        PyBuffer_Release(&buf);
-        Py_DECREF(result);
-        return res;
-    } else {
-        Py_DECREF(result);
-        return 0;
-    }
-
-}
-
-JNIEXPORT jint JNICALL JNIMETH(shutdown)
-    (JNIEnv *env, jclass jc)
-{
-    LOG("python shutdown");
-    Py_DECREF(bootstrap_recv);
-    Py_DECREF(bootstrap_send);
-    Py_DECREF(bootstrap_module);
     Py_Finalize();
+
     return 0;
 }

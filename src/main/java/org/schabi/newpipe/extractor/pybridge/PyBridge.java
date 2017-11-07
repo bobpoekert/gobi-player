@@ -2,11 +2,17 @@ package org.schabi.newpipe.extractor.pybridge;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.AtomicInteger;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import android.content.Context;
+import android.app.Application;
+import android.content.res.AssetManager;
 
 import org.msgpack.value.Variable;
 import org.msgpack.value.Value;
@@ -22,7 +28,14 @@ class Job {
     public Job(int id, Object input) {
         this.input = input;
         this.id = id;
-        this.result = new CompletableCompletableFuture();
+        this.result = new CompletableFuture();
+    }
+    
+    public byte[] serialize() {
+        HashMap jobMap = new HashMap();
+        jobMap.put("job_id", this.id);
+        jobMap.put("job_args", this.input);
+        return Serialize.serialize(jobMap);
     }
 
 }
@@ -44,22 +57,14 @@ class PyThread implements Runnable {
     LinkedBlockingQueue<Job> jobQueue;
     HashMap<Integer,CompletableFuture> pendingJobs;
     AssetManager assetManager; // IMPORTANT: this reference must be held as long as python is running
-    public synchronized boolean running;
+    public AtomicBoolean running;
 
-    public PyThread(String datapath, LinkedBlockingQueue jobQueue, LinkedBlockingQueue resultQueue) {
+    public PyThread(AssetManager assetManager, LinkedBlockingQueue jobQueue) {
         this.jobQueue = jobQueue;
-        this.resultQueue = resultQueue;
-        this.running = true;
         this.assetManager = assetManager;
         this.pendingJobs = new HashMap<Integer,CompletableFuture>();
     }
 
-    static byte[] serialize(Job job) {
-        HashMap jobMap = new HashMap();
-        jobMap.put("job_id", job.id);
-        jobMap.put("job_args", job.input);
-        return Serialize.serialize(jobMap);
-    }
 
     static Result deserializeResult(byte[] inp) {
         Variable v = Serialize.deserialize(inp);
@@ -68,8 +73,8 @@ class PyThread implements Runnable {
             Map<Value,Value> m = mv.map();
             Set<Value> keys = mv.keySet();
             
-            int jobId;
-            Value value;
+            int jobId = -1;
+            Value value = null;
 
             for (Value k : keys) {
                 if (k.isStringValue()) {
@@ -88,57 +93,71 @@ class PyThread implements Runnable {
         }
     }
 
-    public void run() {
-        PyBridge.start(this.assetManager);
-        while(this.running) {
-            Job job = this.jobQueue.poll(10, TimeUnit.MILLISECONDS);
-            if (job != null) {
-                pendingJobs.put(job.id, job.result);
-                PyBridge.send(serialize(job));
-            }
+    public byte[] getJob() {
+        Job res = this.jobQueue.poll();
+        if (res == null) {
+            return null;
+        } else {
+            return res.serialize();
+        }
+    }
 
-            byte[] resultBlob = PyBridge.recv();
-            if (resultBlob != null) {
-                Result result = deserializeResult(resultBlob);
-                CompletableFuture future = pendingJobs.get(result.id);
-                if (future != null) {
-                    future.complete(result.value);
-                    pendingJobs.remove(result.id);
-                }
+    public boolean isRunning() {
+        return this.running.get();
+    }
+
+    public void processResult(byte[] resultBlob) {
+        if (resultBlob != null) {
+            Result result = deserializeResult(resultBlob);
+            CompletableFuture future = pendingJobs.get(result.id);
+            if (future != null) {
+                future.complete(result.value);
+                pendingJobs.remove(result.id);
             }
         }
-        PyBridge.shutdown();
+    }
+
+    public void run() {
+        this.running.set(true);
+        try {
+            PyBridge.run(this.assetManager, this);
+        } finally {
+            this.running.set(false);
+        }
     }
 
     public void stop() {
-        this.running = false;
+        this.running.set(false);
     }
 
 }
 
 public class PyBridge {
 
-     static native int start(AssetManager assetManager);
-     static native int shutdown();
-     static native int send(byte[] data);
-     static native byte[] recv();
+     static native int run(AssetManager assetManager, PyThread thread);
 
      LinkedBlockingQueue jobQueue;
      PyThread runner;
      Thread pythonThread;
      AtomicInteger idCtr;
 
-     static PyBdirge instance = new PyBridge();
+     static PyBridge instance = new PyBridge();
 
      PyBridge() {
-         Context context = Context.getApplicationContext();
-         AssetManager assetManager = context.getAssets();
+         AssetManager assetManager;
+         try {
+             Application app = (Application) Class.forName("android.app.ActivityThread")
+                 .getDeclaredMethod("currentApplication").invoke(null);
+             assetManager = app.getApplicationContext().getAssets();
+         } catch (Exception e) {
+             throw new RuntimeException(e);
+         }
 
          jobQueue = new LinkedBlockingQueue();
-         runner = new PyThread(pythonPath, jobQueue, resultQueue);
+         runner = new PyThread(assetManager, jobQueue);
          pythonThread = new Thread(runner);
          idCtr = new AtomicInteger();
-         pythonThread.start(assetManager);
+         pythonThread.start();
      }
 
      int newId() {
@@ -153,7 +172,7 @@ public class PyBridge {
          instance.doShutdown();
      }
 
-     Future doExec(Object argument) {
+     Future doExec(Object argument) throws InterruptedException {
          Job job = new Job(newId(), argument);
          jobQueue.put(job);
          return job.result;

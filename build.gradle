@@ -42,8 +42,14 @@ android {
     }
 
     externalNativeBuild {
-        ndkBuild {
-            path "src/main/jni/Android.mk"
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    defaultConfig {
+        ndk {
+            abiFilters 'x86_64', 'armeabi', 'armeabi-v7a', 'arm64-v8a'
         }
     }
 
