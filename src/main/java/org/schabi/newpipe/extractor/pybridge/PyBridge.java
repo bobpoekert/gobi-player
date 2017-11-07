@@ -128,10 +128,11 @@ public class PyBridge {
      Thread pythonThread;
      AtomicInteger idCtr;
 
-     public PyBridge() {
+     static PyBdirge instance = new PyBridge();
+
+     PyBridge() {
          Context context = Context.getApplicationContext();
          AssetManager assetManager = context.getAssets();
-
 
          jobQueue = new LinkedBlockingQueue();
          runner = new PyThread(pythonPath, jobQueue, resultQueue);
@@ -144,14 +145,22 @@ public class PyBridge {
          return this.idCtr.incrementAndGet();
      }
 
-     public void shutdown() {
+     void doShutdown() {
          this.runner.stop();
      }
 
-     public Future exec(Object argument) {
+     public static void shutdown() {
+         instance.doShutdown();
+     }
+
+     Future doExec(Object argument) {
          Job job = new Job(newId(), argument);
          jobQueue.put(job);
          return job.result;
+     }
+
+     public static Future exec(Object argument) {
+         return instance.exec(argument);
      }
 
 }

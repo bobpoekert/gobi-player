@@ -1,5 +1,5 @@
 
-execute_process(COMMAND python init.py)
+execute_process(COMMAND python2.7 build.py)
 
 # build libpybridge.so
 

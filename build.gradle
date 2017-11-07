@@ -1,4 +1,13 @@
-apply plugin: 'java-library'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+    }
+}
+
+apply plugin: 'com.android.library'
 
 allprojects {
     sourceCompatibility = 1.7
@@ -11,26 +20,34 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.grack:nanojson:1.1'
-    implementation 'org.jsoup:jsoup:1.9.2'
-    implementation 'org.mozilla:rhino:1.7.7.1'
+    compile 'com.grack:nanojson:1.1'
+    compile 'org.jsoup:jsoup:1.9.2'
+    compile 'org.mozilla:rhino:1.7.7.1'
     compile 'org.msgpack:msgpack-core:0.8.13' 
-
-    testImplementation 'junit:junit:4.12'
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
 }
 
 android {
-    sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir 'src/main/libs'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.1'
+    
+    dexOptions {
+        jumboMode = true
     }
-}
 
-artifacts {
-    archives sourcesJar
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 39
+        versionName "0.10.1"
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+
+    sourceSets.main {
+        jniLibs.srcDirs 'src/main/libs'
+    }
 }
