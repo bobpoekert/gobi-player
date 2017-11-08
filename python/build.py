@@ -8,15 +8,13 @@ if __name__ == '__main__':
 
     dirname = "org_schabi_newpipe_extractor_PyBridge"
 
-    with open('monkeypatches.py', 'r') as inf:
-        patches = inf.read()
-    string_literal = patches.replace('\n', '\\n')
-    with open('python_monkeypatches.h', 'w') as outf:
-        outf.write('const char *python_monkeypatches = "%s";' % string_literal)
+    here = '/'.join(__file__.split('/')[:-1])
 
-    for f in os.listdir('../assets/%s' % dirname):
-        os.unlink('../assets/%s/%s' % (dirname, f))
-    src_dirnames = ['../../../python/', '../../../python_stdlib/']
+    asset_dir = '%s/../assets' % here
+
+    for f in os.listdir('%s/%s' % (asset_dir, dirname)):
+        os.unlink('%s/%s/%s' % (asset_dir, dirname, f))
+    src_dirnames = ['%s/src' % here, '%/stdlib' % here]
     for src_dirname in src_dirnames:
         for root, dirs, files in os.walk(src_dirname, followlinks=True):
             for f in files:
@@ -30,6 +28,6 @@ if __name__ == '__main__':
                 apkname = '%s%s.pyc' % (keyname, basename)
                 py_compile.compile(
                         fname,
-                        '../assets/%s/%s' % (dirname, apkname),
+                        '%s/%s' % (asset_dir, apkname),
                         fname,
                         True)
