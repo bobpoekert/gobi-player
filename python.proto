@@ -260,6 +260,9 @@ message Request {
 
     message URLResolveRequest {
         string url = 1;
+        string username = 2; // optional username & pass for sites that require login
+        string password = 3;
+        string resolver_name = 4; // specify which info extractor to use (optional)
     }
 
     message URLIsResolvableRequest {
@@ -279,6 +282,9 @@ message Response {
 
     message URLResolveResponse {
         InfoDict info_dict = 1;
+        bool success = 2; // did the request succeed?
+        bool password_required = 3; // did this fail because it requires a password?
+        bool geo_restricted = 4; // did this fail because it's blocked in the country we're in?
     }
 
     message URLIsResolvableResponse {

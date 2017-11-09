@@ -23829,6 +23829,52 @@ public final class PyBridgeProtos {
        */
       com.google.protobuf.ByteString
           getUrlBytes();
+
+      /**
+       * <pre>
+       * optional username &amp; pass for sites that require login
+       * </pre>
+       *
+       * <code>string username = 2;</code>
+       */
+      java.lang.String getUsername();
+      /**
+       * <pre>
+       * optional username &amp; pass for sites that require login
+       * </pre>
+       *
+       * <code>string username = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getUsernameBytes();
+
+      /**
+       * <code>string password = 3;</code>
+       */
+      java.lang.String getPassword();
+      /**
+       * <code>string password = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getPasswordBytes();
+
+      /**
+       * <pre>
+       * specify which info extractor to use (optional)
+       * </pre>
+       *
+       * <code>string resolver_name = 4;</code>
+       */
+      java.lang.String getResolverName();
+      /**
+       * <pre>
+       * specify which info extractor to use (optional)
+       * </pre>
+       *
+       * <code>string resolver_name = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getResolverNameBytes();
     }
     /**
      * Protobuf type {@code python.Request.URLResolveRequest}
@@ -23844,6 +23890,9 @@ public final class PyBridgeProtos {
       }
       private URLResolveRequest() {
         url_ = "";
+        username_ = "";
+        password_ = "";
+        resolverName_ = "";
       }
 
       @java.lang.Override
@@ -23878,6 +23927,24 @@ public final class PyBridgeProtos {
                 java.lang.String s = input.readStringRequireUtf8();
 
                 url_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                username_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                password_ = s;
+                break;
+              }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                resolverName_ = s;
                 break;
               }
             }
@@ -23938,6 +24005,124 @@ public final class PyBridgeProtos {
         }
       }
 
+      public static final int USERNAME_FIELD_NUMBER = 2;
+      private volatile java.lang.Object username_;
+      /**
+       * <pre>
+       * optional username &amp; pass for sites that require login
+       * </pre>
+       *
+       * <code>string username = 2;</code>
+       */
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          username_ = s;
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * optional username &amp; pass for sites that require login
+       * </pre>
+       *
+       * <code>string username = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PASSWORD_FIELD_NUMBER = 3;
+      private volatile java.lang.Object password_;
+      /**
+       * <code>string password = 3;</code>
+       */
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          password_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string password = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int RESOLVER_NAME_FIELD_NUMBER = 4;
+      private volatile java.lang.Object resolverName_;
+      /**
+       * <pre>
+       * specify which info extractor to use (optional)
+       * </pre>
+       *
+       * <code>string resolver_name = 4;</code>
+       */
+      public java.lang.String getResolverName() {
+        java.lang.Object ref = resolverName_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          resolverName_ = s;
+          return s;
+        }
+      }
+      /**
+       * <pre>
+       * specify which info extractor to use (optional)
+       * </pre>
+       *
+       * <code>string resolver_name = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getResolverNameBytes() {
+        java.lang.Object ref = resolverName_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resolverName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
@@ -23953,6 +24138,15 @@ public final class PyBridgeProtos {
         if (!getUrlBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 1, url_);
         }
+        if (!getUsernameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
+        }
+        if (!getPasswordBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
+        }
+        if (!getResolverNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, resolverName_);
+        }
         unknownFields.writeTo(output);
       }
 
@@ -23963,6 +24157,15 @@ public final class PyBridgeProtos {
         size = 0;
         if (!getUrlBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, url_);
+        }
+        if (!getUsernameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
+        }
+        if (!getPasswordBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
+        }
+        if (!getResolverNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, resolverName_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -23982,6 +24185,12 @@ public final class PyBridgeProtos {
         boolean result = true;
         result = result && getUrl()
             .equals(other.getUrl());
+        result = result && getUsername()
+            .equals(other.getUsername());
+        result = result && getPassword()
+            .equals(other.getPassword());
+        result = result && getResolverName()
+            .equals(other.getResolverName());
         result = result && unknownFields.equals(other.unknownFields);
         return result;
       }
@@ -23995,6 +24204,12 @@ public final class PyBridgeProtos {
         hash = (19 * hash) + getDescriptor().hashCode();
         hash = (37 * hash) + URL_FIELD_NUMBER;
         hash = (53 * hash) + getUrl().hashCode();
+        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getUsername().hashCode();
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+        hash = (37 * hash) + RESOLVER_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getResolverName().hashCode();
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -24126,6 +24341,12 @@ public final class PyBridgeProtos {
           super.clear();
           url_ = "";
 
+          username_ = "";
+
+          password_ = "";
+
+          resolverName_ = "";
+
           return this;
         }
 
@@ -24149,6 +24370,9 @@ public final class PyBridgeProtos {
         public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Request.URLResolveRequest buildPartial() {
           org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Request.URLResolveRequest result = new org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Request.URLResolveRequest(this);
           result.url_ = url_;
+          result.username_ = username_;
+          result.password_ = password_;
+          result.resolverName_ = resolverName_;
           onBuilt();
           return result;
         }
@@ -24192,6 +24416,18 @@ public final class PyBridgeProtos {
           if (other == org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Request.URLResolveRequest.getDefaultInstance()) return this;
           if (!other.getUrl().isEmpty()) {
             url_ = other.url_;
+            onChanged();
+          }
+          if (!other.getUsername().isEmpty()) {
+            username_ = other.username_;
+            onChanged();
+          }
+          if (!other.getPassword().isEmpty()) {
+            password_ = other.password_;
+            onChanged();
+          }
+          if (!other.getResolverName().isEmpty()) {
+            resolverName_ = other.resolverName_;
             onChanged();
           }
           this.mergeUnknownFields(other.unknownFields);
@@ -24286,6 +24522,253 @@ public final class PyBridgeProtos {
   checkByteStringIsUtf8(value);
           
           url_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object username_ = "";
+        /**
+         * <pre>
+         * optional username &amp; pass for sites that require login
+         * </pre>
+         *
+         * <code>string username = 2;</code>
+         */
+        public java.lang.String getUsername() {
+          java.lang.Object ref = username_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            username_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * optional username &amp; pass for sites that require login
+         * </pre>
+         *
+         * <code>string username = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getUsernameBytes() {
+          java.lang.Object ref = username_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            username_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * optional username &amp; pass for sites that require login
+         * </pre>
+         *
+         * <code>string username = 2;</code>
+         */
+        public Builder setUsername(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          username_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * optional username &amp; pass for sites that require login
+         * </pre>
+         *
+         * <code>string username = 2;</code>
+         */
+        public Builder clearUsername() {
+          
+          username_ = getDefaultInstance().getUsername();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * optional username &amp; pass for sites that require login
+         * </pre>
+         *
+         * <code>string username = 2;</code>
+         */
+        public Builder setUsernameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          username_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object password_ = "";
+        /**
+         * <code>string password = 3;</code>
+         */
+        public java.lang.String getPassword() {
+          java.lang.Object ref = password_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            password_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string password = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getPasswordBytes() {
+          java.lang.Object ref = password_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            password_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string password = 3;</code>
+         */
+        public Builder setPassword(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          password_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string password = 3;</code>
+         */
+        public Builder clearPassword() {
+          
+          password_ = getDefaultInstance().getPassword();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string password = 3;</code>
+         */
+        public Builder setPasswordBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          password_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object resolverName_ = "";
+        /**
+         * <pre>
+         * specify which info extractor to use (optional)
+         * </pre>
+         *
+         * <code>string resolver_name = 4;</code>
+         */
+        public java.lang.String getResolverName() {
+          java.lang.Object ref = resolverName_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            resolverName_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <pre>
+         * specify which info extractor to use (optional)
+         * </pre>
+         *
+         * <code>string resolver_name = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getResolverNameBytes() {
+          java.lang.Object ref = resolverName_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            resolverName_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <pre>
+         * specify which info extractor to use (optional)
+         * </pre>
+         *
+         * <code>string resolver_name = 4;</code>
+         */
+        public Builder setResolverName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          resolverName_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * specify which info extractor to use (optional)
+         * </pre>
+         *
+         * <code>string resolver_name = 4;</code>
+         */
+        public Builder clearResolverName() {
+          
+          resolverName_ = getDefaultInstance().getResolverName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * specify which info extractor to use (optional)
+         * </pre>
+         *
+         * <code>string resolver_name = 4;</code>
+         */
+        public Builder setResolverNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          resolverName_ = value;
           onChanged();
           return this;
         }
@@ -25829,6 +26312,33 @@ public final class PyBridgeProtos {
        * <code>.python.InfoDict info_dict = 1;</code>
        */
       org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder();
+
+      /**
+       * <pre>
+       * did the request succeed?
+       * </pre>
+       *
+       * <code>bool success = 2;</code>
+       */
+      boolean getSuccess();
+
+      /**
+       * <pre>
+       * did this fail because it requires a password?
+       * </pre>
+       *
+       * <code>bool password_required = 3;</code>
+       */
+      boolean getPasswordRequired();
+
+      /**
+       * <pre>
+       * did this fail because it's blocked in the country we're in?
+       * </pre>
+       *
+       * <code>bool geo_restricted = 4;</code>
+       */
+      boolean getGeoRestricted();
     }
     /**
      * Protobuf type {@code python.Response.URLResolveResponse}
@@ -25843,6 +26353,9 @@ public final class PyBridgeProtos {
         super(builder);
       }
       private URLResolveResponse() {
+        success_ = false;
+        passwordRequired_ = false;
+        geoRestricted_ = false;
       }
 
       @java.lang.Override
@@ -25884,6 +26397,21 @@ public final class PyBridgeProtos {
                   infoDict_ = subBuilder.buildPartial();
                 }
 
+                break;
+              }
+              case 16: {
+
+                success_ = input.readBool();
+                break;
+              }
+              case 24: {
+
+                passwordRequired_ = input.readBool();
+                break;
+              }
+              case 32: {
+
+                geoRestricted_ = input.readBool();
                 break;
               }
             }
@@ -25931,6 +26459,45 @@ public final class PyBridgeProtos {
         return getInfoDict();
       }
 
+      public static final int SUCCESS_FIELD_NUMBER = 2;
+      private boolean success_;
+      /**
+       * <pre>
+       * did the request succeed?
+       * </pre>
+       *
+       * <code>bool success = 2;</code>
+       */
+      public boolean getSuccess() {
+        return success_;
+      }
+
+      public static final int PASSWORD_REQUIRED_FIELD_NUMBER = 3;
+      private boolean passwordRequired_;
+      /**
+       * <pre>
+       * did this fail because it requires a password?
+       * </pre>
+       *
+       * <code>bool password_required = 3;</code>
+       */
+      public boolean getPasswordRequired() {
+        return passwordRequired_;
+      }
+
+      public static final int GEO_RESTRICTED_FIELD_NUMBER = 4;
+      private boolean geoRestricted_;
+      /**
+       * <pre>
+       * did this fail because it's blocked in the country we're in?
+       * </pre>
+       *
+       * <code>bool geo_restricted = 4;</code>
+       */
+      public boolean getGeoRestricted() {
+        return geoRestricted_;
+      }
+
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
@@ -25946,6 +26513,15 @@ public final class PyBridgeProtos {
         if (infoDict_ != null) {
           output.writeMessage(1, getInfoDict());
         }
+        if (success_ != false) {
+          output.writeBool(2, success_);
+        }
+        if (passwordRequired_ != false) {
+          output.writeBool(3, passwordRequired_);
+        }
+        if (geoRestricted_ != false) {
+          output.writeBool(4, geoRestricted_);
+        }
         unknownFields.writeTo(output);
       }
 
@@ -25957,6 +26533,18 @@ public final class PyBridgeProtos {
         if (infoDict_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, getInfoDict());
+        }
+        if (success_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(2, success_);
+        }
+        if (passwordRequired_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(3, passwordRequired_);
+        }
+        if (geoRestricted_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(4, geoRestricted_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -25979,6 +26567,12 @@ public final class PyBridgeProtos {
           result = result && getInfoDict()
               .equals(other.getInfoDict());
         }
+        result = result && (getSuccess()
+            == other.getSuccess());
+        result = result && (getPasswordRequired()
+            == other.getPasswordRequired());
+        result = result && (getGeoRestricted()
+            == other.getGeoRestricted());
         result = result && unknownFields.equals(other.unknownFields);
         return result;
       }
@@ -25994,6 +26588,15 @@ public final class PyBridgeProtos {
           hash = (37 * hash) + INFO_DICT_FIELD_NUMBER;
           hash = (53 * hash) + getInfoDict().hashCode();
         }
+        hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getSuccess());
+        hash = (37 * hash) + PASSWORD_REQUIRED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getPasswordRequired());
+        hash = (37 * hash) + GEO_RESTRICTED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getGeoRestricted());
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -26129,6 +26732,12 @@ public final class PyBridgeProtos {
             infoDict_ = null;
             infoDictBuilder_ = null;
           }
+          success_ = false;
+
+          passwordRequired_ = false;
+
+          geoRestricted_ = false;
+
           return this;
         }
 
@@ -26156,6 +26765,9 @@ public final class PyBridgeProtos {
           } else {
             result.infoDict_ = infoDictBuilder_.build();
           }
+          result.success_ = success_;
+          result.passwordRequired_ = passwordRequired_;
+          result.geoRestricted_ = geoRestricted_;
           onBuilt();
           return result;
         }
@@ -26199,6 +26811,15 @@ public final class PyBridgeProtos {
           if (other == org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.getDefaultInstance()) return this;
           if (other.hasInfoDict()) {
             mergeInfoDict(other.getInfoDict());
+          }
+          if (other.getSuccess() != false) {
+            setSuccess(other.getSuccess());
+          }
+          if (other.getPasswordRequired() != false) {
+            setPasswordRequired(other.getPasswordRequired());
+          }
+          if (other.getGeoRestricted() != false) {
+            setGeoRestricted(other.getGeoRestricted());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -26342,6 +26963,120 @@ public final class PyBridgeProtos {
             infoDict_ = null;
           }
           return infoDictBuilder_;
+        }
+
+        private boolean success_ ;
+        /**
+         * <pre>
+         * did the request succeed?
+         * </pre>
+         *
+         * <code>bool success = 2;</code>
+         */
+        public boolean getSuccess() {
+          return success_;
+        }
+        /**
+         * <pre>
+         * did the request succeed?
+         * </pre>
+         *
+         * <code>bool success = 2;</code>
+         */
+        public Builder setSuccess(boolean value) {
+          
+          success_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * did the request succeed?
+         * </pre>
+         *
+         * <code>bool success = 2;</code>
+         */
+        public Builder clearSuccess() {
+          
+          success_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean passwordRequired_ ;
+        /**
+         * <pre>
+         * did this fail because it requires a password?
+         * </pre>
+         *
+         * <code>bool password_required = 3;</code>
+         */
+        public boolean getPasswordRequired() {
+          return passwordRequired_;
+        }
+        /**
+         * <pre>
+         * did this fail because it requires a password?
+         * </pre>
+         *
+         * <code>bool password_required = 3;</code>
+         */
+        public Builder setPasswordRequired(boolean value) {
+          
+          passwordRequired_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * did this fail because it requires a password?
+         * </pre>
+         *
+         * <code>bool password_required = 3;</code>
+         */
+        public Builder clearPasswordRequired() {
+          
+          passwordRequired_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean geoRestricted_ ;
+        /**
+         * <pre>
+         * did this fail because it's blocked in the country we're in?
+         * </pre>
+         *
+         * <code>bool geo_restricted = 4;</code>
+         */
+        public boolean getGeoRestricted() {
+          return geoRestricted_;
+        }
+        /**
+         * <pre>
+         * did this fail because it's blocked in the country we're in?
+         * </pre>
+         *
+         * <code>bool geo_restricted = 4;</code>
+         */
+        public Builder setGeoRestricted(boolean value) {
+          
+          geoRestricted_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * did this fail because it's blocked in the country we're in?
+         * </pre>
+         *
+         * <code>bool geo_restricted = 4;</code>
+         */
+        public Builder clearGeoRestricted() {
+          
+          geoRestricted_ = false;
+          onChanged();
+          return this;
         }
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -28090,23 +28825,26 @@ public final class PyBridgeProtos {
       "id\030\003 \001(\t\022\016\n\006artist\030\004 \001(\t\022\r\n\005genre\030\005 \001(\t\022" +
       "\r\n\005album\030\006 \001(\t\022\022\n\nalbum_type\030\007 \001(\t\022\024\n\014al" +
       "bum_artist\030\010 \003(\t\022\023\n\013disc_number\030\t \001(\003\022\024\n" +
-      "\014release_year\030\n \001(\005\"\374\001\n\007Request\022\016\n\006job_i" +
+      "\014release_year\030\n \001(\005\"\267\002\n\007Request\022\016\n\006job_i" +
       "d\030\001 \001(\003\022@\n\023url_resolve_request\030\002 \001(\0132!.p" +
       "ython.Request.URLResolveRequestH\000\022K\n\031url" +
       "_is_resolvable_request\030\003 \001(\0132&.python.Re" +
-      "quest.URLIsResolvableRequestH\000\032 \n\021URLRes" +
-      "olveRequest\022\013\n\003url\030\001 \001(\t\032%\n\026URLIsResolva" +
-      "bleRequest\022\013\n\003url\030\001 \001(\tB\t\n\007request\"\300\002\n\010R",
-      "esponse\022\016\n\006job_id\030\001 \001(\003\022C\n\024url_resolve_r" +
-      "esponse\030\002 \001(\0132#.python.Response.URLResol" +
-      "veResponseH\000\022N\n\032url_is_resolvable_respon" +
-      "se\030\003 \001(\0132(.python.Response.URLIsResolvab" +
-      "leResponseH\000\0329\n\022URLResolveResponse\022#\n\tin" +
-      "fo_dict\030\001 \001(\0132\020.python.InfoDict\032H\n\027URLIs" +
-      "ResolvableResponse\022\025\n\ris_resolvable\030\001 \001(" +
-      "\010\022\026\n\016resolver_names\030\002 \003(\tB\n\n\010responseB7\n" +
-      "%org.schabi.newpipe.extractor.pybridgeB\016" +
-      "PyBridgeProtosb\006proto3"
+      "quest.URLIsResolvableRequestH\000\032[\n\021URLRes" +
+      "olveRequest\022\013\n\003url\030\001 \001(\t\022\020\n\010username\030\002 \001" +
+      "(\t\022\020\n\010password\030\003 \001(\t\022\025\n\rresolver_name\030\004 ",
+      "\001(\t\032%\n\026URLIsResolvableRequest\022\013\n\003url\030\001 \001" +
+      "(\tB\t\n\007request\"\204\003\n\010Response\022\016\n\006job_id\030\001 \001" +
+      "(\003\022C\n\024url_resolve_response\030\002 \001(\0132#.pytho" +
+      "n.Response.URLResolveResponseH\000\022N\n\032url_i" +
+      "s_resolvable_response\030\003 \001(\0132(.python.Res" +
+      "ponse.URLIsResolvableResponseH\000\032}\n\022URLRe" +
+      "solveResponse\022#\n\tinfo_dict\030\001 \001(\0132\020.pytho" +
+      "n.InfoDict\022\017\n\007success\030\002 \001(\010\022\031\n\021password_" +
+      "required\030\003 \001(\010\022\026\n\016geo_restricted\030\004 \001(\010\032H" +
+      "\n\027URLIsResolvableResponse\022\025\n\ris_resolvab",
+      "le\030\001 \001(\010\022\026\n\016resolver_names\030\002 \003(\tB\n\n\010resp" +
+      "onseB7\n%org.schabi.newpipe.extractor.pyb" +
+      "ridgeB\016PyBridgeProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -28203,7 +28941,7 @@ public final class PyBridgeProtos {
     internal_static_python_Request_URLResolveRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_python_Request_URLResolveRequest_descriptor,
-        new java.lang.String[] { "Url", });
+        new java.lang.String[] { "Url", "Username", "Password", "ResolverName", });
     internal_static_python_Request_URLIsResolvableRequest_descriptor =
       internal_static_python_Request_descriptor.getNestedTypes().get(1);
     internal_static_python_Request_URLIsResolvableRequest_fieldAccessorTable = new
@@ -28221,7 +28959,7 @@ public final class PyBridgeProtos {
     internal_static_python_Response_URLResolveResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_python_Response_URLResolveResponse_descriptor,
-        new java.lang.String[] { "InfoDict", });
+        new java.lang.String[] { "InfoDict", "Success", "PasswordRequired", "GeoRestricted", });
     internal_static_python_Response_URLIsResolvableResponse_descriptor =
       internal_static_python_Response_descriptor.getNestedTypes().get(1);
     internal_static_python_Response_URLIsResolvableResponse_fieldAccessorTable = new

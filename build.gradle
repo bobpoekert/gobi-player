@@ -23,9 +23,18 @@ dependencies {
     compile 'com.grack:nanojson:1.1'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'org.mozilla:rhino:1.7.7.1'
-    compile 'org.msgpack:msgpack-core:0.8.13' 
+    compile 'com.google.protobuf:protobuf-java:3.4.0'
+    compile 'com.google.guava:guava:23.3-android'
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
+}
+
+task pythonBuild(type:Exec) {
+    commandLine "python/build.py"
+}
+
+project.afterEvaluate {
+    preBuild.dependsOn pythonBuild
 }
 
 android {

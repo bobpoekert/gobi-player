@@ -1,5 +1,4 @@
 # No imports of code that isn't in androidbridge or libpython27.so allowed until noted
-
 import androidbridge
 import sys
 import marshal
@@ -9,7 +8,7 @@ ModuleType = type(sys)
 dirname = "org_schabi_newpipe_extractor_PyBridge"
 
 def load_bytecode(fname):
-    return marshal.loads(androidbridge.load_asset('%s/%s' % (dirname, fname))
+    return marshal.loads(androidbridge.load_asset('%s/%s' % (dirname, fname)))
 
 class ModuleLoader(object):
 

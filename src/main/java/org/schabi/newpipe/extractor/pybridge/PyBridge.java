@@ -1,53 +1,89 @@
 package org.schabi.newpipe.extractor.pybridge;
 
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import com.google.common.util.concurrent.SettableFuture;
 
 import android.content.Context;
 import android.app.Application;
 import android.content.res.AssetManager;
+import android.util.SparseArray;
 
-import org.msgpack.value.Variable;
-import org.msgpack.value.Value;
-import org.msgpack.value.MapValue;
+import org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Request;
+import org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response;
+import com.google.protobuf.InvalidProtocolBufferException;
 
+abstract class Job<ResultType> {
 
-class Job {
-
-    public CompletableFuture result;
-    public Object input;
+    public SettableFuture<ResultType> result;
     public final int id;
 
-    public Job(int id, Object input) {
-        this.input = input;
+    public Job(int id) {
         this.id = id;
-        this.result = new CompletableFuture();
+        this.result = SettableFuture.create();
     }
-    
-    public byte[] serialize() {
-        HashMap jobMap = new HashMap();
-        jobMap.put("job_id", this.id);
-        jobMap.put("job_args", this.input);
-        return Serialize.serialize(jobMap);
+
+    abstract void setRequest(Request.Builder b);
+
+    public void complete(ResultType v) {
+        this.result.set(v);
+    }
+
+    public byte[] serializeRequest() {
+        Request.Builder builder = Request.newBuilder(); 
+        builder.setJobId(this.id);
+        this.setRequest(builder);
+
+        return builder.build().toByteArray();
     }
 
 }
 
-class Result {
+class URLResolveJob extends Job<Response.URLResolveResponse> {
 
-    public final int id;
-    public Value value;
+    String url;
+    String username;
+    String password;
+    String resolverName;
 
-    public Result(int id, Value value) {
-        this.id = id;
-        this.value = value;
+    public URLResolveJob(int id, String url, String username, String password, String resolverName) {
+        super(id);
+        this.url = url;
+        this.username = username;
+        this.password = password;
+        this.resolverName = resolverName;
+    }
+
+    @Override
+    public void setRequest(Request.Builder b) {
+        b.setUrlResolveRequest(Request.URLResolveRequest.newBuilder()
+                .setUrl(this.url)
+                .setUsername(this.username)
+                .setPassword(this.password)
+                .setResolverName(this.resolverName));
+    }
+
+}
+
+class URLIsResolvableJob extends Job<Response.URLIsResolvableResponse> {
+
+    String url;
+
+    public URLIsResolvableJob(int id, String url) {
+        super(id);
+        this.url = url;
+    }
+
+    @Override
+    void setRequest(Request.Builder b) {
+        b.setUrlIsResolvableRequest(Request.URLIsResolvableRequest.newBuilder()
+                .setUrl(this.url));
     }
 
 }
@@ -55,42 +91,14 @@ class Result {
 class PyThread implements Runnable {
 
     LinkedBlockingQueue<Job> jobQueue;
-    HashMap<Integer,CompletableFuture> pendingJobs;
+    SparseArray<Job> pendingJobs;
     AssetManager assetManager; // IMPORTANT: this reference must be held as long as python is running
-    public AtomicBoolean running;
+    AtomicBoolean running;
 
     public PyThread(AssetManager assetManager, LinkedBlockingQueue jobQueue) {
         this.jobQueue = jobQueue;
         this.assetManager = assetManager;
-        this.pendingJobs = new HashMap<Integer,CompletableFuture>();
-    }
-
-
-    static Result deserializeResult(byte[] inp) {
-        Variable v = Serialize.deserialize(inp);
-        if (v.isMapValue()) {
-            MapValue mv = v.asMapValue();
-            Map<Value,Value> m = mv.map();
-            Set<Value> keys = mv.keySet();
-            
-            int jobId = -1;
-            Value value = null;
-
-            for (Value k : keys) {
-                if (k.isStringValue()) {
-                    String ks = k.asStringValue().asString();
-                    if (ks.equals("job_id")) {
-                        jobId = m.get(k).asIntegerValue().asInt();
-                    } else if (ks.equals("value")) {
-                        value = m.get(k);
-                    }
-                } 
-            }
-
-            return new Result(jobId, value);
-        } else {
-            return null;
-        }
+        this.pendingJobs = new SparseArray<Job>();
     }
 
     public byte[] getJob() {
@@ -98,7 +106,8 @@ class PyThread implements Runnable {
         if (res == null) {
             return null;
         } else {
-            return res.serialize();
+            this.pendingJobs.put(res.id, res);
+            return res.serializeRequest();
         }
     }
 
@@ -108,11 +117,17 @@ class PyThread implements Runnable {
 
     public void processResult(byte[] resultBlob) {
         if (resultBlob != null) {
-            Result result = deserializeResult(resultBlob);
-            CompletableFuture future = pendingJobs.get(result.id);
-            if (future != null) {
-                future.complete(result.value);
-                pendingJobs.remove(result.id);
+            Response response;
+            try {
+                response = Response.parseFrom(resultBlob);
+            } catch (InvalidProtocolBufferException e) {
+                throw new RuntimeException(e);
+            }
+            Integer id = Integer.valueOf((int) response.getJobId());
+            Job job = pendingJobs.get(id);
+            if (job != null) {
+                job.complete(response);
+                pendingJobs.remove(id);
             }
         }
     }
@@ -172,14 +187,47 @@ public class PyBridge {
          instance.doShutdown();
      }
 
-     Future doExec(Object argument) throws InterruptedException {
-         Job job = new Job(newId(), argument);
-         jobQueue.put(job);
-         return job.result;
+     Future<Response.URLIsResolvableResponse> doUrlIsResolvable(String url) {
+         try {
+             URLIsResolvableJob job = new URLIsResolvableJob(newId(), url);
+             jobQueue.put(job);
+             return job.result;
+         } catch (InterruptedException e) {
+             throw new RuntimeException(e);
+         }
      }
 
-     public static Future exec(Object argument) {
-         return instance.exec(argument);
+     public static Future<Response.URLIsResolvableResponse> urlIsResolvable(String url) {
+         return instance.doUrlIsResolvable(url);
+     }
+     
+     Future<Response.URLResolveResponse> doResolveUrl(
+             String url,
+             String username, String password,
+             String resolver) {
+         try {
+             URLResolveJob job = new URLResolveJob(newId(), url, username, password, resolver);
+             jobQueue.put(job);
+             return job.result;
+         } catch (InterruptedException e) {
+             throw new RuntimeException(e);
+         }
+     }
+     
+     public static Future<Response.URLResolveResponse> resolveUrl(String url) {
+         return instance.doResolveUrl(url, null, null, null);
+     }
+     
+     public static Future<Response.URLResolveResponse> resolveUrl(String url, String username, String password) {
+         return instance.doResolveUrl(url, username, password, null);
+     }
+     
+     public static Future<Response.URLResolveResponse> resolveUrl(String url, String resolver) {
+         return instance.doResolveUrl(url, null, null, resolver);
+     }
+     
+     public static Future<Response.URLResolveResponse> resolveUrl(String url, String username, String password, String resolver) {
+         return instance.doResolveUrl(url, username, password, resolver);
      }
 
 }
