@@ -372,17 +372,28 @@ public final class PyBridgeProtos {
         getLocationBytes();
 
     /**
-     * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
      */
-    boolean hasSubtitles();
+    java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> 
+        getSubtitlesList();
     /**
-     * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
      */
-    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getSubtitles();
+    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getSubtitles(int index);
     /**
-     * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
      */
-    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getSubtitlesOrBuilder();
+    int getSubtitlesCount();
+    /**
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+     */
+    java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
+        getSubtitlesOrBuilderList();
+    /**
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+     */
+    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getSubtitlesOrBuilder(
+        int index);
 
     /**
      * <pre>
@@ -390,27 +401,48 @@ public final class PyBridgeProtos {
      *automatically generated captions 
      * </pre>
      *
-     * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
      */
-    boolean hasAutomaticCaptions();
+    java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> 
+        getAutomaticCaptionsList();
     /**
      * <pre>
      * Like 'subtitles', used by the YoutubeIE for
      *automatically generated captions 
      * </pre>
      *
-     * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
      */
-    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getAutomaticCaptions();
+    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getAutomaticCaptions(int index);
     /**
      * <pre>
      * Like 'subtitles', used by the YoutubeIE for
      *automatically generated captions 
      * </pre>
      *
-     * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
      */
-    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getAutomaticCaptionsOrBuilder();
+    int getAutomaticCaptionsCount();
+    /**
+     * <pre>
+     * Like 'subtitles', used by the YoutubeIE for
+     *automatically generated captions 
+     * </pre>
+     *
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+     */
+    java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
+        getAutomaticCaptionsOrBuilderList();
+    /**
+     * <pre>
+     * Like 'subtitles', used by the YoutubeIE for
+     *automatically generated captions 
+     * </pre>
+     *
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+     */
+    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getAutomaticCaptionsOrBuilder(
+        int index);
 
     /**
      * <pre>
@@ -829,6 +861,56 @@ public final class PyBridgeProtos {
      */
     com.google.protobuf.ByteString
         getChildUrlsBytes(int index);
+
+    /**
+     * <code>string extractor_name = 44;</code>
+     */
+    java.lang.String getExtractorName();
+    /**
+     * <code>string extractor_name = 44;</code>
+     */
+    com.google.protobuf.ByteString
+        getExtractorNameBytes();
+
+    /**
+     * <code>string title = 45;</code>
+     */
+    java.lang.String getTitle();
+    /**
+     * <code>string title = 45;</code>
+     */
+    com.google.protobuf.ByteString
+        getTitleBytes();
+
+    /**
+     * <code>string id = 46;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 46;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>string resolution = 47;</code>
+     */
+    java.lang.String getResolution();
+    /**
+     * <code>string resolution = 47;</code>
+     */
+    com.google.protobuf.ByteString
+        getResolutionBytes();
+
+    /**
+     * <code>string ie_key = 48;</code>
+     */
+    java.lang.String getIeKey();
+    /**
+     * <code>string ie_key = 48;</code>
+     */
+    com.google.protobuf.ByteString
+        getIeKeyBytes();
   }
   /**
    * <pre>
@@ -866,6 +948,8 @@ public final class PyBridgeProtos {
       uploaderId_ = "";
       uploaderUrl_ = "";
       location_ = "";
+      subtitles_ = java.util.Collections.emptyList();
+      automaticCaptions_ = java.util.Collections.emptyList();
       duration_ = 0D;
       viewCount_ = 0L;
       likeCount_ = 0L;
@@ -884,6 +968,11 @@ public final class PyBridgeProtos {
       chapters_ = java.util.Collections.emptyList();
       children_ = java.util.Collections.emptyList();
       childUrls_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      extractorName_ = "";
+      title_ = "";
+      id_ = "";
+      resolution_ = "";
+      ieKey_ = "";
     }
 
     @java.lang.Override
@@ -1035,29 +1124,21 @@ public final class PyBridgeProtos {
               break;
             }
             case 162: {
-              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder subBuilder = null;
-              if (subtitles_ != null) {
-                subBuilder = subtitles_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+                subtitles_ = new java.util.ArrayList<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles>();
+                mutable_bitField0_ |= 0x00080000;
               }
-              subtitles_ = input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(subtitles_);
-                subtitles_ = subBuilder.buildPartial();
-              }
-
+              subtitles_.add(
+                  input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.parser(), extensionRegistry));
               break;
             }
             case 170: {
-              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder subBuilder = null;
-              if (automaticCaptions_ != null) {
-                subBuilder = automaticCaptions_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
+                automaticCaptions_ = new java.util.ArrayList<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles>();
+                mutable_bitField0_ |= 0x00100000;
               }
-              automaticCaptions_ = input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(automaticCaptions_);
-                automaticCaptions_ = subBuilder.buildPartial();
-              }
-
+              automaticCaptions_.add(
+                  input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.parser(), extensionRegistry));
               break;
             }
             case 177: {
@@ -1214,6 +1295,36 @@ public final class PyBridgeProtos {
               childUrls_.add(s);
               break;
             }
+            case 354: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              extractorName_ = s;
+              break;
+            }
+            case 362: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
+              break;
+            }
+            case 370: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 378: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              resolution_ = s;
+              break;
+            }
+            case 386: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ieKey_ = s;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1227,6 +1338,12 @@ public final class PyBridgeProtos {
         }
         if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           thumbnails_ = java.util.Collections.unmodifiableList(thumbnails_);
+        }
+        if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+          subtitles_ = java.util.Collections.unmodifiableList(subtitles_);
+        }
+        if (((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
+          automaticCaptions_ = java.util.Collections.unmodifiableList(automaticCaptions_);
         }
         if (((mutable_bitField0_ & 0x10000000) == 0x10000000)) {
           comments_ = java.util.Collections.unmodifiableList(comments_);
@@ -2090,72 +2207,80 @@ public final class PyBridgeProtos {
       public enum Protocol
           implements com.google.protobuf.ProtocolMessageEnum {
         /**
-         * <code>HTTP = 0;</code>
+         * <code>NONE = 0;</code>
          */
-        HTTP(0),
+        NONE(0),
         /**
-         * <code>HTTPS = 1;</code>
+         * <code>HTTP = 1;</code>
          */
-        HTTPS(1),
+        HTTP(1),
         /**
-         * <code>RTSP = 2;</code>
+         * <code>HTTPS = 2;</code>
          */
-        RTSP(2),
+        HTTPS(2),
         /**
-         * <code>RTMP = 3;</code>
+         * <code>RTSP = 3;</code>
          */
-        RTMP(3),
+        RTSP(3),
         /**
-         * <code>RTMPE = 4;</code>
+         * <code>RTMP = 4;</code>
          */
-        RTMPE(4),
+        RTMP(4),
         /**
-         * <code>M3U8 = 5;</code>
+         * <code>RTMPE = 5;</code>
          */
-        M3U8(5),
+        RTMPE(5),
         /**
-         * <code>M3U8_NATIVE = 6;</code>
+         * <code>M3U8 = 6;</code>
          */
-        M3U8_NATIVE(6),
+        M3U8(6),
         /**
-         * <code>HTTP_DASH_SEGMENTS = 7;</code>
+         * <code>M3U8_NATIVE = 7;</code>
          */
-        HTTP_DASH_SEGMENTS(7),
+        M3U8_NATIVE(7),
+        /**
+         * <code>HTTP_DASH_SEGMENTS = 8;</code>
+         */
+        HTTP_DASH_SEGMENTS(8),
         UNRECOGNIZED(-1),
         ;
 
         /**
-         * <code>HTTP = 0;</code>
+         * <code>NONE = 0;</code>
          */
-        public static final int HTTP_VALUE = 0;
+        public static final int NONE_VALUE = 0;
         /**
-         * <code>HTTPS = 1;</code>
+         * <code>HTTP = 1;</code>
          */
-        public static final int HTTPS_VALUE = 1;
+        public static final int HTTP_VALUE = 1;
         /**
-         * <code>RTSP = 2;</code>
+         * <code>HTTPS = 2;</code>
          */
-        public static final int RTSP_VALUE = 2;
+        public static final int HTTPS_VALUE = 2;
         /**
-         * <code>RTMP = 3;</code>
+         * <code>RTSP = 3;</code>
          */
-        public static final int RTMP_VALUE = 3;
+        public static final int RTSP_VALUE = 3;
         /**
-         * <code>RTMPE = 4;</code>
+         * <code>RTMP = 4;</code>
          */
-        public static final int RTMPE_VALUE = 4;
+        public static final int RTMP_VALUE = 4;
         /**
-         * <code>M3U8 = 5;</code>
+         * <code>RTMPE = 5;</code>
          */
-        public static final int M3U8_VALUE = 5;
+        public static final int RTMPE_VALUE = 5;
         /**
-         * <code>M3U8_NATIVE = 6;</code>
+         * <code>M3U8 = 6;</code>
          */
-        public static final int M3U8_NATIVE_VALUE = 6;
+        public static final int M3U8_VALUE = 6;
         /**
-         * <code>HTTP_DASH_SEGMENTS = 7;</code>
+         * <code>M3U8_NATIVE = 7;</code>
          */
-        public static final int HTTP_DASH_SEGMENTS_VALUE = 7;
+        public static final int M3U8_NATIVE_VALUE = 7;
+        /**
+         * <code>HTTP_DASH_SEGMENTS = 8;</code>
+         */
+        public static final int HTTP_DASH_SEGMENTS_VALUE = 8;
 
 
         public final int getNumber() {
@@ -2176,14 +2301,15 @@ public final class PyBridgeProtos {
 
         public static Protocol forNumber(int value) {
           switch (value) {
-            case 0: return HTTP;
-            case 1: return HTTPS;
-            case 2: return RTSP;
-            case 3: return RTMP;
-            case 4: return RTMPE;
-            case 5: return M3U8;
-            case 6: return M3U8_NATIVE;
-            case 7: return HTTP_DASH_SEGMENTS;
+            case 0: return NONE;
+            case 1: return HTTP;
+            case 2: return HTTPS;
+            case 3: return RTSP;
+            case 4: return RTMP;
+            case 5: return RTMPE;
+            case 6: return M3U8;
+            case 7: return M3U8_NATIVE;
+            case 8: return HTTP_DASH_SEGMENTS;
             default: return null;
           }
         }
@@ -4146,7 +4272,7 @@ public final class PyBridgeProtos {
         if (!getPlayerUrlBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 20, playerUrl_);
         }
-        if (protocol_ != org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Format.Protocol.HTTP.getNumber()) {
+        if (protocol_ != org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Format.Protocol.NONE.getNumber()) {
           output.writeEnum(21, protocol_);
         }
         if (!getFragmentBaseUrlBytes().isEmpty()) {
@@ -4259,7 +4385,7 @@ public final class PyBridgeProtos {
         if (!getPlayerUrlBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, playerUrl_);
         }
-        if (protocol_ != org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Format.Protocol.HTTP.getNumber()) {
+        if (protocol_ != org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Format.Protocol.NONE.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
             .computeEnumSize(21, protocol_);
         }
@@ -17217,38 +17343,52 @@ public final class PyBridgeProtos {
     }
 
     public static final int SUBTITLES_FIELD_NUMBER = 20;
-    private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles subtitles_;
+    private java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> subtitles_;
     /**
-     * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
      */
-    public boolean hasSubtitles() {
-      return subtitles_ != null;
+    public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> getSubtitlesList() {
+      return subtitles_;
     }
     /**
-     * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
      */
-    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getSubtitles() {
-      return subtitles_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance() : subtitles_;
+    public java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
+        getSubtitlesOrBuilderList() {
+      return subtitles_;
     }
     /**
-     * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
      */
-    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getSubtitlesOrBuilder() {
-      return getSubtitles();
+    public int getSubtitlesCount() {
+      return subtitles_.size();
+    }
+    /**
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+     */
+    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getSubtitles(int index) {
+      return subtitles_.get(index);
+    }
+    /**
+     * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+     */
+    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getSubtitlesOrBuilder(
+        int index) {
+      return subtitles_.get(index);
     }
 
     public static final int AUTOMATIC_CAPTIONS_FIELD_NUMBER = 21;
-    private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles automaticCaptions_;
+    private java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> automaticCaptions_;
     /**
      * <pre>
      * Like 'subtitles', used by the YoutubeIE for
      *automatically generated captions 
      * </pre>
      *
-     * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
      */
-    public boolean hasAutomaticCaptions() {
-      return automaticCaptions_ != null;
+    public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> getAutomaticCaptionsList() {
+      return automaticCaptions_;
     }
     /**
      * <pre>
@@ -17256,10 +17396,11 @@ public final class PyBridgeProtos {
      *automatically generated captions 
      * </pre>
      *
-     * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
      */
-    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getAutomaticCaptions() {
-      return automaticCaptions_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance() : automaticCaptions_;
+    public java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
+        getAutomaticCaptionsOrBuilderList() {
+      return automaticCaptions_;
     }
     /**
      * <pre>
@@ -17267,10 +17408,33 @@ public final class PyBridgeProtos {
      *automatically generated captions 
      * </pre>
      *
-     * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
      */
-    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getAutomaticCaptionsOrBuilder() {
-      return getAutomaticCaptions();
+    public int getAutomaticCaptionsCount() {
+      return automaticCaptions_.size();
+    }
+    /**
+     * <pre>
+     * Like 'subtitles', used by the YoutubeIE for
+     *automatically generated captions 
+     * </pre>
+     *
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+     */
+    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getAutomaticCaptions(int index) {
+      return automaticCaptions_.get(index);
+    }
+    /**
+     * <pre>
+     * Like 'subtitles', used by the YoutubeIE for
+     *automatically generated captions 
+     * </pre>
+     *
+     * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+     */
+    public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getAutomaticCaptionsOrBuilder(
+        int index) {
+      return automaticCaptions_.get(index);
     }
 
     public static final int DURATION_FIELD_NUMBER = 22;
@@ -17846,6 +18010,176 @@ public final class PyBridgeProtos {
       return childUrls_.getByteString(index);
     }
 
+    public static final int EXTRACTOR_NAME_FIELD_NUMBER = 44;
+    private volatile java.lang.Object extractorName_;
+    /**
+     * <code>string extractor_name = 44;</code>
+     */
+    public java.lang.String getExtractorName() {
+      java.lang.Object ref = extractorName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        extractorName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string extractor_name = 44;</code>
+     */
+    public com.google.protobuf.ByteString
+        getExtractorNameBytes() {
+      java.lang.Object ref = extractorName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        extractorName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TITLE_FIELD_NUMBER = 45;
+    private volatile java.lang.Object title_;
+    /**
+     * <code>string title = 45;</code>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string title = 45;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ID_FIELD_NUMBER = 46;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 46;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 46;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RESOLUTION_FIELD_NUMBER = 47;
+    private volatile java.lang.Object resolution_;
+    /**
+     * <code>string resolution = 47;</code>
+     */
+    public java.lang.String getResolution() {
+      java.lang.Object ref = resolution_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        resolution_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string resolution = 47;</code>
+     */
+    public com.google.protobuf.ByteString
+        getResolutionBytes() {
+      java.lang.Object ref = resolution_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        resolution_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int IE_KEY_FIELD_NUMBER = 48;
+    private volatile java.lang.Object ieKey_;
+    /**
+     * <code>string ie_key = 48;</code>
+     */
+    public java.lang.String getIeKey() {
+      java.lang.Object ref = ieKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ieKey_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ie_key = 48;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIeKeyBytes() {
+      java.lang.Object ref = ieKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ieKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -17915,11 +18249,11 @@ public final class PyBridgeProtos {
       if (!getLocationBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 19, location_);
       }
-      if (subtitles_ != null) {
-        output.writeMessage(20, getSubtitles());
+      for (int i = 0; i < subtitles_.size(); i++) {
+        output.writeMessage(20, subtitles_.get(i));
       }
-      if (automaticCaptions_ != null) {
-        output.writeMessage(21, getAutomaticCaptions());
+      for (int i = 0; i < automaticCaptions_.size(); i++) {
+        output.writeMessage(21, automaticCaptions_.get(i));
       }
       if (duration_ != 0D) {
         output.writeDouble(22, duration_);
@@ -17983,6 +18317,21 @@ public final class PyBridgeProtos {
       }
       for (int i = 0; i < childUrls_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 43, childUrls_.getRaw(i));
+      }
+      if (!getExtractorNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 44, extractorName_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 45, title_);
+      }
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 46, id_);
+      }
+      if (!getResolutionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 47, resolution_);
+      }
+      if (!getIeKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 48, ieKey_);
       }
       unknownFields.writeTo(output);
     }
@@ -18052,13 +18401,13 @@ public final class PyBridgeProtos {
       if (!getLocationBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, location_);
       }
-      if (subtitles_ != null) {
+      for (int i = 0; i < subtitles_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(20, getSubtitles());
+          .computeMessageSize(20, subtitles_.get(i));
       }
-      if (automaticCaptions_ != null) {
+      for (int i = 0; i < automaticCaptions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(21, getAutomaticCaptions());
+          .computeMessageSize(21, automaticCaptions_.get(i));
       }
       if (duration_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
@@ -18155,6 +18504,21 @@ public final class PyBridgeProtos {
         size += dataSize;
         size += 2 * getChildUrlsList().size();
       }
+      if (!getExtractorNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(44, extractorName_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(45, title_);
+      }
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(46, id_);
+      }
+      if (!getResolutionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(47, resolution_);
+      }
+      if (!getIeKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(48, ieKey_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -18209,16 +18573,10 @@ public final class PyBridgeProtos {
           .equals(other.getUploaderUrl());
       result = result && getLocation()
           .equals(other.getLocation());
-      result = result && (hasSubtitles() == other.hasSubtitles());
-      if (hasSubtitles()) {
-        result = result && getSubtitles()
-            .equals(other.getSubtitles());
-      }
-      result = result && (hasAutomaticCaptions() == other.hasAutomaticCaptions());
-      if (hasAutomaticCaptions()) {
-        result = result && getAutomaticCaptions()
-            .equals(other.getAutomaticCaptions());
-      }
+      result = result && getSubtitlesList()
+          .equals(other.getSubtitlesList());
+      result = result && getAutomaticCaptionsList()
+          .equals(other.getAutomaticCaptionsList());
       result = result && (
           java.lang.Double.doubleToLongBits(getDuration())
           == java.lang.Double.doubleToLongBits(
@@ -18274,6 +18632,16 @@ public final class PyBridgeProtos {
           .equals(other.getChildrenList());
       result = result && getChildUrlsList()
           .equals(other.getChildUrlsList());
+      result = result && getExtractorName()
+          .equals(other.getExtractorName());
+      result = result && getTitle()
+          .equals(other.getTitle());
+      result = result && getId()
+          .equals(other.getId());
+      result = result && getResolution()
+          .equals(other.getResolution());
+      result = result && getIeKey()
+          .equals(other.getIeKey());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -18328,13 +18696,13 @@ public final class PyBridgeProtos {
       hash = (53 * hash) + getUploaderUrl().hashCode();
       hash = (37 * hash) + LOCATION_FIELD_NUMBER;
       hash = (53 * hash) + getLocation().hashCode();
-      if (hasSubtitles()) {
+      if (getSubtitlesCount() > 0) {
         hash = (37 * hash) + SUBTITLES_FIELD_NUMBER;
-        hash = (53 * hash) + getSubtitles().hashCode();
+        hash = (53 * hash) + getSubtitlesList().hashCode();
       }
-      if (hasAutomaticCaptions()) {
+      if (getAutomaticCaptionsCount() > 0) {
         hash = (37 * hash) + AUTOMATIC_CAPTIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getAutomaticCaptions().hashCode();
+        hash = (53 * hash) + getAutomaticCaptionsList().hashCode();
       }
       hash = (37 * hash) + DURATION_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -18406,6 +18774,16 @@ public final class PyBridgeProtos {
         hash = (37 * hash) + CHILD_URLS_FIELD_NUMBER;
         hash = (53 * hash) + getChildUrlsList().hashCode();
       }
+      hash = (37 * hash) + EXTRACTOR_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getExtractorName().hashCode();
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + RESOLUTION_FIELD_NUMBER;
+      hash = (53 * hash) + getResolution().hashCode();
+      hash = (37 * hash) + IE_KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getIeKey().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -18537,6 +18915,8 @@ public final class PyBridgeProtos {
                 .alwaysUseFieldBuilders) {
           getFormatsFieldBuilder();
           getThumbnailsFieldBuilder();
+          getSubtitlesFieldBuilder();
+          getAutomaticCaptionsFieldBuilder();
           getCommentsFieldBuilder();
           getChaptersFieldBuilder();
           getChildrenFieldBuilder();
@@ -18591,16 +18971,16 @@ public final class PyBridgeProtos {
         location_ = "";
 
         if (subtitlesBuilder_ == null) {
-          subtitles_ = null;
+          subtitles_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00080000);
         } else {
-          subtitles_ = null;
-          subtitlesBuilder_ = null;
+          subtitlesBuilder_.clear();
         }
         if (automaticCaptionsBuilder_ == null) {
-          automaticCaptions_ = null;
+          automaticCaptions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00100000);
         } else {
-          automaticCaptions_ = null;
-          automaticCaptionsBuilder_ = null;
+          automaticCaptionsBuilder_.clear();
         }
         duration_ = 0D;
 
@@ -18668,6 +19048,16 @@ public final class PyBridgeProtos {
         }
         childUrls_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField1_ = (bitField1_ & ~0x00000200);
+        extractorName_ = "";
+
+        title_ = "";
+
+        id_ = "";
+
+        resolution_ = "";
+
+        ieKey_ = "";
+
         return this;
       }
 
@@ -18730,11 +19120,19 @@ public final class PyBridgeProtos {
         result.uploaderUrl_ = uploaderUrl_;
         result.location_ = location_;
         if (subtitlesBuilder_ == null) {
+          if (((bitField0_ & 0x00080000) == 0x00080000)) {
+            subtitles_ = java.util.Collections.unmodifiableList(subtitles_);
+            bitField0_ = (bitField0_ & ~0x00080000);
+          }
           result.subtitles_ = subtitles_;
         } else {
           result.subtitles_ = subtitlesBuilder_.build();
         }
         if (automaticCaptionsBuilder_ == null) {
+          if (((bitField0_ & 0x00100000) == 0x00100000)) {
+            automaticCaptions_ = java.util.Collections.unmodifiableList(automaticCaptions_);
+            bitField0_ = (bitField0_ & ~0x00100000);
+          }
           result.automaticCaptions_ = automaticCaptions_;
         } else {
           result.automaticCaptions_ = automaticCaptionsBuilder_.build();
@@ -18808,6 +19206,11 @@ public final class PyBridgeProtos {
           bitField1_ = (bitField1_ & ~0x00000200);
         }
         result.childUrls_ = childUrls_;
+        result.extractorName_ = extractorName_;
+        result.title_ = title_;
+        result.id_ = id_;
+        result.resolution_ = resolution_;
+        result.ieKey_ = ieKey_;
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         onBuilt();
@@ -18970,11 +19373,57 @@ public final class PyBridgeProtos {
           location_ = other.location_;
           onChanged();
         }
-        if (other.hasSubtitles()) {
-          mergeSubtitles(other.getSubtitles());
+        if (subtitlesBuilder_ == null) {
+          if (!other.subtitles_.isEmpty()) {
+            if (subtitles_.isEmpty()) {
+              subtitles_ = other.subtitles_;
+              bitField0_ = (bitField0_ & ~0x00080000);
+            } else {
+              ensureSubtitlesIsMutable();
+              subtitles_.addAll(other.subtitles_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.subtitles_.isEmpty()) {
+            if (subtitlesBuilder_.isEmpty()) {
+              subtitlesBuilder_.dispose();
+              subtitlesBuilder_ = null;
+              subtitles_ = other.subtitles_;
+              bitField0_ = (bitField0_ & ~0x00080000);
+              subtitlesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getSubtitlesFieldBuilder() : null;
+            } else {
+              subtitlesBuilder_.addAllMessages(other.subtitles_);
+            }
+          }
         }
-        if (other.hasAutomaticCaptions()) {
-          mergeAutomaticCaptions(other.getAutomaticCaptions());
+        if (automaticCaptionsBuilder_ == null) {
+          if (!other.automaticCaptions_.isEmpty()) {
+            if (automaticCaptions_.isEmpty()) {
+              automaticCaptions_ = other.automaticCaptions_;
+              bitField0_ = (bitField0_ & ~0x00100000);
+            } else {
+              ensureAutomaticCaptionsIsMutable();
+              automaticCaptions_.addAll(other.automaticCaptions_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.automaticCaptions_.isEmpty()) {
+            if (automaticCaptionsBuilder_.isEmpty()) {
+              automaticCaptionsBuilder_.dispose();
+              automaticCaptionsBuilder_ = null;
+              automaticCaptions_ = other.automaticCaptions_;
+              bitField0_ = (bitField0_ & ~0x00100000);
+              automaticCaptionsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getAutomaticCaptionsFieldBuilder() : null;
+            } else {
+              automaticCaptionsBuilder_.addAllMessages(other.automaticCaptions_);
+            }
+          }
         }
         if (other.getDuration() != 0D) {
           setDuration(other.getDuration());
@@ -19128,6 +19577,26 @@ public final class PyBridgeProtos {
             ensureChildUrlsIsMutable();
             childUrls_.addAll(other.childUrls_);
           }
+          onChanged();
+        }
+        if (!other.getExtractorName().isEmpty()) {
+          extractorName_ = other.extractorName_;
+          onChanged();
+        }
+        if (!other.getTitle().isEmpty()) {
+          title_ = other.title_;
+          onChanged();
+        }
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getResolution().isEmpty()) {
+          resolution_ = other.resolution_;
+          onChanged();
+        }
+        if (!other.getIeKey().isEmpty()) {
+          ieKey_ = other.ieKey_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -21121,116 +21590,239 @@ public final class PyBridgeProtos {
         return this;
       }
 
-      private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles subtitles_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> subtitlesBuilder_;
-      /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
-       */
-      public boolean hasSubtitles() {
-        return subtitlesBuilder_ != null || subtitles_ != null;
+      private java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> subtitles_ =
+        java.util.Collections.emptyList();
+      private void ensureSubtitlesIsMutable() {
+        if (!((bitField0_ & 0x00080000) == 0x00080000)) {
+          subtitles_ = new java.util.ArrayList<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles>(subtitles_);
+          bitField0_ |= 0x00080000;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> subtitlesBuilder_;
+
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getSubtitles() {
+      public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> getSubtitlesList() {
         if (subtitlesBuilder_ == null) {
-          return subtitles_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance() : subtitles_;
+          return java.util.Collections.unmodifiableList(subtitles_);
         } else {
-          return subtitlesBuilder_.getMessage();
+          return subtitlesBuilder_.getMessageList();
         }
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
-      public Builder setSubtitles(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+      public int getSubtitlesCount() {
+        if (subtitlesBuilder_ == null) {
+          return subtitles_.size();
+        } else {
+          return subtitlesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getSubtitles(int index) {
+        if (subtitlesBuilder_ == null) {
+          return subtitles_.get(index);
+        } else {
+          return subtitlesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public Builder setSubtitles(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
         if (subtitlesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          subtitles_ = value;
+          ensureSubtitlesIsMutable();
+          subtitles_.set(index, value);
           onChanged();
         } else {
-          subtitlesBuilder_.setMessage(value);
+          subtitlesBuilder_.setMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
       public Builder setSubtitles(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder builderForValue) {
+        if (subtitlesBuilder_ == null) {
+          ensureSubtitlesIsMutable();
+          subtitles_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          subtitlesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public Builder addSubtitles(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+        if (subtitlesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubtitlesIsMutable();
+          subtitles_.add(value);
+          onChanged();
+        } else {
+          subtitlesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public Builder addSubtitles(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+        if (subtitlesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSubtitlesIsMutable();
+          subtitles_.add(index, value);
+          onChanged();
+        } else {
+          subtitlesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public Builder addSubtitles(
           org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder builderForValue) {
         if (subtitlesBuilder_ == null) {
-          subtitles_ = builderForValue.build();
+          ensureSubtitlesIsMutable();
+          subtitles_.add(builderForValue.build());
           onChanged();
         } else {
-          subtitlesBuilder_.setMessage(builderForValue.build());
+          subtitlesBuilder_.addMessage(builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
-      public Builder mergeSubtitles(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+      public Builder addSubtitles(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder builderForValue) {
         if (subtitlesBuilder_ == null) {
-          if (subtitles_ != null) {
-            subtitles_ =
-              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.newBuilder(subtitles_).mergeFrom(value).buildPartial();
-          } else {
-            subtitles_ = value;
-          }
+          ensureSubtitlesIsMutable();
+          subtitles_.add(index, builderForValue.build());
           onChanged();
         } else {
-          subtitlesBuilder_.mergeFrom(value);
+          subtitlesBuilder_.addMessage(index, builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public Builder addAllSubtitles(
+          java.lang.Iterable<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> values) {
+        if (subtitlesBuilder_ == null) {
+          ensureSubtitlesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, subtitles_);
+          onChanged();
+        } else {
+          subtitlesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
       public Builder clearSubtitles() {
         if (subtitlesBuilder_ == null) {
-          subtitles_ = null;
+          subtitles_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00080000);
           onChanged();
         } else {
-          subtitles_ = null;
-          subtitlesBuilder_ = null;
+          subtitlesBuilder_.clear();
         }
-
         return this;
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder getSubtitlesBuilder() {
-        
-        onChanged();
-        return getSubtitlesFieldBuilder().getBuilder();
+      public Builder removeSubtitles(int index) {
+        if (subtitlesBuilder_ == null) {
+          ensureSubtitlesIsMutable();
+          subtitles_.remove(index);
+          onChanged();
+        } else {
+          subtitlesBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getSubtitlesOrBuilder() {
-        if (subtitlesBuilder_ != null) {
-          return subtitlesBuilder_.getMessageOrBuilder();
-        } else {
-          return subtitles_ == null ?
-              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance() : subtitles_;
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder getSubtitlesBuilder(
+          int index) {
+        return getSubtitlesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getSubtitlesOrBuilder(
+          int index) {
+        if (subtitlesBuilder_ == null) {
+          return subtitles_.get(index);  } else {
+          return subtitlesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>.python.InfoDict.Subtitles subtitles = 20;</code>
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      public java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
+           getSubtitlesOrBuilderList() {
+        if (subtitlesBuilder_ != null) {
+          return subtitlesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(subtitles_);
+        }
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder addSubtitlesBuilder() {
+        return getSubtitlesFieldBuilder().addBuilder(
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder addSubtitlesBuilder(
+          int index) {
+        return getSubtitlesFieldBuilder().addBuilder(
+            index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .python.InfoDict.Subtitles subtitles = 20;</code>
+       */
+      public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder> 
+           getSubtitlesBuilderList() {
+        return getSubtitlesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
           getSubtitlesFieldBuilder() {
         if (subtitlesBuilder_ == null) {
-          subtitlesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          subtitlesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder>(
-                  getSubtitles(),
+                  subtitles_,
+                  ((bitField0_ & 0x00080000) == 0x00080000),
                   getParentForChildren(),
                   isClean());
           subtitles_ = null;
@@ -21238,33 +21830,31 @@ public final class PyBridgeProtos {
         return subtitlesBuilder_;
       }
 
-      private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles automaticCaptions_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> automaticCaptionsBuilder_;
-      /**
-       * <pre>
-       * Like 'subtitles', used by the YoutubeIE for
-       *automatically generated captions 
-       * </pre>
-       *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
-       */
-      public boolean hasAutomaticCaptions() {
-        return automaticCaptionsBuilder_ != null || automaticCaptions_ != null;
+      private java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> automaticCaptions_ =
+        java.util.Collections.emptyList();
+      private void ensureAutomaticCaptionsIsMutable() {
+        if (!((bitField0_ & 0x00100000) == 0x00100000)) {
+          automaticCaptions_ = new java.util.ArrayList<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles>(automaticCaptions_);
+          bitField0_ |= 0x00100000;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> automaticCaptionsBuilder_;
+
       /**
        * <pre>
        * Like 'subtitles', used by the YoutubeIE for
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getAutomaticCaptions() {
+      public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> getAutomaticCaptionsList() {
         if (automaticCaptionsBuilder_ == null) {
-          return automaticCaptions_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance() : automaticCaptions_;
+          return java.util.Collections.unmodifiableList(automaticCaptions_);
         } else {
-          return automaticCaptionsBuilder_.getMessage();
+          return automaticCaptionsBuilder_.getMessageList();
         }
       }
       /**
@@ -21273,19 +21863,50 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
-      public Builder setAutomaticCaptions(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+      public int getAutomaticCaptionsCount() {
+        if (automaticCaptionsBuilder_ == null) {
+          return automaticCaptions_.size();
+        } else {
+          return automaticCaptionsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles getAutomaticCaptions(int index) {
+        if (automaticCaptionsBuilder_ == null) {
+          return automaticCaptions_.get(index);
+        } else {
+          return automaticCaptionsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public Builder setAutomaticCaptions(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
         if (automaticCaptionsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          automaticCaptions_ = value;
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.set(index, value);
           onChanged();
         } else {
-          automaticCaptionsBuilder_.setMessage(value);
+          automaticCaptionsBuilder_.setMessage(index, value);
         }
-
         return this;
       }
       /**
@@ -21294,17 +21915,79 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
       public Builder setAutomaticCaptions(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder builderForValue) {
+        if (automaticCaptionsBuilder_ == null) {
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          automaticCaptionsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public Builder addAutomaticCaptions(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+        if (automaticCaptionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.add(value);
+          onChanged();
+        } else {
+          automaticCaptionsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public Builder addAutomaticCaptions(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+        if (automaticCaptionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.add(index, value);
+          onChanged();
+        } else {
+          automaticCaptionsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public Builder addAutomaticCaptions(
           org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder builderForValue) {
         if (automaticCaptionsBuilder_ == null) {
-          automaticCaptions_ = builderForValue.build();
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.add(builderForValue.build());
           onChanged();
         } else {
-          automaticCaptionsBuilder_.setMessage(builderForValue.build());
+          automaticCaptionsBuilder_.addMessage(builderForValue.build());
         }
-
         return this;
       }
       /**
@@ -21313,21 +21996,17 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
-      public Builder mergeAutomaticCaptions(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles value) {
+      public Builder addAutomaticCaptions(
+          int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder builderForValue) {
         if (automaticCaptionsBuilder_ == null) {
-          if (automaticCaptions_ != null) {
-            automaticCaptions_ =
-              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.newBuilder(automaticCaptions_).mergeFrom(value).buildPartial();
-          } else {
-            automaticCaptions_ = value;
-          }
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.add(index, builderForValue.build());
           onChanged();
         } else {
-          automaticCaptionsBuilder_.mergeFrom(value);
+          automaticCaptionsBuilder_.addMessage(index, builderForValue.build());
         }
-
         return this;
       }
       /**
@@ -21336,17 +22015,36 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public Builder addAllAutomaticCaptions(
+          java.lang.Iterable<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles> values) {
+        if (automaticCaptionsBuilder_ == null) {
+          ensureAutomaticCaptionsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, automaticCaptions_);
+          onChanged();
+        } else {
+          automaticCaptionsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
       public Builder clearAutomaticCaptions() {
         if (automaticCaptionsBuilder_ == null) {
-          automaticCaptions_ = null;
+          automaticCaptions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00100000);
           onChanged();
         } else {
-          automaticCaptions_ = null;
-          automaticCaptionsBuilder_ = null;
+          automaticCaptionsBuilder_.clear();
         }
-
         return this;
       }
       /**
@@ -21355,12 +22053,17 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder getAutomaticCaptionsBuilder() {
-        
-        onChanged();
-        return getAutomaticCaptionsFieldBuilder().getBuilder();
+      public Builder removeAutomaticCaptions(int index) {
+        if (automaticCaptionsBuilder_ == null) {
+          ensureAutomaticCaptionsIsMutable();
+          automaticCaptions_.remove(index);
+          onChanged();
+        } else {
+          automaticCaptionsBuilder_.remove(index);
+        }
+        return this;
       }
       /**
        * <pre>
@@ -21368,14 +22071,25 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getAutomaticCaptionsOrBuilder() {
-        if (automaticCaptionsBuilder_ != null) {
-          return automaticCaptionsBuilder_.getMessageOrBuilder();
-        } else {
-          return automaticCaptions_ == null ?
-              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance() : automaticCaptions_;
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder getAutomaticCaptionsBuilder(
+          int index) {
+        return getAutomaticCaptionsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder getAutomaticCaptionsOrBuilder(
+          int index) {
+        if (automaticCaptionsBuilder_ == null) {
+          return automaticCaptions_.get(index);  } else {
+          return automaticCaptionsBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
@@ -21384,15 +22098,61 @@ public final class PyBridgeProtos {
        *automatically generated captions 
        * </pre>
        *
-       * <code>.python.InfoDict.Subtitles automatic_captions = 21;</code>
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      public java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
+           getAutomaticCaptionsOrBuilderList() {
+        if (automaticCaptionsBuilder_ != null) {
+          return automaticCaptionsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(automaticCaptions_);
+        }
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder addAutomaticCaptionsBuilder() {
+        return getAutomaticCaptionsFieldBuilder().addBuilder(
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder addAutomaticCaptionsBuilder(
+          int index) {
+        return getAutomaticCaptionsFieldBuilder().addBuilder(
+            index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Like 'subtitles', used by the YoutubeIE for
+       *automatically generated captions 
+       * </pre>
+       *
+       * <code>repeated .python.InfoDict.Subtitles automatic_captions = 21;</code>
+       */
+      public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder> 
+           getAutomaticCaptionsBuilderList() {
+        return getAutomaticCaptionsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder> 
           getAutomaticCaptionsFieldBuilder() {
         if (automaticCaptionsBuilder_ == null) {
-          automaticCaptionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          automaticCaptionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Subtitles.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.SubtitlesOrBuilder>(
-                  getAutomaticCaptions(),
+                  automaticCaptions_,
+                  ((bitField0_ & 0x00100000) == 0x00100000),
                   getParentForChildren(),
                   isClean());
           automaticCaptions_ = null;
@@ -23626,6 +24386,351 @@ public final class PyBridgeProtos {
   checkByteStringIsUtf8(value);
         ensureChildUrlsIsMutable();
         childUrls_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object extractorName_ = "";
+      /**
+       * <code>string extractor_name = 44;</code>
+       */
+      public java.lang.String getExtractorName() {
+        java.lang.Object ref = extractorName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          extractorName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string extractor_name = 44;</code>
+       */
+      public com.google.protobuf.ByteString
+          getExtractorNameBytes() {
+        java.lang.Object ref = extractorName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          extractorName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string extractor_name = 44;</code>
+       */
+      public Builder setExtractorName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        extractorName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string extractor_name = 44;</code>
+       */
+      public Builder clearExtractorName() {
+        
+        extractorName_ = getDefaultInstance().getExtractorName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string extractor_name = 44;</code>
+       */
+      public Builder setExtractorNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        extractorName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object title_ = "";
+      /**
+       * <code>string title = 45;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string title = 45;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string title = 45;</code>
+       */
+      public Builder setTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 45;</code>
+       */
+      public Builder clearTitle() {
+        
+        title_ = getDefaultInstance().getTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 45;</code>
+       */
+      public Builder setTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        title_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 46;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 46;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 46;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 46;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 46;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object resolution_ = "";
+      /**
+       * <code>string resolution = 47;</code>
+       */
+      public java.lang.String getResolution() {
+        java.lang.Object ref = resolution_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          resolution_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string resolution = 47;</code>
+       */
+      public com.google.protobuf.ByteString
+          getResolutionBytes() {
+        java.lang.Object ref = resolution_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resolution_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string resolution = 47;</code>
+       */
+      public Builder setResolution(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        resolution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string resolution = 47;</code>
+       */
+      public Builder clearResolution() {
+        
+        resolution_ = getDefaultInstance().getResolution();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string resolution = 47;</code>
+       */
+      public Builder setResolutionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        resolution_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ieKey_ = "";
+      /**
+       * <code>string ie_key = 48;</code>
+       */
+      public java.lang.String getIeKey() {
+        java.lang.Object ref = ieKey_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ieKey_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ie_key = 48;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIeKeyBytes() {
+        java.lang.Object ref = ieKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ieKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ie_key = 48;</code>
+       */
+      public Builder setIeKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ieKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ie_key = 48;</code>
+       */
+      public Builder clearIeKey() {
+        
+        ieKey_ = getDefaultInstance().getIeKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ie_key = 48;</code>
+       */
+      public Builder setIeKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ieKey_ = value;
         onChanged();
         return this;
       }
@@ -26301,17 +27406,28 @@ public final class PyBridgeProtos {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>.python.InfoDict info_dict = 1;</code>
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
        */
-      boolean hasInfoDict();
+      java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict> 
+          getInfoDictList();
       /**
-       * <code>.python.InfoDict info_dict = 1;</code>
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
        */
-      org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict getInfoDict();
+      org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict getInfoDict(int index);
       /**
-       * <code>.python.InfoDict info_dict = 1;</code>
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
        */
-      org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder();
+      int getInfoDictCount();
+      /**
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
+       */
+      java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder> 
+          getInfoDictOrBuilderList();
+      /**
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
+       */
+      org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder(
+          int index);
 
       /**
        * <pre>
@@ -26353,6 +27469,7 @@ public final class PyBridgeProtos {
         super(builder);
       }
       private URLResolveResponse() {
+        infoDict_ = java.util.Collections.emptyList();
         success_ = false;
         passwordRequired_ = false;
         geoRestricted_ = false;
@@ -26387,16 +27504,12 @@ public final class PyBridgeProtos {
                 break;
               }
               case 10: {
-                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder subBuilder = null;
-                if (infoDict_ != null) {
-                  subBuilder = infoDict_.toBuilder();
+                if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                  infoDict_ = new java.util.ArrayList<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict>();
+                  mutable_bitField0_ |= 0x00000001;
                 }
-                infoDict_ = input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.parser(), extensionRegistry);
-                if (subBuilder != null) {
-                  subBuilder.mergeFrom(infoDict_);
-                  infoDict_ = subBuilder.buildPartial();
-                }
-
+                infoDict_.add(
+                    input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.parser(), extensionRegistry));
                 break;
               }
               case 16: {
@@ -26422,6 +27535,9 @@ public final class PyBridgeProtos {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
+          if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+            infoDict_ = java.util.Collections.unmodifiableList(infoDict_);
+          }
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
@@ -26438,25 +27554,40 @@ public final class PyBridgeProtos {
                 org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.class, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Builder.class);
       }
 
+      private int bitField0_;
       public static final int INFO_DICT_FIELD_NUMBER = 1;
-      private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict infoDict_;
+      private java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict> infoDict_;
       /**
-       * <code>.python.InfoDict info_dict = 1;</code>
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
        */
-      public boolean hasInfoDict() {
-        return infoDict_ != null;
+      public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict> getInfoDictList() {
+        return infoDict_;
       }
       /**
-       * <code>.python.InfoDict info_dict = 1;</code>
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict getInfoDict() {
-        return infoDict_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.getDefaultInstance() : infoDict_;
+      public java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder> 
+          getInfoDictOrBuilderList() {
+        return infoDict_;
       }
       /**
-       * <code>.python.InfoDict info_dict = 1;</code>
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
        */
-      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder() {
-        return getInfoDict();
+      public int getInfoDictCount() {
+        return infoDict_.size();
+      }
+      /**
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict getInfoDict(int index) {
+        return infoDict_.get(index);
+      }
+      /**
+       * <code>repeated .python.InfoDict info_dict = 1;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder(
+          int index) {
+        return infoDict_.get(index);
       }
 
       public static final int SUCCESS_FIELD_NUMBER = 2;
@@ -26510,8 +27641,8 @@ public final class PyBridgeProtos {
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (infoDict_ != null) {
-          output.writeMessage(1, getInfoDict());
+        for (int i = 0; i < infoDict_.size(); i++) {
+          output.writeMessage(1, infoDict_.get(i));
         }
         if (success_ != false) {
           output.writeBool(2, success_);
@@ -26530,9 +27661,9 @@ public final class PyBridgeProtos {
         if (size != -1) return size;
 
         size = 0;
-        if (infoDict_ != null) {
+        for (int i = 0; i < infoDict_.size(); i++) {
           size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, getInfoDict());
+            .computeMessageSize(1, infoDict_.get(i));
         }
         if (success_ != false) {
           size += com.google.protobuf.CodedOutputStream
@@ -26562,11 +27693,8 @@ public final class PyBridgeProtos {
         org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse other = (org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse) obj;
 
         boolean result = true;
-        result = result && (hasInfoDict() == other.hasInfoDict());
-        if (hasInfoDict()) {
-          result = result && getInfoDict()
-              .equals(other.getInfoDict());
-        }
+        result = result && getInfoDictList()
+            .equals(other.getInfoDictList());
         result = result && (getSuccess()
             == other.getSuccess());
         result = result && (getPasswordRequired()
@@ -26584,9 +27712,9 @@ public final class PyBridgeProtos {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasInfoDict()) {
+        if (getInfoDictCount() > 0) {
           hash = (37 * hash) + INFO_DICT_FIELD_NUMBER;
-          hash = (53 * hash) + getInfoDict().hashCode();
+          hash = (53 * hash) + getInfoDictList().hashCode();
         }
         hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
@@ -26722,15 +27850,16 @@ public final class PyBridgeProtos {
         private void maybeForceBuilderInitialization() {
           if (com.google.protobuf.GeneratedMessageV3
                   .alwaysUseFieldBuilders) {
+            getInfoDictFieldBuilder();
           }
         }
         public Builder clear() {
           super.clear();
           if (infoDictBuilder_ == null) {
-            infoDict_ = null;
+            infoDict_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            infoDict_ = null;
-            infoDictBuilder_ = null;
+            infoDictBuilder_.clear();
           }
           success_ = false;
 
@@ -26760,7 +27889,13 @@ public final class PyBridgeProtos {
 
         public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse buildPartial() {
           org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse result = new org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
           if (infoDictBuilder_ == null) {
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+              infoDict_ = java.util.Collections.unmodifiableList(infoDict_);
+              bitField0_ = (bitField0_ & ~0x00000001);
+            }
             result.infoDict_ = infoDict_;
           } else {
             result.infoDict_ = infoDictBuilder_.build();
@@ -26768,6 +27903,7 @@ public final class PyBridgeProtos {
           result.success_ = success_;
           result.passwordRequired_ = passwordRequired_;
           result.geoRestricted_ = geoRestricted_;
+          result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
@@ -26809,8 +27945,31 @@ public final class PyBridgeProtos {
 
         public Builder mergeFrom(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse other) {
           if (other == org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.getDefaultInstance()) return this;
-          if (other.hasInfoDict()) {
-            mergeInfoDict(other.getInfoDict());
+          if (infoDictBuilder_ == null) {
+            if (!other.infoDict_.isEmpty()) {
+              if (infoDict_.isEmpty()) {
+                infoDict_ = other.infoDict_;
+                bitField0_ = (bitField0_ & ~0x00000001);
+              } else {
+                ensureInfoDictIsMutable();
+                infoDict_.addAll(other.infoDict_);
+              }
+              onChanged();
+            }
+          } else {
+            if (!other.infoDict_.isEmpty()) {
+              if (infoDictBuilder_.isEmpty()) {
+                infoDictBuilder_.dispose();
+                infoDictBuilder_ = null;
+                infoDict_ = other.infoDict_;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                infoDictBuilder_ = 
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                     getInfoDictFieldBuilder() : null;
+              } else {
+                infoDictBuilder_.addAllMessages(other.infoDict_);
+              }
+            }
           }
           if (other.getSuccess() != false) {
             setSuccess(other.getSuccess());
@@ -26847,117 +28006,241 @@ public final class PyBridgeProtos {
           }
           return this;
         }
+        private int bitField0_;
 
-        private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict infoDict_ = null;
-        private com.google.protobuf.SingleFieldBuilderV3<
-            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder> infoDictBuilder_;
-        /**
-         * <code>.python.InfoDict info_dict = 1;</code>
-         */
-        public boolean hasInfoDict() {
-          return infoDictBuilder_ != null || infoDict_ != null;
+        private java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict> infoDict_ =
+          java.util.Collections.emptyList();
+        private void ensureInfoDictIsMutable() {
+          if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+            infoDict_ = new java.util.ArrayList<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict>(infoDict_);
+            bitField0_ |= 0x00000001;
+           }
         }
+
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder> infoDictBuilder_;
+
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
-        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict getInfoDict() {
+        public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict> getInfoDictList() {
           if (infoDictBuilder_ == null) {
-            return infoDict_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.getDefaultInstance() : infoDict_;
+            return java.util.Collections.unmodifiableList(infoDict_);
           } else {
-            return infoDictBuilder_.getMessage();
+            return infoDictBuilder_.getMessageList();
           }
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
-        public Builder setInfoDict(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict value) {
+        public int getInfoDictCount() {
+          if (infoDictBuilder_ == null) {
+            return infoDict_.size();
+          } else {
+            return infoDictBuilder_.getCount();
+          }
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict getInfoDict(int index) {
+          if (infoDictBuilder_ == null) {
+            return infoDict_.get(index);
+          } else {
+            return infoDictBuilder_.getMessage(index);
+          }
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public Builder setInfoDict(
+            int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict value) {
           if (infoDictBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
             }
-            infoDict_ = value;
+            ensureInfoDictIsMutable();
+            infoDict_.set(index, value);
             onChanged();
           } else {
-            infoDictBuilder_.setMessage(value);
+            infoDictBuilder_.setMessage(index, value);
           }
-
           return this;
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
         public Builder setInfoDict(
+            int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder builderForValue) {
+          if (infoDictBuilder_ == null) {
+            ensureInfoDictIsMutable();
+            infoDict_.set(index, builderForValue.build());
+            onChanged();
+          } else {
+            infoDictBuilder_.setMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public Builder addInfoDict(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict value) {
+          if (infoDictBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureInfoDictIsMutable();
+            infoDict_.add(value);
+            onChanged();
+          } else {
+            infoDictBuilder_.addMessage(value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public Builder addInfoDict(
+            int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict value) {
+          if (infoDictBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureInfoDictIsMutable();
+            infoDict_.add(index, value);
+            onChanged();
+          } else {
+            infoDictBuilder_.addMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public Builder addInfoDict(
             org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder builderForValue) {
           if (infoDictBuilder_ == null) {
-            infoDict_ = builderForValue.build();
+            ensureInfoDictIsMutable();
+            infoDict_.add(builderForValue.build());
             onChanged();
           } else {
-            infoDictBuilder_.setMessage(builderForValue.build());
+            infoDictBuilder_.addMessage(builderForValue.build());
           }
-
           return this;
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
-        public Builder mergeInfoDict(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict value) {
+        public Builder addInfoDict(
+            int index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder builderForValue) {
           if (infoDictBuilder_ == null) {
-            if (infoDict_ != null) {
-              infoDict_ =
-                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.newBuilder(infoDict_).mergeFrom(value).buildPartial();
-            } else {
-              infoDict_ = value;
-            }
+            ensureInfoDictIsMutable();
+            infoDict_.add(index, builderForValue.build());
             onChanged();
           } else {
-            infoDictBuilder_.mergeFrom(value);
+            infoDictBuilder_.addMessage(index, builderForValue.build());
           }
-
           return this;
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public Builder addAllInfoDict(
+            java.lang.Iterable<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict> values) {
+          if (infoDictBuilder_ == null) {
+            ensureInfoDictIsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, infoDict_);
+            onChanged();
+          } else {
+            infoDictBuilder_.addAllMessages(values);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
         public Builder clearInfoDict() {
           if (infoDictBuilder_ == null) {
-            infoDict_ = null;
+            infoDict_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
           } else {
-            infoDict_ = null;
-            infoDictBuilder_ = null;
+            infoDictBuilder_.clear();
           }
-
           return this;
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
-        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder getInfoDictBuilder() {
-          
-          onChanged();
-          return getInfoDictFieldBuilder().getBuilder();
+        public Builder removeInfoDict(int index) {
+          if (infoDictBuilder_ == null) {
+            ensureInfoDictIsMutable();
+            infoDict_.remove(index);
+            onChanged();
+          } else {
+            infoDictBuilder_.remove(index);
+          }
+          return this;
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
-        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder() {
-          if (infoDictBuilder_ != null) {
-            return infoDictBuilder_.getMessageOrBuilder();
-          } else {
-            return infoDict_ == null ?
-                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.getDefaultInstance() : infoDict_;
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder getInfoDictBuilder(
+            int index) {
+          return getInfoDictFieldBuilder().getBuilder(index);
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder getInfoDictOrBuilder(
+            int index) {
+          if (infoDictBuilder_ == null) {
+            return infoDict_.get(index);  } else {
+            return infoDictBuilder_.getMessageOrBuilder(index);
           }
         }
         /**
-         * <code>.python.InfoDict info_dict = 1;</code>
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
          */
-        private com.google.protobuf.SingleFieldBuilderV3<
+        public java.util.List<? extends org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder> 
+             getInfoDictOrBuilderList() {
+          if (infoDictBuilder_ != null) {
+            return infoDictBuilder_.getMessageOrBuilderList();
+          } else {
+            return java.util.Collections.unmodifiableList(infoDict_);
+          }
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder addInfoDictBuilder() {
+          return getInfoDictFieldBuilder().addBuilder(
+              org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder addInfoDictBuilder(
+            int index) {
+          return getInfoDictFieldBuilder().addBuilder(
+              index, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .python.InfoDict info_dict = 1;</code>
+         */
+        public java.util.List<org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder> 
+             getInfoDictBuilderList() {
+          return getInfoDictFieldBuilder().getBuilderList();
+        }
+        private com.google.protobuf.RepeatedFieldBuilderV3<
             org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder> 
             getInfoDictFieldBuilder() {
           if (infoDictBuilder_ == null) {
-            infoDictBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            infoDictBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                 org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDict.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.InfoDictOrBuilder>(
-                    getInfoDict(),
+                    infoDict_,
+                    ((bitField0_ & 0x00000001) == 0x00000001),
                     getParentForChildren(),
                     isClean());
             infoDict_ = null;
@@ -28752,7 +30035,7 @@ public final class PyBridgeProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014python.proto\022\006python\"\342\026\n\010InfoDict\022(\n\007f" +
+      "\n\014python.proto\022\006python\"\303\027\n\010InfoDict\022(\n\007f" +
       "ormats\030\001 \003(\0132\027.python.InfoDict.Format\022\013\n" +
       "\003url\030\002 \001(\t\022\013\n\003ext\030\003 \001(\t\022\016\n\006format\030\004 \001(\t\022" +
       "\022\n\nplayer_url\030\005 \001(\t\022\021\n\talt_title\030\006 \001(\t\022\022" +
@@ -28763,8 +30046,8 @@ public final class PyBridgeProtos {
       "\n\014release_date\030\016 \001(\t\022\021\n\ttimestamp\030\017 \001(\003\022" +
       "\023\n\013upload_date\030\020 \001(\t\022\023\n\013uploader_id\030\021 \001(",
       "\t\022\024\n\014uploader_url\030\022 \001(\t\022\020\n\010location\030\023 \001(" +
-      "\t\022-\n\tsubtitles\030\024 \001(\0132\032.python.InfoDict.S" +
-      "ubtitles\0226\n\022automatic_captions\030\025 \001(\0132\032.p" +
+      "\t\022-\n\tsubtitles\030\024 \003(\0132\032.python.InfoDict.S" +
+      "ubtitles\0226\n\022automatic_captions\030\025 \003(\0132\032.p" +
       "ython.InfoDict.Subtitles\022\020\n\010duration\030\026 \001" +
       "(\001\022\022\n\nview_count\030% \001(\004\022\022\n\nlike_count\030\030 \001" +
       "(\004\022\025\n\rdislike_count\030\031 \001(\004\022\024\n\014repost_coun" +
@@ -28779,72 +30062,75 @@ public final class PyBridgeProtos {
       "nfo\0220\n\013series_info\030( \001(\0132\033.python.InfoDi" +
       "ct.SeriesInfo\022.\n\nalbum_info\030) \001(\0132\032.pyth" +
       "on.InfoDict.AlbumInfo\022\"\n\010children\030* \003(\0132" +
-      "\020.python.InfoDict\022\022\n\nchild_urls\030+ \003(\t\032\247\007" +
-      "\n\006Format\022\013\n\003url\030\001 \001(\t\022\024\n\014manifest_url\030\002 " +
-      "\001(\t\022\013\n\003ext\030\003 \001(\t\022\016\n\006format\030\004 \001(\t\022\021\n\tform",
-      "at_id\030\005 \001(\t\022\023\n\013format_note\030\006 \001(\t\022\r\n\005widt" +
-      "h\030\007 \001(\004\022\016\n\006height\030\010 \001(\004\022\022\n\nresolution\030\t " +
-      "\001(\t\022\013\n\003tbr\030\n \001(\001\022\013\n\003abr\030\013 \001(\001\022\016\n\006acodec\030" +
-      "\014 \001(\t\022\013\n\003asr\030\r \001(\001\022\013\n\003vbr\030\016 \001(\001\022\013\n\003fps\030\017" +
-      " \001(\001\022\016\n\006vcodec\030\020 \001(\t\022\021\n\tcontainer\030\021 \001(\t\022" +
-      "\020\n\010filesize\030\022 \001(\004\022\027\n\017filesize_approx\030\023 \001" +
-      "(\004\022\022\n\nplayer_url\030\024 \001(\t\0222\n\010protocol\030\025 \001(\016" +
-      "2 .python.InfoDict.Format.Protocol\022\031\n\021fr" +
-      "agment_base_url\030\026 \001(\t\0223\n\tfragments\030\027 \003(\013" +
-      "2 .python.InfoDict.Format.Fragment\022\022\n\npr",
-      "eference\030\030 \001(\003\022\020\n\010language\030\031 \001(\t\022\033\n\023lang" +
-      "uage_preference\030\032 \001(\003\022\017\n\007quality\030\033 \001(\003\022\031" +
-      "\n\021source_preference\030\034 \001(\003\022>\n\014http_header" +
-      "s\030\035 \003(\0132(.python.InfoDict.Format.HttpHea" +
-      "dersEntry\022\027\n\017stretched_ratio\030\036 \001(\001\022\021\n\tno" +
-      "_resume\030\037 \001(\010\032I\n\010Fragment\022\013\n\003url\030\001 \001(\t\022\014" +
-      "\n\004path\030\002 \001(\t\022\020\n\010duration\030\003 \001(\001\022\020\n\010filesi" +
-      "ze\030\004 \001(\004\0322\n\020HttpHeadersEntry\022\013\n\003key\030\001 \001(" +
-      "\t\022\r\n\005value\030\002 \001(\t:\0028\001\"q\n\010Protocol\022\010\n\004HTTP" +
-      "\020\000\022\t\n\005HTTPS\020\001\022\010\n\004RTSP\020\002\022\010\n\004RTMP\020\003\022\t\n\005RTM",
-      "PE\020\004\022\010\n\004M3U8\020\005\022\017\n\013M3U8_NATIVE\020\006\022\026\n\022HTTP_" +
-      "DASH_SEGMENTS\020\007\032}\n\tThumbnail\022\n\n\002id\030\001 \001(\t" +
-      "\022\013\n\003url\030\002 \001(\t\022\022\n\npreference\030\003 \001(\003\022\r\n\005wid" +
-      "th\030\004 \001(\003\022\016\n\006height\030\005 \001(\003\022\022\n\nresolution\030\006" +
-      " \001(\003\022\020\n\010filesize\030\007 \001(\003\032\207\001\n\tSubtitles\022\013\n\003" +
-      "tag\030\001 \001(\t\0228\n\nsubformats\030\002 \003(\0132$.python.I" +
-      "nfoDict.Subtitles.Subformat\0323\n\tSubformat" +
-      "\022\013\n\003ext\030\001 \001(\t\022\014\n\004data\030\002 \001(\t\022\013\n\003url\030\003 \001(\t" +
-      "\032\177\n\007Comment\022\016\n\006author\030\001 \001(\t\022\021\n\tauthor_id" +
-      "\030\002 \001(\t\022\022\n\ncomment_id\030\003 \001(\t\022\014\n\004html\030\004 \001(\t",
-      "\022\014\n\004text\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001(\003\022\016\n\006par" +
-      "ent\030\007 \001(\t\032>\n\007Chapter\022\022\n\nstart_time\030\001 \001(\003" +
-      "\022\020\n\010end_time\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\032J\n\013Cha" +
-      "pterInfo\022\017\n\007chapter\030\001 \001(\t\022\026\n\016chapter_num" +
-      "ber\030\002 \001(\003\022\022\n\nchapter_id\030\003 \001(\t\032\223\001\n\nSeries" +
-      "Info\022\016\n\006series\030\001 \001(\t\022\016\n\006season\030\002 \001(\t\022\025\n\r" +
-      "season_number\030\003 \001(\003\022\021\n\tseason_id\030\004 \001(\t\022\017" +
-      "\n\007episode\030\005 \001(\t\022\026\n\016episode_number\030\006 \001(\003\022" +
-      "\022\n\nepisode_id\030\007 \001(\t\032\305\001\n\tAlbumInfo\022\r\n\005tra" +
-      "ck\030\001 \001(\t\022\024\n\014track_number\030\002 \001(\003\022\020\n\010track_",
-      "id\030\003 \001(\t\022\016\n\006artist\030\004 \001(\t\022\r\n\005genre\030\005 \001(\t\022" +
-      "\r\n\005album\030\006 \001(\t\022\022\n\nalbum_type\030\007 \001(\t\022\024\n\014al" +
-      "bum_artist\030\010 \003(\t\022\023\n\013disc_number\030\t \001(\003\022\024\n" +
-      "\014release_year\030\n \001(\005\"\267\002\n\007Request\022\016\n\006job_i" +
-      "d\030\001 \001(\003\022@\n\023url_resolve_request\030\002 \001(\0132!.p" +
-      "ython.Request.URLResolveRequestH\000\022K\n\031url" +
-      "_is_resolvable_request\030\003 \001(\0132&.python.Re" +
-      "quest.URLIsResolvableRequestH\000\032[\n\021URLRes" +
-      "olveRequest\022\013\n\003url\030\001 \001(\t\022\020\n\010username\030\002 \001" +
-      "(\t\022\020\n\010password\030\003 \001(\t\022\025\n\rresolver_name\030\004 ",
-      "\001(\t\032%\n\026URLIsResolvableRequest\022\013\n\003url\030\001 \001" +
-      "(\tB\t\n\007request\"\204\003\n\010Response\022\016\n\006job_id\030\001 \001" +
-      "(\003\022C\n\024url_resolve_response\030\002 \001(\0132#.pytho" +
-      "n.Response.URLResolveResponseH\000\022N\n\032url_i" +
-      "s_resolvable_response\030\003 \001(\0132(.python.Res" +
-      "ponse.URLIsResolvableResponseH\000\032}\n\022URLRe" +
-      "solveResponse\022#\n\tinfo_dict\030\001 \001(\0132\020.pytho" +
-      "n.InfoDict\022\017\n\007success\030\002 \001(\010\022\031\n\021password_" +
-      "required\030\003 \001(\010\022\026\n\016geo_restricted\030\004 \001(\010\032H" +
-      "\n\027URLIsResolvableResponse\022\025\n\ris_resolvab",
-      "le\030\001 \001(\010\022\026\n\016resolver_names\030\002 \003(\tB\n\n\010resp" +
-      "onseB7\n%org.schabi.newpipe.extractor.pyb" +
-      "ridgeB\016PyBridgeProtosb\006proto3"
+      "\020.python.InfoDict\022\022\n\nchild_urls\030+ \003(\t\022\026\n" +
+      "\016extractor_name\030, \001(\t\022\r\n\005title\030- \001(\t\022\n\n\002" +
+      "id\030. \001(\t\022\022\n\nresolution\030/ \001(\t\022\016\n\006ie_key\0300",
+      " \001(\t\032\261\007\n\006Format\022\013\n\003url\030\001 \001(\t\022\024\n\014manifest" +
+      "_url\030\002 \001(\t\022\013\n\003ext\030\003 \001(\t\022\016\n\006format\030\004 \001(\t\022" +
+      "\021\n\tformat_id\030\005 \001(\t\022\023\n\013format_note\030\006 \001(\t\022" +
+      "\r\n\005width\030\007 \001(\004\022\016\n\006height\030\010 \001(\004\022\022\n\nresolu" +
+      "tion\030\t \001(\t\022\013\n\003tbr\030\n \001(\001\022\013\n\003abr\030\013 \001(\001\022\016\n\006" +
+      "acodec\030\014 \001(\t\022\013\n\003asr\030\r \001(\001\022\013\n\003vbr\030\016 \001(\001\022\013" +
+      "\n\003fps\030\017 \001(\001\022\016\n\006vcodec\030\020 \001(\t\022\021\n\tcontainer" +
+      "\030\021 \001(\t\022\020\n\010filesize\030\022 \001(\004\022\027\n\017filesize_app" +
+      "rox\030\023 \001(\004\022\022\n\nplayer_url\030\024 \001(\t\0222\n\010protoco" +
+      "l\030\025 \001(\0162 .python.InfoDict.Format.Protoco",
+      "l\022\031\n\021fragment_base_url\030\026 \001(\t\0223\n\tfragment" +
+      "s\030\027 \003(\0132 .python.InfoDict.Format.Fragmen" +
+      "t\022\022\n\npreference\030\030 \001(\003\022\020\n\010language\030\031 \001(\t\022" +
+      "\033\n\023language_preference\030\032 \001(\003\022\017\n\007quality\030" +
+      "\033 \001(\003\022\031\n\021source_preference\030\034 \001(\003\022>\n\014http" +
+      "_headers\030\035 \003(\0132(.python.InfoDict.Format." +
+      "HttpHeadersEntry\022\027\n\017stretched_ratio\030\036 \001(" +
+      "\001\022\021\n\tno_resume\030\037 \001(\010\032I\n\010Fragment\022\013\n\003url\030" +
+      "\001 \001(\t\022\014\n\004path\030\002 \001(\t\022\020\n\010duration\030\003 \001(\001\022\020\n" +
+      "\010filesize\030\004 \001(\004\0322\n\020HttpHeadersEntry\022\013\n\003k",
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"{\n\010Protocol\022" +
+      "\010\n\004NONE\020\000\022\010\n\004HTTP\020\001\022\t\n\005HTTPS\020\002\022\010\n\004RTSP\020\003" +
+      "\022\010\n\004RTMP\020\004\022\t\n\005RTMPE\020\005\022\010\n\004M3U8\020\006\022\017\n\013M3U8_" +
+      "NATIVE\020\007\022\026\n\022HTTP_DASH_SEGMENTS\020\010\032}\n\tThum" +
+      "bnail\022\n\n\002id\030\001 \001(\t\022\013\n\003url\030\002 \001(\t\022\022\n\nprefer" +
+      "ence\030\003 \001(\003\022\r\n\005width\030\004 \001(\003\022\016\n\006height\030\005 \001(" +
+      "\003\022\022\n\nresolution\030\006 \001(\003\022\020\n\010filesize\030\007 \001(\003\032" +
+      "\207\001\n\tSubtitles\022\013\n\003tag\030\001 \001(\t\0228\n\nsubformats" +
+      "\030\002 \003(\0132$.python.InfoDict.Subtitles.Subfo" +
+      "rmat\0323\n\tSubformat\022\013\n\003ext\030\001 \001(\t\022\014\n\004data\030\002",
+      " \001(\t\022\013\n\003url\030\003 \001(\t\032\177\n\007Comment\022\016\n\006author\030\001" +
+      " \001(\t\022\021\n\tauthor_id\030\002 \001(\t\022\022\n\ncomment_id\030\003 " +
+      "\001(\t\022\014\n\004html\030\004 \001(\t\022\014\n\004text\030\005 \001(\t\022\021\n\ttimes" +
+      "tamp\030\006 \001(\003\022\016\n\006parent\030\007 \001(\t\032>\n\007Chapter\022\022\n" +
+      "\nstart_time\030\001 \001(\003\022\020\n\010end_time\030\002 \001(\003\022\r\n\005t" +
+      "itle\030\003 \001(\t\032J\n\013ChapterInfo\022\017\n\007chapter\030\001 \001" +
+      "(\t\022\026\n\016chapter_number\030\002 \001(\003\022\022\n\nchapter_id" +
+      "\030\003 \001(\t\032\223\001\n\nSeriesInfo\022\016\n\006series\030\001 \001(\t\022\016\n" +
+      "\006season\030\002 \001(\t\022\025\n\rseason_number\030\003 \001(\003\022\021\n\t" +
+      "season_id\030\004 \001(\t\022\017\n\007episode\030\005 \001(\t\022\026\n\016epis",
+      "ode_number\030\006 \001(\003\022\022\n\nepisode_id\030\007 \001(\t\032\305\001\n" +
+      "\tAlbumInfo\022\r\n\005track\030\001 \001(\t\022\024\n\014track_numbe" +
+      "r\030\002 \001(\003\022\020\n\010track_id\030\003 \001(\t\022\016\n\006artist\030\004 \001(" +
+      "\t\022\r\n\005genre\030\005 \001(\t\022\r\n\005album\030\006 \001(\t\022\022\n\nalbum" +
+      "_type\030\007 \001(\t\022\024\n\014album_artist\030\010 \003(\t\022\023\n\013dis" +
+      "c_number\030\t \001(\003\022\024\n\014release_year\030\n \001(\005\"\267\002\n" +
+      "\007Request\022\016\n\006job_id\030\001 \001(\003\022@\n\023url_resolve_" +
+      "request\030\002 \001(\0132!.python.Request.URLResolv" +
+      "eRequestH\000\022K\n\031url_is_resolvable_request\030" +
+      "\003 \001(\0132&.python.Request.URLIsResolvableRe",
+      "questH\000\032[\n\021URLResolveRequest\022\013\n\003url\030\001 \001(" +
+      "\t\022\020\n\010username\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\025\n" +
+      "\rresolver_name\030\004 \001(\t\032%\n\026URLIsResolvableR" +
+      "equest\022\013\n\003url\030\001 \001(\tB\t\n\007request\"\204\003\n\010Respo" +
+      "nse\022\016\n\006job_id\030\001 \001(\003\022C\n\024url_resolve_respo" +
+      "nse\030\002 \001(\0132#.python.Response.URLResolveRe" +
+      "sponseH\000\022N\n\032url_is_resolvable_response\030\003" +
+      " \001(\0132(.python.Response.URLIsResolvableRe" +
+      "sponseH\000\032}\n\022URLResolveResponse\022#\n\tinfo_d" +
+      "ict\030\001 \003(\0132\020.python.InfoDict\022\017\n\007success\030\002",
+      " \001(\010\022\031\n\021password_required\030\003 \001(\010\022\026\n\016geo_r" +
+      "estricted\030\004 \001(\010\032H\n\027URLIsResolvableRespon" +
+      "se\022\025\n\ris_resolvable\030\001 \001(\010\022\026\n\016resolver_na" +
+      "mes\030\002 \003(\tB\n\n\010responseB7\n%org.schabi.newp" +
+      "ipe.extractor.pybridgeB\016PyBridgeProtosb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -28863,7 +30149,7 @@ public final class PyBridgeProtos {
     internal_static_python_InfoDict_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_python_InfoDict_descriptor,
-        new java.lang.String[] { "Formats", "Url", "Ext", "Format", "PlayerUrl", "AltTitle", "DisplayId", "Thumbnails", "Thumbnail", "Description", "Uploader", "License", "Creator", "ReleaseDate", "Timestamp", "UploadDate", "UploaderId", "UploaderUrl", "Location", "Subtitles", "AutomaticCaptions", "Duration", "ViewCount", "LikeCount", "DislikeCount", "RepostCount", "AverageRating", "CommentCount", "Comments", "AgeLimit", "WebpageUrl", "Categories", "Tags", "IsLive", "StartTime", "EndTime", "Chapters", "ChapterInfo", "SeriesInfo", "AlbumInfo", "Children", "ChildUrls", });
+        new java.lang.String[] { "Formats", "Url", "Ext", "Format", "PlayerUrl", "AltTitle", "DisplayId", "Thumbnails", "Thumbnail", "Description", "Uploader", "License", "Creator", "ReleaseDate", "Timestamp", "UploadDate", "UploaderId", "UploaderUrl", "Location", "Subtitles", "AutomaticCaptions", "Duration", "ViewCount", "LikeCount", "DislikeCount", "RepostCount", "AverageRating", "CommentCount", "Comments", "AgeLimit", "WebpageUrl", "Categories", "Tags", "IsLive", "StartTime", "EndTime", "Chapters", "ChapterInfo", "SeriesInfo", "AlbumInfo", "Children", "ChildUrls", "ExtractorName", "Title", "Id", "Resolution", "IeKey", });
     internal_static_python_InfoDict_Format_descriptor =
       internal_static_python_InfoDict_descriptor.getNestedTypes().get(0);
     internal_static_python_InfoDict_Format_fieldAccessorTable = new

@@ -1,0 +1,306 @@
+syntax = "proto3";
+
+package python;
+
+
+option java_package = "org.schabi.newpipe.extractor.pybridge";
+option java_outer_classname = "PyBridgeProtos";
+
+
+message InfoDict {
+    /* https://github.com/rg3/youtube-dl/blob/master/youtube_dl/extractor/common.py#L75-L257 */
+
+    message Format {
+        oneof of_735 { string url = 1; }  // The URL of the video file
+        oneof of_736 { string manifest_url = 2; }  /* The URL of the manifest file in case of
+                                                      fragmented media (DASH, hls, hds) */
+        oneof of_737 { string ext = 3; }  //  Will be calculated from URL if missing
+        oneof of_738 { string format = 4; }  /*  A human-readable description of the format
+                                                 ("mp4 container with h264/opus").
+                                                 Calculated from the format_id, width, height.
+                                                 and format_note fields if missing. */
+        oneof of_739 { string format_id = 5; }  /* A short description of the format
+                                                   ("mp4_h264_opus" or "19").
+                                                   Technically optional, but strongly recommended. */
+        oneof of_740 { string format_note = 6; }  /* Additional info about the format
+                                                     ("3D" or "DASH video") */
+        oneof of_741 { uint64 width = 7; }  // Width of the video, if known
+        oneof of_742 { uint64 height = 8; }  // Height of the video, if known
+        oneof of_743 { string resolution = 9; }  // Textual description of width and height
+        oneof of_744 { double tbr = 10; }  // Average bitrate of audio and video in KBit/s
+        oneof of_745 { double abr = 11; }  // Average audio bitrate in KBit/s
+        oneof of_746 { string acodec = 12; }  // Name of the audio codec in use
+        oneof of_747 { double asr = 13; }  // Audio sampling rate in Hertz
+        oneof of_748 { double vbr = 14; }  // Average video bitrate in KBit/s
+        oneof of_749 { double fps = 15; }  // Frame rate
+        oneof of_750 { string vcodec = 16; }  // Name of the video codec in use
+        oneof of_751 { string container = 17; }  // Name of the container format
+        oneof of_752 { uint64 filesize = 18; }  // The number of bytes, if known in advance
+        oneof of_753 { uint64 filesize_approx = 19; }  // An estimate for the number of bytes
+        oneof of_754 { string player_url = 20; }  // SWF Player URL (used for rtmpdump).
+
+        enum Protocol {
+            oneof of_755 { HTTP = 0; } 
+            oneof of_756 { HTTPS = 1; } 
+            oneof of_757 { RTSP = 2; } 
+            oneof of_758 { RTMP = 3; } 
+            oneof of_759 { RTMPE = 4; } 
+            oneof of_760 { M3U8 = 5; } 
+            oneof of_761 { M3U8_NATIVE = 6; } 
+            oneof of_762 { HTTP_DASH_SEGMENTS = 7; } 
+        }
+
+        oneof of_763 { Protocol protocol = 21; }  // The protocol used for the actual download
+
+        oneof of_764 { string fragment_base_url = 22; }  /* Base URL for fragments. Each fragment's path
+                                                            value (if present) will be relative to
+                                                            this URL. */
+
+        message Fragment {
+            /*  Each fragment entry must contain either an url
+                or a path. If an url is present it should be
+                considered by a client. Otherwise both path and
+                fragment_base_url must be present. */
+
+            oneof of_765 { string url = 1; }  // fragment's URL
+            oneof of_766 { string path = 2; }  /* fragment's path relative to
+                                                  fragment_base_url */
+            oneof of_767 { double duration = 3; } 
+            oneof of_768 { uint64 filesize = 4; } 
+        }
+
+        oneof of_769 { repeated Fragment fragments = 23; }  // A list of fragments of a fragmented media. 
+
+        oneof of_770 { int64 preference = 24; }  /*  Order number of this format. If this field is
+                                                     present and not None, the formats get sorted
+                                                     by this field, regardless of all other values.
+                                                     -1 for default (order by other properties),
+                                                     -2 or smaller for less than default.
+                                                     < -1000 to hide the format (if there is
+                                                     another one which is strictly better) */
+
+        oneof of_771 { string language = 25; }  //  Language code, e.g. "de" or "en-US"
+        oneof of_772 { int64 language_preference = 26; }  /* Is this in the language mentioned in
+                                                             the URL?
+                                                             10 if it's what the URL is about,
+                                                             -1 for default (don't know),
+                                                             -10 otherwise, other values reserved for now. */
+
+        oneof of_773 { int64 quality = 27; }  /* Order number of the video quality of this
+                                                 format, irrespective of the file format.
+                                                 -1 for default (order by other properties),
+                                                 -2 or smaller for less than default. */
+
+        oneof of_774 { int64 source_preference = 28; }  /* Order number for this video source
+                                                           (quality takes higher priority)
+                                                           -1 for default (order by other properties),
+                                                           -2 or smaller for less than default. */
+
+        oneof of_775 { map<string,string> http_headers = 29; }  /* A dictionary of additional HTTP headers
+                                                                   to add to the request. */
+
+        oneof of_776 { double stretched_ratio = 30; }  /* If given and not 1, indicates that the
+                                                          video's pixels are not square.
+width : height ratio as float. */
+
+        oneof of_777 { bool no_resume = 31; }  /* The server does not support resuming the
+                                                  (HTTP or RTMP) download. */
+
+    }
+
+    oneof of_778 { repeated Format formats = 1; } 
+    oneof of_779 { string url = 2; }  // url of video for if formats is not present
+    oneof of_780 { string ext = 3; }  // Video filename extension (if formats is not present)
+    oneof of_781 { string format = 4; }  // The video format, defaults to ext
+    oneof of_782 { string player_url = 5; }  // SWF Player URL (used for rtmpdump).
+
+    oneof of_783 { string alt_title = 6; }  // A secondary title of the video.
+    oneof of_784 { string display_id = 7; }  /* An alternative identifier for the video, not necessarily
+                                                unique, but available before title. Typically, id is
+                                                something like "4234987", title "Dancing naked mole rats",
+                                                and display_id "dancing-naked-mole-rats" */
+
+    message Thumbnail {
+        oneof of_785 { string id = 1; } 
+        oneof of_786 { string url = 2; } 
+        oneof of_787 { int64 preference = 3; }  // quality of the image
+        oneof of_788 { int64 width = 4; }  
+        oneof of_789 { int64 height = 5; } 
+        oneof of_790 { int64 resolution = 6; }  // string "{width}x{height"}, deprecated
+        oneof of_791 { int64 filesize = 7; } 
+    }
+
+    oneof of_792 { repeated Thumbnail thumbnails = 8; } 
+    oneof of_793 { string thumbnail = 9; }  // Full URL to a video thumbnail image.
+    oneof of_794 { string description = 10; }  // Full video description.
+    oneof of_795 { string uploader = 11; }  // Full name of the video uploader.
+    oneof of_796 { string license = 12; }  // License name the video is licensed under.
+    oneof of_797 { string creator = 13; }  // The creator of the video.
+    oneof of_798 { string release_date = 14; }  // The date (YYYYMMDD) when the video was released.
+    oneof of_799 { int64 timestamp = 15; }  // UNIX timestamp of the moment the video became available.
+    oneof of_800 { string upload_date = 16; }  /* Video upload date (YYYYMMDD).
+                                                  If not explicitly set, calculated from timestamp. */
+    oneof of_801 { string uploader_id = 17; }  // Nickname or id of the video uploader.
+    oneof of_802 { string uploader_url = 18; }  // Full URL to a personal webpage of the video uploader.
+    oneof of_803 { string location = 19; }  // Physical location where the video was filmed.
+
+    message Subtitles {
+        message Subformat {
+            oneof of_804 { string ext = 1; } 
+            oneof of_805 { string data = 2; }  
+            oneof of_806 { string url = 3; } 
+        }
+
+        oneof of_807 { string tag = 1; } 
+        oneof of_808 { repeated Subformat subformats = 2; } 
+    }
+
+    oneof of_809 { Subtitles subtitles = 20; } 
+    oneof of_810 { Subtitles automatic_captions = 21; }  /* Like 'subtitles', used by the YoutubeIE for
+                                                            automatically generated captions */
+    oneof of_811 { double duration = 22; }  // Length of the video in seconds
+    oneof of_812 { uint64 view_count = 37; }  // How many users have watched the video on the platform
+    oneof of_813 { uint64 like_count = 24; }  // Number of positive ratings of the video
+    oneof of_814 { uint64 dislike_count = 25; }  // Number of negative ratings of the video
+    oneof of_815 { uint64 repost_count = 26; }  // Number of reposts of the video
+    oneof of_816 { double average_rating = 27; }  // Average rating give by users, the scale used depends on the webpage
+    oneof of_817 { uint64 comment_count = 28; }  // Number of comments on the video
+
+    message Comment {
+        oneof of_818 { string author = 1; }  // human-readable name of the comment author
+        oneof of_819 { string author_id = 2; }  // user ID of the comment author
+        oneof of_820 { string comment_id = 3; }  // Comment ID
+        oneof of_821 { string html = 4; }  // Comment as HTML
+        oneof of_822 { string text = 5; }  // Plain text of the comment
+        oneof of_823 { int64 timestamp = 6; }  // UNIX timestamp of comment
+        oneof of_824 { string parent = 7; }  /* ID of the comment this one is replying to.
+                                                Set to "root" to indicate that this is a
+                                                comment to the original video. */
+    }
+
+    oneof of_825 { repeated Comment comments = 29; } 
+    oneof of_826 { int32 age_limit = 30; }  // Age restriction for the video, as an integer (years)
+    oneof of_827 { string webpage_url = 31; }  /*  The URL to the video webpage, if given to youtube-dl it
+                                                   should allow to get the same result again. (It will be set
+                                                   by YoutubeDL if it's missing) */
+    oneof of_828 { repeated string categories = 32; }  /*  A list of categories that the video falls in, for example
+                                                           ["Sports", "Berlin"] */
+
+    oneof of_829 { repeated string tags = 33; }  // A list of tags assigned to the video, e.g. ["sweden", "pop music"]
+    oneof of_830 { bool is_live = 34; }  /* Whether this video is a
+                                            live stream that goes on instead of a fixed-length video. */
+
+    oneof of_831 { uint64 start_time = 35; }  /* Time in seconds where the reproduction should start, as
+                                                 specified in the URL. */
+
+    oneof of_832 { uint64 end_time = 36; }  /* Time in seconds where the reproduction should end, as
+                                               specified in the URL. */
+
+    message Chapter {
+        oneof of_833 { int64 start_time = 1; }  // The start time of the chapter in seconds
+        oneof of_834 { int64 end_time = 2; }  // The end time of the chapter in seconds
+        oneof of_835 { string title = 3; } 
+    }
+
+    oneof of_836 { repeated Chapter chapters = 38; } 
+
+    message ChapterInfo {
+        oneof of_837 { string chapter = 1; }  // Name or title of the chapter the video belongs to.
+        oneof of_838 { int64 chapter_number = 2; }  // Number of the chapter the video belongs to, as an integer.
+        oneof of_839 { string chapter_id = 3; }  // Id of the chapter the video belongs to
+    }
+
+    oneof of_840 { ChapterInfo chapter_info = 39; }  /* should only be used when the video belongs to some logical
+                                                        chapter or section */
+
+    message SeriesInfo {
+        oneof of_841 { string series = 1; }  // Title of the series or programme the video episode belongs to.
+        oneof of_842 { string season = 2; }  // Title of the season the video episode belongs to.
+        oneof of_843 { int64 season_number = 3; }  // Number of the season the video episode belongs to
+        oneof of_844 { string season_id = 4; }  // Id of the season the video episode belongs to
+        oneof of_845 { string episode = 5; }  /* Title of the video episode. Unlike mandatory video title field,
+                                                 this field should denote the exact title of the video episode
+                                                 without any kind of decoration. */
+        oneof of_846 { int64 episode_number = 6; }  // Number of the video episode within a season
+        oneof of_847 { string episode_id = 7; }  // Id of the video episode
+    }
+
+    oneof of_848 { SeriesInfo series_info = 40; }  /* should only be used when the video is an episode of some
+                                                      series, programme or podcast */
+
+    message AlbumInfo {
+        oneof of_849 { string track = 1; }  // Title of the track.
+        oneof of_850 { int64 track_number = 2; }  // Number of the track within an album or a disc
+        oneof of_851 { string track_id = 3; }  // Id of the track (useful in case of custom indexing, e.g. 6.iii)
+        oneof of_852 { string artist = 4; } 
+        oneof of_853 { string genre = 5; } 
+        oneof of_854 { string album = 6; }  // Title of the album the track belongs to
+        oneof of_855 { string album_type = 7; }  //  Type of the album (e.g. "Demo", "Full-length", "Split", "Compilation", etc).
+        oneof of_856 { repeated string album_artist = 8; }  /* List of all artists appeared on the album (e.g.
+                                                               "Ash Borer / Fell Voices" or "Various Artists", useful for splits
+                                                               and compilations). */
+        oneof of_857 { int64 disc_number = 9; }  // Number of the disc or other physical medium the track belongs to
+        oneof of_858 { int32 release_year = 10; }  // Year (YYYY) when the album was released
+    }
+
+    oneof of_859 { AlbumInfo album_info = 41; }  /* should only be used when the media is a track or a part of
+                                                    a music album */
+
+
+    oneof of_860 { repeated InfoDict children = 42; }  /* Child videos of this video, if any
+                                                          corresponds to _type='playlist' or _type='multi_video' in youtube-dl */
+    oneof of_861 { repeated string child_urls = 43; }  /* like children, except lazy
+                                                          urls can be run through youtube-dl to get the data that would go in children */
+
+    oneof of_862 { string extractor_name = 44; } 
+
+    oneof of_863 { string title = 45; } 
+    oneof of_864 { string id = 46; } 
+    oneof of_865 { string resolution = 47; }
+
+}
+
+message Request {
+
+    oneof of_865 { int64 job_id = 1; } 
+
+    message URLResolveRequest {
+        oneof of_866 { string url = 1; } 
+        oneof of_867 { string username = 2; }  // optional username & pass for sites that require login
+        oneof of_868 { string password = 3; } 
+        oneof of_869 { string resolver_name = 4; }  // specify which info extractor to use (optional)
+    }
+
+    message URLIsResolvableRequest {
+        oneof of_870 { string url = 1; } 
+    }
+
+    oneof request {
+        oneof of_871 { URLResolveRequest url_resolve_request = 2; } 
+        oneof of_872 { URLIsResolvableRequest url_is_resolvable_request = 3; } 
+    }
+
+}
+
+message Response {
+
+    oneof of_873 { int64 job_id = 1; } 
+
+    message URLResolveResponse {
+        oneof of_874 { repeated InfoDict info_dict = 1; } 
+        oneof of_875 { bool success = 2; }  // did the request succeed?
+        oneof of_876 { bool password_required = 3; }  // did this fail because it requires a password?
+        oneof of_877 { bool geo_restricted = 4; }  // did this fail because it's blocked in the country we're in?
+    }
+
+    message URLIsResolvableResponse {
+        oneof of_878 { bool is_resolvable = 1; } 
+        oneof of_879 { repeated string resolver_names = 2; }  // which IE's support this url
+    }
+
+    oneof response {
+        oneof of_880 { URLResolveResponse url_resolve_response = 2; } 
+        oneof of_881 { URLIsResolvableResponse url_is_resolvable_response = 3; } 
+    }
+
+}

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='python.proto',
   package='python',
   syntax='proto3',
-  serialized_pb=_b('\n\x0cpython.proto\x12\x06python\"\xe2\x16\n\x08InfoDict\x12(\n\x07\x66ormats\x18\x01 \x03(\x0b\x32\x17.python.InfoDict.Format\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x0b\n\x03\x65xt\x18\x03 \x01(\t\x12\x0e\n\x06\x66ormat\x18\x04 \x01(\t\x12\x12\n\nplayer_url\x18\x05 \x01(\t\x12\x11\n\talt_title\x18\x06 \x01(\t\x12\x12\n\ndisplay_id\x18\x07 \x01(\t\x12.\n\nthumbnails\x18\x08 \x03(\x0b\x32\x1a.python.InfoDict.Thumbnail\x12\x11\n\tthumbnail\x18\t \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\n \x01(\t\x12\x10\n\x08uploader\x18\x0b \x01(\t\x12\x0f\n\x07license\x18\x0c \x01(\t\x12\x0f\n\x07\x63reator\x18\r \x01(\t\x12\x14\n\x0crelease_date\x18\x0e \x01(\t\x12\x11\n\ttimestamp\x18\x0f \x01(\x03\x12\x13\n\x0bupload_date\x18\x10 \x01(\t\x12\x13\n\x0buploader_id\x18\x11 \x01(\t\x12\x14\n\x0cuploader_url\x18\x12 \x01(\t\x12\x10\n\x08location\x18\x13 \x01(\t\x12-\n\tsubtitles\x18\x14 \x01(\x0b\x32\x1a.python.InfoDict.Subtitles\x12\x36\n\x12\x61utomatic_captions\x18\x15 \x01(\x0b\x32\x1a.python.InfoDict.Subtitles\x12\x10\n\x08\x64uration\x18\x16 \x01(\x01\x12\x12\n\nview_count\x18% \x01(\x04\x12\x12\n\nlike_count\x18\x18 \x01(\x04\x12\x15\n\rdislike_count\x18\x19 \x01(\x04\x12\x14\n\x0crepost_count\x18\x1a \x01(\x04\x12\x16\n\x0e\x61verage_rating\x18\x1b \x01(\x01\x12\x15\n\rcomment_count\x18\x1c \x01(\x04\x12*\n\x08\x63omments\x18\x1d \x03(\x0b\x32\x18.python.InfoDict.Comment\x12\x11\n\tage_limit\x18\x1e \x01(\x05\x12\x13\n\x0bwebpage_url\x18\x1f \x01(\t\x12\x12\n\ncategories\x18  \x03(\t\x12\x0c\n\x04tags\x18! \x03(\t\x12\x0f\n\x07is_live\x18\" \x01(\x08\x12\x12\n\nstart_time\x18# \x01(\x04\x12\x10\n\x08\x65nd_time\x18$ \x01(\x04\x12*\n\x08\x63hapters\x18& \x03(\x0b\x32\x18.python.InfoDict.Chapter\x12\x32\n\x0c\x63hapter_info\x18\' \x01(\x0b\x32\x1c.python.InfoDict.ChapterInfo\x12\x30\n\x0bseries_info\x18( \x01(\x0b\x32\x1b.python.InfoDict.SeriesInfo\x12.\n\nalbum_info\x18) \x01(\x0b\x32\x1a.python.InfoDict.AlbumInfo\x12\"\n\x08\x63hildren\x18* \x03(\x0b\x32\x10.python.InfoDict\x12\x12\n\nchild_urls\x18+ \x03(\t\x1a\xa7\x07\n\x06\x46ormat\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x14\n\x0cmanifest_url\x18\x02 \x01(\t\x12\x0b\n\x03\x65xt\x18\x03 \x01(\t\x12\x0e\n\x06\x66ormat\x18\x04 \x01(\t\x12\x11\n\tformat_id\x18\x05 \x01(\t\x12\x13\n\x0b\x66ormat_note\x18\x06 \x01(\t\x12\r\n\x05width\x18\x07 \x01(\x04\x12\x0e\n\x06height\x18\x08 \x01(\x04\x12\x12\n\nresolution\x18\t \x01(\t\x12\x0b\n\x03tbr\x18\n \x01(\x01\x12\x0b\n\x03\x61\x62r\x18\x0b \x01(\x01\x12\x0e\n\x06\x61\x63odec\x18\x0c \x01(\t\x12\x0b\n\x03\x61sr\x18\r \x01(\x01\x12\x0b\n\x03vbr\x18\x0e \x01(\x01\x12\x0b\n\x03\x66ps\x18\x0f \x01(\x01\x12\x0e\n\x06vcodec\x18\x10 \x01(\t\x12\x11\n\tcontainer\x18\x11 \x01(\t\x12\x10\n\x08\x66ilesize\x18\x12 \x01(\x04\x12\x17\n\x0f\x66ilesize_approx\x18\x13 \x01(\x04\x12\x12\n\nplayer_url\x18\x14 \x01(\t\x12\x32\n\x08protocol\x18\x15 \x01(\x0e\x32 .python.InfoDict.Format.Protocol\x12\x19\n\x11\x66ragment_base_url\x18\x16 \x01(\t\x12\x33\n\tfragments\x18\x17 \x03(\x0b\x32 .python.InfoDict.Format.Fragment\x12\x12\n\npreference\x18\x18 \x01(\x03\x12\x10\n\x08language\x18\x19 \x01(\t\x12\x1b\n\x13language_preference\x18\x1a \x01(\x03\x12\x0f\n\x07quality\x18\x1b \x01(\x03\x12\x19\n\x11source_preference\x18\x1c \x01(\x03\x12>\n\x0chttp_headers\x18\x1d \x03(\x0b\x32(.python.InfoDict.Format.HttpHeadersEntry\x12\x17\n\x0fstretched_ratio\x18\x1e \x01(\x01\x12\x11\n\tno_resume\x18\x1f \x01(\x08\x1aI\n\x08\x46ragment\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x10\n\x08\x64uration\x18\x03 \x01(\x01\x12\x10\n\x08\x66ilesize\x18\x04 \x01(\x04\x1a\x32\n\x10HttpHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"q\n\x08Protocol\x12\x08\n\x04HTTP\x10\x00\x12\t\n\x05HTTPS\x10\x01\x12\x08\n\x04RTSP\x10\x02\x12\x08\n\x04RTMP\x10\x03\x12\t\n\x05RTMPE\x10\x04\x12\x08\n\x04M3U8\x10\x05\x12\x0f\n\x0bM3U8_NATIVE\x10\x06\x12\x16\n\x12HTTP_DASH_SEGMENTS\x10\x07\x1a}\n\tThumbnail\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x12\n\npreference\x18\x03 \x01(\x03\x12\r\n\x05width\x18\x04 \x01(\x03\x12\x0e\n\x06height\x18\x05 \x01(\x03\x12\x12\n\nresolution\x18\x06 \x01(\x03\x12\x10\n\x08\x66ilesize\x18\x07 \x01(\x03\x1a\x87\x01\n\tSubtitles\x12\x0b\n\x03tag\x18\x01 \x01(\t\x12\x38\n\nsubformats\x18\x02 \x03(\x0b\x32$.python.InfoDict.Subtitles.Subformat\x1a\x33\n\tSubformat\x12\x0b\n\x03\x65xt\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x1a\x7f\n\x07\x43omment\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x11\n\tauthor_id\x18\x02 \x01(\t\x12\x12\n\ncomment_id\x18\x03 \x01(\t\x12\x0c\n\x04html\x18\x04 \x01(\t\x12\x0c\n\x04text\x18\x05 \x01(\t\x12\x11\n\ttimestamp\x18\x06 \x01(\x03\x12\x0e\n\x06parent\x18\x07 \x01(\t\x1a>\n\x07\x43hapter\x12\x12\n\nstart_time\x18\x01 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x02 \x01(\x03\x12\r\n\x05title\x18\x03 \x01(\t\x1aJ\n\x0b\x43hapterInfo\x12\x0f\n\x07\x63hapter\x18\x01 \x01(\t\x12\x16\n\x0e\x63hapter_number\x18\x02 \x01(\x03\x12\x12\n\nchapter_id\x18\x03 \x01(\t\x1a\x93\x01\n\nSeriesInfo\x12\x0e\n\x06series\x18\x01 \x01(\t\x12\x0e\n\x06season\x18\x02 \x01(\t\x12\x15\n\rseason_number\x18\x03 \x01(\x03\x12\x11\n\tseason_id\x18\x04 \x01(\t\x12\x0f\n\x07\x65pisode\x18\x05 \x01(\t\x12\x16\n\x0e\x65pisode_number\x18\x06 \x01(\x03\x12\x12\n\nepisode_id\x18\x07 \x01(\t\x1a\xc5\x01\n\tAlbumInfo\x12\r\n\x05track\x18\x01 \x01(\t\x12\x14\n\x0ctrack_number\x18\x02 \x01(\x03\x12\x10\n\x08track_id\x18\x03 \x01(\t\x12\x0e\n\x06\x61rtist\x18\x04 \x01(\t\x12\r\n\x05genre\x18\x05 \x01(\t\x12\r\n\x05\x61lbum\x18\x06 \x01(\t\x12\x12\n\nalbum_type\x18\x07 \x01(\t\x12\x14\n\x0c\x61lbum_artist\x18\x08 \x03(\t\x12\x13\n\x0b\x64isc_number\x18\t \x01(\x03\x12\x14\n\x0crelease_year\x18\n \x01(\x05\"\xb7\x02\n\x07Request\x12\x0e\n\x06job_id\x18\x01 \x01(\x03\x12@\n\x13url_resolve_request\x18\x02 \x01(\x0b\x32!.python.Request.URLResolveRequestH\x00\x12K\n\x19url_is_resolvable_request\x18\x03 \x01(\x0b\x32&.python.Request.URLIsResolvableRequestH\x00\x1a[\n\x11URLResolveRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x15\n\rresolver_name\x18\x04 \x01(\t\x1a%\n\x16URLIsResolvableRequest\x12\x0b\n\x03url\x18\x01 \x01(\tB\t\n\x07request\"\x84\x03\n\x08Response\x12\x0e\n\x06job_id\x18\x01 \x01(\x03\x12\x43\n\x14url_resolve_response\x18\x02 \x01(\x0b\x32#.python.Response.URLResolveResponseH\x00\x12N\n\x1aurl_is_resolvable_response\x18\x03 \x01(\x0b\x32(.python.Response.URLIsResolvableResponseH\x00\x1a}\n\x12URLResolveResponse\x12#\n\tinfo_dict\x18\x01 \x01(\x0b\x32\x10.python.InfoDict\x12\x0f\n\x07success\x18\x02 \x01(\x08\x12\x19\n\x11password_required\x18\x03 \x01(\x08\x12\x16\n\x0egeo_restricted\x18\x04 \x01(\x08\x1aH\n\x17URLIsResolvableResponse\x12\x15\n\ris_resolvable\x18\x01 \x01(\x08\x12\x16\n\x0eresolver_names\x18\x02 \x03(\tB\n\n\x08responseB7\n%org.schabi.newpipe.extractor.pybridgeB\x0ePyBridgeProtosb\x06proto3')
+  serialized_pb=_b('\n\x0cpython.proto\x12\x06python\"\xc3\x17\n\x08InfoDict\x12(\n\x07\x66ormats\x18\x01 \x03(\x0b\x32\x17.python.InfoDict.Format\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x0b\n\x03\x65xt\x18\x03 \x01(\t\x12\x0e\n\x06\x66ormat\x18\x04 \x01(\t\x12\x12\n\nplayer_url\x18\x05 \x01(\t\x12\x11\n\talt_title\x18\x06 \x01(\t\x12\x12\n\ndisplay_id\x18\x07 \x01(\t\x12.\n\nthumbnails\x18\x08 \x03(\x0b\x32\x1a.python.InfoDict.Thumbnail\x12\x11\n\tthumbnail\x18\t \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\n \x01(\t\x12\x10\n\x08uploader\x18\x0b \x01(\t\x12\x0f\n\x07license\x18\x0c \x01(\t\x12\x0f\n\x07\x63reator\x18\r \x01(\t\x12\x14\n\x0crelease_date\x18\x0e \x01(\t\x12\x11\n\ttimestamp\x18\x0f \x01(\x03\x12\x13\n\x0bupload_date\x18\x10 \x01(\t\x12\x13\n\x0buploader_id\x18\x11 \x01(\t\x12\x14\n\x0cuploader_url\x18\x12 \x01(\t\x12\x10\n\x08location\x18\x13 \x01(\t\x12-\n\tsubtitles\x18\x14 \x03(\x0b\x32\x1a.python.InfoDict.Subtitles\x12\x36\n\x12\x61utomatic_captions\x18\x15 \x03(\x0b\x32\x1a.python.InfoDict.Subtitles\x12\x10\n\x08\x64uration\x18\x16 \x01(\x01\x12\x12\n\nview_count\x18% \x01(\x04\x12\x12\n\nlike_count\x18\x18 \x01(\x04\x12\x15\n\rdislike_count\x18\x19 \x01(\x04\x12\x14\n\x0crepost_count\x18\x1a \x01(\x04\x12\x16\n\x0e\x61verage_rating\x18\x1b \x01(\x01\x12\x15\n\rcomment_count\x18\x1c \x01(\x04\x12*\n\x08\x63omments\x18\x1d \x03(\x0b\x32\x18.python.InfoDict.Comment\x12\x11\n\tage_limit\x18\x1e \x01(\x05\x12\x13\n\x0bwebpage_url\x18\x1f \x01(\t\x12\x12\n\ncategories\x18  \x03(\t\x12\x0c\n\x04tags\x18! \x03(\t\x12\x0f\n\x07is_live\x18\" \x01(\x08\x12\x12\n\nstart_time\x18# \x01(\x04\x12\x10\n\x08\x65nd_time\x18$ \x01(\x04\x12*\n\x08\x63hapters\x18& \x03(\x0b\x32\x18.python.InfoDict.Chapter\x12\x32\n\x0c\x63hapter_info\x18\' \x01(\x0b\x32\x1c.python.InfoDict.ChapterInfo\x12\x30\n\x0bseries_info\x18( \x01(\x0b\x32\x1b.python.InfoDict.SeriesInfo\x12.\n\nalbum_info\x18) \x01(\x0b\x32\x1a.python.InfoDict.AlbumInfo\x12\"\n\x08\x63hildren\x18* \x03(\x0b\x32\x10.python.InfoDict\x12\x12\n\nchild_urls\x18+ \x03(\t\x12\x16\n\x0e\x65xtractor_name\x18, \x01(\t\x12\r\n\x05title\x18- \x01(\t\x12\n\n\x02id\x18. \x01(\t\x12\x12\n\nresolution\x18/ \x01(\t\x12\x0e\n\x06ie_key\x18\x30 \x01(\t\x1a\xb1\x07\n\x06\x46ormat\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x14\n\x0cmanifest_url\x18\x02 \x01(\t\x12\x0b\n\x03\x65xt\x18\x03 \x01(\t\x12\x0e\n\x06\x66ormat\x18\x04 \x01(\t\x12\x11\n\tformat_id\x18\x05 \x01(\t\x12\x13\n\x0b\x66ormat_note\x18\x06 \x01(\t\x12\r\n\x05width\x18\x07 \x01(\x04\x12\x0e\n\x06height\x18\x08 \x01(\x04\x12\x12\n\nresolution\x18\t \x01(\t\x12\x0b\n\x03tbr\x18\n \x01(\x01\x12\x0b\n\x03\x61\x62r\x18\x0b \x01(\x01\x12\x0e\n\x06\x61\x63odec\x18\x0c \x01(\t\x12\x0b\n\x03\x61sr\x18\r \x01(\x01\x12\x0b\n\x03vbr\x18\x0e \x01(\x01\x12\x0b\n\x03\x66ps\x18\x0f \x01(\x01\x12\x0e\n\x06vcodec\x18\x10 \x01(\t\x12\x11\n\tcontainer\x18\x11 \x01(\t\x12\x10\n\x08\x66ilesize\x18\x12 \x01(\x04\x12\x17\n\x0f\x66ilesize_approx\x18\x13 \x01(\x04\x12\x12\n\nplayer_url\x18\x14 \x01(\t\x12\x32\n\x08protocol\x18\x15 \x01(\x0e\x32 .python.InfoDict.Format.Protocol\x12\x19\n\x11\x66ragment_base_url\x18\x16 \x01(\t\x12\x33\n\tfragments\x18\x17 \x03(\x0b\x32 .python.InfoDict.Format.Fragment\x12\x12\n\npreference\x18\x18 \x01(\x03\x12\x10\n\x08language\x18\x19 \x01(\t\x12\x1b\n\x13language_preference\x18\x1a \x01(\x03\x12\x0f\n\x07quality\x18\x1b \x01(\x03\x12\x19\n\x11source_preference\x18\x1c \x01(\x03\x12>\n\x0chttp_headers\x18\x1d \x03(\x0b\x32(.python.InfoDict.Format.HttpHeadersEntry\x12\x17\n\x0fstretched_ratio\x18\x1e \x01(\x01\x12\x11\n\tno_resume\x18\x1f \x01(\x08\x1aI\n\x08\x46ragment\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x10\n\x08\x64uration\x18\x03 \x01(\x01\x12\x10\n\x08\x66ilesize\x18\x04 \x01(\x04\x1a\x32\n\x10HttpHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"{\n\x08Protocol\x12\x08\n\x04NONE\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\t\n\x05HTTPS\x10\x02\x12\x08\n\x04RTSP\x10\x03\x12\x08\n\x04RTMP\x10\x04\x12\t\n\x05RTMPE\x10\x05\x12\x08\n\x04M3U8\x10\x06\x12\x0f\n\x0bM3U8_NATIVE\x10\x07\x12\x16\n\x12HTTP_DASH_SEGMENTS\x10\x08\x1a}\n\tThumbnail\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x12\n\npreference\x18\x03 \x01(\x03\x12\r\n\x05width\x18\x04 \x01(\x03\x12\x0e\n\x06height\x18\x05 \x01(\x03\x12\x12\n\nresolution\x18\x06 \x01(\x03\x12\x10\n\x08\x66ilesize\x18\x07 \x01(\x03\x1a\x87\x01\n\tSubtitles\x12\x0b\n\x03tag\x18\x01 \x01(\t\x12\x38\n\nsubformats\x18\x02 \x03(\x0b\x32$.python.InfoDict.Subtitles.Subformat\x1a\x33\n\tSubformat\x12\x0b\n\x03\x65xt\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x1a\x7f\n\x07\x43omment\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x11\n\tauthor_id\x18\x02 \x01(\t\x12\x12\n\ncomment_id\x18\x03 \x01(\t\x12\x0c\n\x04html\x18\x04 \x01(\t\x12\x0c\n\x04text\x18\x05 \x01(\t\x12\x11\n\ttimestamp\x18\x06 \x01(\x03\x12\x0e\n\x06parent\x18\x07 \x01(\t\x1a>\n\x07\x43hapter\x12\x12\n\nstart_time\x18\x01 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x02 \x01(\x03\x12\r\n\x05title\x18\x03 \x01(\t\x1aJ\n\x0b\x43hapterInfo\x12\x0f\n\x07\x63hapter\x18\x01 \x01(\t\x12\x16\n\x0e\x63hapter_number\x18\x02 \x01(\x03\x12\x12\n\nchapter_id\x18\x03 \x01(\t\x1a\x93\x01\n\nSeriesInfo\x12\x0e\n\x06series\x18\x01 \x01(\t\x12\x0e\n\x06season\x18\x02 \x01(\t\x12\x15\n\rseason_number\x18\x03 \x01(\x03\x12\x11\n\tseason_id\x18\x04 \x01(\t\x12\x0f\n\x07\x65pisode\x18\x05 \x01(\t\x12\x16\n\x0e\x65pisode_number\x18\x06 \x01(\x03\x12\x12\n\nepisode_id\x18\x07 \x01(\t\x1a\xc5\x01\n\tAlbumInfo\x12\r\n\x05track\x18\x01 \x01(\t\x12\x14\n\x0ctrack_number\x18\x02 \x01(\x03\x12\x10\n\x08track_id\x18\x03 \x01(\t\x12\x0e\n\x06\x61rtist\x18\x04 \x01(\t\x12\r\n\x05genre\x18\x05 \x01(\t\x12\r\n\x05\x61lbum\x18\x06 \x01(\t\x12\x12\n\nalbum_type\x18\x07 \x01(\t\x12\x14\n\x0c\x61lbum_artist\x18\x08 \x03(\t\x12\x13\n\x0b\x64isc_number\x18\t \x01(\x03\x12\x14\n\x0crelease_year\x18\n \x01(\x05\"\xb7\x02\n\x07Request\x12\x0e\n\x06job_id\x18\x01 \x01(\x03\x12@\n\x13url_resolve_request\x18\x02 \x01(\x0b\x32!.python.Request.URLResolveRequestH\x00\x12K\n\x19url_is_resolvable_request\x18\x03 \x01(\x0b\x32&.python.Request.URLIsResolvableRequestH\x00\x1a[\n\x11URLResolveRequest\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x15\n\rresolver_name\x18\x04 \x01(\t\x1a%\n\x16URLIsResolvableRequest\x12\x0b\n\x03url\x18\x01 \x01(\tB\t\n\x07request\"\x84\x03\n\x08Response\x12\x0e\n\x06job_id\x18\x01 \x01(\x03\x12\x43\n\x14url_resolve_response\x18\x02 \x01(\x0b\x32#.python.Response.URLResolveResponseH\x00\x12N\n\x1aurl_is_resolvable_response\x18\x03 \x01(\x0b\x32(.python.Response.URLIsResolvableResponseH\x00\x1a}\n\x12URLResolveResponse\x12#\n\tinfo_dict\x18\x01 \x03(\x0b\x32\x10.python.InfoDict\x12\x0f\n\x07success\x18\x02 \x01(\x08\x12\x19\n\x11password_required\x18\x03 \x01(\x08\x12\x16\n\x0egeo_restricted\x18\x04 \x01(\x08\x1aH\n\x17URLIsResolvableResponse\x12\x15\n\ris_resolvable\x18\x01 \x01(\x08\x12\x16\n\x0eresolver_names\x18\x02 \x03(\tB\n\n\x08responseB7\n%org.schabi.newpipe.extractor.pybridgeB\x0ePyBridgeProtosb\x06proto3')
 )
 
 
@@ -31,42 +31,46 @@ _INFODICT_FORMAT_PROTOCOL = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='HTTP', index=0, number=0,
+      name='NONE', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='HTTPS', index=1, number=1,
+      name='HTTP', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='RTSP', index=2, number=2,
+      name='HTTPS', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='RTMP', index=3, number=3,
+      name='RTSP', index=3, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='RTMPE', index=4, number=4,
+      name='RTMP', index=4, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='M3U8', index=5, number=5,
+      name='RTMPE', index=5, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='M3U8_NATIVE', index=6, number=6,
+      name='M3U8', index=6, number=6,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='HTTP_DASH_SEGMENTS', index=7, number=7,
+      name='M3U8_NATIVE', index=7, number=7,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='HTTP_DASH_SEGMENTS', index=8, number=8,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1942,
-  serialized_end=2055,
+  serialized_start=2029,
+  serialized_end=2152,
 )
 _sym_db.RegisterEnumDescriptor(_INFODICT_FORMAT_PROTOCOL)
 
@@ -118,8 +122,8 @@ _INFODICT_FORMAT_FRAGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1815,
-  serialized_end=1888,
+  serialized_start=1902,
+  serialized_end=1975,
 )
 
 _INFODICT_FORMAT_HTTPHEADERSENTRY = _descriptor.Descriptor(
@@ -155,8 +159,8 @@ _INFODICT_FORMAT_HTTPHEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1890,
-  serialized_end=1940,
+  serialized_start=1977,
+  serialized_end=2027,
 )
 
 _INFODICT_FORMAT = _descriptor.Descriptor(
@@ -396,8 +400,8 @@ _INFODICT_FORMAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1120,
-  serialized_end=2055,
+  serialized_start=1207,
+  serialized_end=2152,
 )
 
 _INFODICT_THUMBNAIL = _descriptor.Descriptor(
@@ -468,8 +472,8 @@ _INFODICT_THUMBNAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2057,
-  serialized_end=2182,
+  serialized_start=2154,
+  serialized_end=2279,
 )
 
 _INFODICT_SUBTITLES_SUBFORMAT = _descriptor.Descriptor(
@@ -512,8 +516,8 @@ _INFODICT_SUBTITLES_SUBFORMAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2269,
-  serialized_end=2320,
+  serialized_start=2366,
+  serialized_end=2417,
 )
 
 _INFODICT_SUBTITLES = _descriptor.Descriptor(
@@ -549,8 +553,8 @@ _INFODICT_SUBTITLES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2185,
-  serialized_end=2320,
+  serialized_start=2282,
+  serialized_end=2417,
 )
 
 _INFODICT_COMMENT = _descriptor.Descriptor(
@@ -621,8 +625,8 @@ _INFODICT_COMMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2322,
-  serialized_end=2449,
+  serialized_start=2419,
+  serialized_end=2546,
 )
 
 _INFODICT_CHAPTER = _descriptor.Descriptor(
@@ -665,8 +669,8 @@ _INFODICT_CHAPTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2451,
-  serialized_end=2513,
+  serialized_start=2548,
+  serialized_end=2610,
 )
 
 _INFODICT_CHAPTERINFO = _descriptor.Descriptor(
@@ -709,8 +713,8 @@ _INFODICT_CHAPTERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2515,
-  serialized_end=2589,
+  serialized_start=2612,
+  serialized_end=2686,
 )
 
 _INFODICT_SERIESINFO = _descriptor.Descriptor(
@@ -781,8 +785,8 @@ _INFODICT_SERIESINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2592,
-  serialized_end=2739,
+  serialized_start=2689,
+  serialized_end=2836,
 )
 
 _INFODICT_ALBUMINFO = _descriptor.Descriptor(
@@ -874,8 +878,8 @@ _INFODICT_ALBUMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2742,
-  serialized_end=2939,
+  serialized_start=2839,
+  serialized_end=3036,
 )
 
 _INFODICT = _descriptor.Descriptor(
@@ -1020,15 +1024,15 @@ _INFODICT = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='subtitles', full_name='python.InfoDict.subtitles', index=19,
-      number=20, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=20, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='automatic_captions', full_name='python.InfoDict.automatic_captions', index=20,
-      number=21, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=21, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1179,6 +1183,41 @@ _INFODICT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='extractor_name', full_name='python.InfoDict.extractor_name', index=42,
+      number=44, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='title', full_name='python.InfoDict.title', index=43,
+      number=45, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='id', full_name='python.InfoDict.id', index=44,
+      number=46, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resolution', full_name='python.InfoDict.resolution', index=45,
+      number=47, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='ie_key', full_name='python.InfoDict.ie_key', index=46,
+      number=48, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1192,7 +1231,7 @@ _INFODICT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=25,
-  serialized_end=2939,
+  serialized_end=3036,
 )
 
 
@@ -1243,8 +1282,8 @@ _REQUEST_URLRESOLVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3112,
-  serialized_end=3203,
+  serialized_start=3209,
+  serialized_end=3300,
 )
 
 _REQUEST_URLISRESOLVABLEREQUEST = _descriptor.Descriptor(
@@ -1273,8 +1312,8 @@ _REQUEST_URLISRESOLVABLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3205,
-  serialized_end=3242,
+  serialized_start=3302,
+  serialized_end=3339,
 )
 
 _REQUEST = _descriptor.Descriptor(
@@ -1320,8 +1359,8 @@ _REQUEST = _descriptor.Descriptor(
       name='request', full_name='python.Request.request',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2942,
-  serialized_end=3253,
+  serialized_start=3039,
+  serialized_end=3350,
 )
 
 
@@ -1334,8 +1373,8 @@ _RESPONSE_URLRESOLVERESPONSE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='info_dict', full_name='python.Response.URLResolveResponse.info_dict', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1372,8 +1411,8 @@ _RESPONSE_URLRESOLVERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3433,
-  serialized_end=3558,
+  serialized_start=3530,
+  serialized_end=3655,
 )
 
 _RESPONSE_URLISRESOLVABLERESPONSE = _descriptor.Descriptor(
@@ -1409,8 +1448,8 @@ _RESPONSE_URLISRESOLVABLERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3560,
-  serialized_end=3632,
+  serialized_start=3657,
+  serialized_end=3729,
 )
 
 _RESPONSE = _descriptor.Descriptor(
@@ -1456,8 +1495,8 @@ _RESPONSE = _descriptor.Descriptor(
       name='response', full_name='python.Response.response',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=3256,
-  serialized_end=3644,
+  serialized_start=3353,
+  serialized_end=3741,
 )
 
 _INFODICT_FORMAT_FRAGMENT.containing_type = _INFODICT_FORMAT

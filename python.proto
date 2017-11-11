@@ -40,14 +40,15 @@ message InfoDict {
         string player_url = 20; // SWF Player URL (used for rtmpdump).
 
         enum Protocol {
-            HTTP = 0;
-            HTTPS = 1;
-            RTSP = 2;
-            RTMP = 3;
-            RTMPE = 4;
-            M3U8 = 5;
-            M3U8_NATIVE = 6;
-            HTTP_DASH_SEGMENTS = 7;
+            NONE = 0;
+            HTTP = 1;
+            HTTPS = 2;
+            RTSP = 3;
+            RTMP = 4;
+            RTMPE = 5;
+            M3U8 = 6;
+            M3U8_NATIVE = 7;
+            HTTP_DASH_SEGMENTS = 8;
         }
 
         Protocol protocol = 21; // The protocol used for the actual download
@@ -155,8 +156,8 @@ message InfoDict {
         repeated Subformat subformats = 2;
     }
 
-    Subtitles subtitles = 20;
-    Subtitles automatic_captions = 21; /* Like 'subtitles', used by the YoutubeIE for
+    repeated Subtitles subtitles = 20;
+    repeated Subtitles automatic_captions = 21; /* Like 'subtitles', used by the YoutubeIE for
                                                    automatically generated captions */
     double duration = 22; // Length of the video in seconds
     uint64 view_count = 37; // How many users have watched the video on the platform
@@ -252,6 +253,13 @@ message InfoDict {
     repeated string child_urls = 43; /* like children, except lazy
                                                  urls can be run through youtube-dl to get the data that would go in children */
 
+    string extractor_name = 44;
+
+    string title = 45;
+    string id = 46;
+    string resolution = 47;
+    string ie_key = 48;
+
 }
 
 message Request {
@@ -281,7 +289,7 @@ message Response {
     int64 job_id = 1;
 
     message URLResolveResponse {
-        InfoDict info_dict = 1;
+        repeated InfoDict info_dict = 1;
         bool success = 2; // did the request succeed?
         bool password_required = 3; // did this fail because it requires a password?
         bool geo_restricted = 4; // did this fail because it's blocked in the country we're in?
