@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='python.proto',
   package='python',
   syntax='proto3',
-  serialized_pb=_b('\n\x0cpython.proto\x12\x06python\x1a\x1egoogle/protobuf/wrappers.proto\"\x84@\n\x08InfoDict\x12(\n\x07\x66ormats\x18\x01 \x03(\x0b\x32\x17.python.InfoDict.Format\x12)\n\x03url\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x65xt\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x66ormat\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\nplayer_url\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\talt_title\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\ndisplay_id\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\nthumbnails\x18\x08 \x03(\x0b\x32\x1a.python.InfoDict.Thumbnail\x12/\n\tthumbnail\x18\t \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0b\x64\x65scription\x18\n \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08uploader\x18\x0b \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07license\x18\x0c \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07\x63reator\x18\r \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0crelease_date\x18\x0e \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\ttimestamp\x18\x0f \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x31\n\x0bupload_date\x18\x10 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0buploader_id\x18\x11 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0cuploader_url\x18\x12 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08location\x18\x13 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\tsubtitles\x18\x14 \x03(\x0b\x32\x1a.python.InfoDict.Subtitles\x12\x36\n\x12\x61utomatic_captions\x18\x15 \x03(\x0b\x32\x1a.python.InfoDict.Subtitles\x12.\n\x08\x64uration\x18\x16 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x30\n\nview_count\x18% \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x30\n\nlike_count\x18\x18 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x33\n\rdislike_count\x18\x19 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x32\n\x0crepost_count\x18\x1a \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x34\n\x0e\x61verage_rating\x18\x1b \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x33\n\rcomment_count\x18\x1c \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12*\n\x08\x63omments\x18\x1d \x03(\x0b\x32\x18.python.InfoDict.Comment\x12.\n\tage_limit\x18\x1e \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x31\n\x0bwebpage_url\x18\x1f \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\ncategories\x18  \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04tags\x18! \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x07is_live\x18\" \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x30\n\nstart_time\x18# \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12.\n\x08\x65nd_time\x18$ \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12*\n\x08\x63hapters\x18& \x03(\x0b\x32\x18.python.InfoDict.Chapter\x12\x32\n\x0c\x63hapter_info\x18\' \x01(\x0b\x32\x1c.python.InfoDict.ChapterInfo\x12\x30\n\x0bseries_info\x18( \x01(\x0b\x32\x1b.python.InfoDict.SeriesInfo\x12.\n\nalbum_info\x18) \x01(\x0b\x32\x1a.python.InfoDict.AlbumInfo\x12\"\n\x08\x63hildren\x18* \x03(\x0b\x32\x10.python.InfoDict\x12\x30\n\nchild_urls\x18+ \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12\x34\n\x0e\x65xtractor_name\x18, \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05title\x18- \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12(\n\x02id\x18. \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\nresolution\x18/ \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06ie_key\x18\x30 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x37\n\x0chttp_headers\x18\x31 \x03(\x0b\x32!.python.InfoDict.HttpHeadersEntry\x12,\n\x06height\x18\x32 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12+\n\x05width\x18\x33 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06vcodec\x18\x34 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x66ilesize\x18\x35 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12:\n\x14__x_forwarded_for_ip\x18: \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08page_url\x18; \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x06\x64irect\x18< \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x35\n\x0f\x66ilesize_approx\x18\x41 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12/\n\tvideo_url\x18G \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0bplaylist_id\x18H \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x34\n\x0eplaylist_title\x18I \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\rextractor_key\x18J \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x08protocol\x18K \x01(\x0e\x32 .python.InfoDict.Format.Protocol\x12)\n\x03\x61\x62r\x18L \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06\x61\x63odec\x18M \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x61uthor\x18N \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03tbr\x18O \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12/\n\tformat_id\x18P \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0csession_code\x18Q \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x36\n\x10session_speakers\x18R \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0csession_room\x18S \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07\x61uthors\x18T \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05likes\x18U \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x35\n\x0fstretched_ratio\x18V \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x1a\xea\x12\n\x06\x46ormat\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0cmanifest_url\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x65xt\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x66ormat\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\tformat_id\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0b\x66ormat_note\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05width\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12,\n\x06height\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x30\n\nresolution\x18\t \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03tbr\x18\n \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12)\n\x03\x61\x62r\x18\x0b \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06\x61\x63odec\x18\x0c \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x61sr\x18\r \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12)\n\x03vbr\x18\x0e \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12)\n\x03\x66ps\x18\x0f \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06vcodec\x18\x10 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\tcontainer\x18\x11 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x66ilesize\x18\x12 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x35\n\x0f\x66ilesize_approx\x18\x13 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x30\n\nplayer_url\x18\x14 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x08protocol\x18\x15 \x01(\x0e\x32 .python.InfoDict.Format.Protocol\x12\x37\n\x11\x66ragment_base_url\x18\x16 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\tfragments\x18\x17 \x03(\x0b\x32 .python.InfoDict.Format.Fragment\x12/\n\npreference\x18\x18 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12.\n\x08language\x18\x19 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x38\n\x13language_preference\x18\x1a \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12,\n\x07quality\x18\x1b \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x36\n\x11source_preference\x18\x1c \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12>\n\x0chttp_headers\x18\x1d \x03(\x0b\x32(.python.InfoDict.Format.HttpHeadersEntry\x12\x35\n\x0fstretched_ratio\x18\x1e \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12-\n\tno_resume\x18\x1f \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12/\n\tplay_path\x18\x36 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x61pp\x18\x37 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08page_url\x18\x38 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0ertmp_real_time\x18\x39 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x31\n\x0b\x66ormat_name\x18= \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12@\n\x1a\x65xtra_param_to_segment_url\x18\x42 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\rflash_version\x18\x43 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\trtmp_conn\x18\x44 \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\trtmp_live\x18\x45 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12(\n\x02id\x18\x46 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xc1\x01\n\x08\x46ragment\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04path\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x64uration\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12.\n\x08\x66ilesize\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x1a\x32\n\x10HttpHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x84\x01\n\x08Protocol\x12\x08\n\x04NONE\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\t\n\x05HTTPS\x10\x02\x12\x08\n\x04RTSP\x10\x03\x12\x08\n\x04RTMP\x10\x04\x12\t\n\x05RTMPE\x10\x05\x12\x08\n\x04M3U8\x10\x06\x12\x0f\n\x0bM3U8_NATIVE\x10\x07\x12\x16\n\x12HTTP_DASH_SEGMENTS\x10\x08\x12\x07\n\x03ISM\x10\t\x1a\xff\x02\n\tThumbnail\x12(\n\x02id\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03url\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\npreference\x18\x03 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12*\n\x05width\x18\x04 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12+\n\x06height\x18\x05 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12/\n\nresolution\x18\x06 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12.\n\x08\x66ilesize\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x32\n\x0c\x61spect_ratio\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x1a\x80\x02\n\tSubtitles\x12)\n\x03tag\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x38\n\nsubformats\x18\x02 \x03(\x0b\x32$.python.InfoDict.Subtitles.Subformat\x1a\x8d\x01\n\tSubformat\x12)\n\x03\x65xt\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03url\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xfb\x02\n\x07\x43omment\x12,\n\x06\x61uthor\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\tauthor_id\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\ncomment_id\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04html\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04text\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\ttimestamp\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06parent\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12(\n\x02id\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\x98\x01\n\x07\x43hapter\x12\x30\n\nstart_time\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12.\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12+\n\x05title\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xa3\x01\n\x0b\x43hapterInfo\x12-\n\x07\x63hapter\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\x0e\x63hapter_number\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x30\n\nchapter_id\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xe3\x02\n\nSeriesInfo\x12,\n\x06series\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06season\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\rseason_number\x18\x03 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12/\n\tseason_id\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07\x65pisode\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\x0e\x65pisode_number\x18\x06 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x30\n\nepisode_id\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xee\x03\n\tAlbumInfo\x12+\n\x05track\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0ctrack_number\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12.\n\x08track_id\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x61rtist\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05genre\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05\x61lbum\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\nalbum_type\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0c\x61lbum_artist\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\x0b\x64isc_number\x18\t \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x31\n\x0crelease_year\x18\n \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x1a\x32\n\x10HttpHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xeb\x03\n\x07Request\x12+\n\x06job_id\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12@\n\x13url_resolve_request\x18\x02 \x01(\x0b\x32!.python.Request.URLResolveRequestH\x00\x12K\n\x19url_is_resolvable_request\x18\x03 \x01(\x0b\x32&.python.Request.URLIsResolvableRequestH\x00\x1a\xd3\x01\n\x11URLResolveRequest\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08username\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08password\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\rresolver_name\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\x43\n\x16URLIsResolvableRequest\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValueB\t\n\x07request\"\xb1\x04\n\x08Response\x12+\n\x06job_id\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x43\n\x14url_resolve_response\x18\x02 \x01(\x0b\x32#.python.Response.URLResolveResponseH\x00\x12N\n\x1aurl_is_resolvable_response\x18\x03 \x01(\x0b\x32(.python.Response.URLIsResolvableResponseH\x00\x1a\xd1\x01\n\x12URLResolveResponse\x12#\n\tinfo_dict\x18\x01 \x03(\x0b\x32\x10.python.InfoDict\x12+\n\x07success\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x35\n\x11password_required\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x32\n\x0egeo_restricted\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x1a\x82\x01\n\x17URLIsResolvableResponse\x12\x31\n\ris_resolvable\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x34\n\x0eresolver_names\x18\x02 \x03(\x0b\x32\x1c.google.protobuf.StringValueB\n\n\x08responseB7\n%org.schabi.newpipe.extractor.pybridgeB\x0ePyBridgeProtosb\x06proto3')
+  serialized_pb=_b('\n\x0cpython.proto\x12\x06python\x1a\x1egoogle/protobuf/wrappers.proto\"\x9a\x41\n\x08InfoDict\x12(\n\x07\x66ormats\x18\x01 \x03(\x0b\x32\x17.python.InfoDict.Format\x12)\n\x03url\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x65xt\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x66ormat\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\nplayer_url\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\talt_title\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\ndisplay_id\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\nthumbnails\x18\x08 \x03(\x0b\x32\x1a.python.InfoDict.Thumbnail\x12/\n\tthumbnail\x18\t \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0b\x64\x65scription\x18\n \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08uploader\x18\x0b \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07license\x18\x0c \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07\x63reator\x18\r \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0crelease_date\x18\x0e \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\ttimestamp\x18\x0f \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x31\n\x0bupload_date\x18\x10 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0buploader_id\x18\x11 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0cuploader_url\x18\x12 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08location\x18\x13 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\tsubtitles\x18\x14 \x03(\x0b\x32\x1a.python.InfoDict.Subtitles\x12\x36\n\x12\x61utomatic_captions\x18\x15 \x03(\x0b\x32\x1a.python.InfoDict.Subtitles\x12.\n\x08\x64uration\x18\x16 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x30\n\nview_count\x18% \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x30\n\nlike_count\x18\x18 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x33\n\rdislike_count\x18\x19 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x32\n\x0crepost_count\x18\x1a \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x34\n\x0e\x61verage_rating\x18\x1b \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x33\n\rcomment_count\x18\x1c \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12*\n\x08\x63omments\x18\x1d \x03(\x0b\x32\x18.python.InfoDict.Comment\x12.\n\tage_limit\x18\x1e \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x31\n\x0bwebpage_url\x18\x1f \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\ncategories\x18  \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04tags\x18! \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x07is_live\x18\" \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x30\n\nstart_time\x18# \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12.\n\x08\x65nd_time\x18$ \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12*\n\x08\x63hapters\x18& \x03(\x0b\x32\x18.python.InfoDict.Chapter\x12\x32\n\x0c\x63hapter_info\x18\' \x01(\x0b\x32\x1c.python.InfoDict.ChapterInfo\x12\x30\n\x0bseries_info\x18( \x01(\x0b\x32\x1b.python.InfoDict.SeriesInfo\x12.\n\nalbum_info\x18) \x01(\x0b\x32\x1a.python.InfoDict.AlbumInfo\x12\"\n\x08\x63hildren\x18* \x03(\x0b\x32\x10.python.InfoDict\x12\x30\n\nchild_urls\x18+ \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12\x34\n\x0e\x65xtractor_name\x18, \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05title\x18- \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12(\n\x02id\x18. \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\nresolution\x18/ \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06ie_key\x18\x30 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x37\n\x0chttp_headers\x18\x31 \x03(\x0b\x32!.python.InfoDict.HttpHeadersEntry\x12,\n\x06height\x18\x32 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12+\n\x05width\x18\x33 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06vcodec\x18\x34 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x66ilesize\x18\x35 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12:\n\x14__x_forwarded_for_ip\x18: \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08page_url\x18; \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x06\x64irect\x18< \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x35\n\x0f\x66ilesize_approx\x18\x41 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12/\n\tvideo_url\x18G \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0bplaylist_id\x18H \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x34\n\x0eplaylist_title\x18I \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\rextractor_key\x18J \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x08protocol\x18K \x01(\x0e\x32 .python.InfoDict.Format.Protocol\x12)\n\x03\x61\x62r\x18L \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06\x61\x63odec\x18M \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x61uthor\x18N \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03tbr\x18O \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12/\n\tformat_id\x18P \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0csession_code\x18Q \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x36\n\x10session_speakers\x18R \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0csession_room\x18S \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07\x61uthors\x18T \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05likes\x18U \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x35\n\x0fstretched_ratio\x18V \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12*\n\x04show\x18W \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x63\x61tegory\x18X \x03(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xf3\x12\n\x06\x46ormat\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0cmanifest_url\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x65xt\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x66ormat\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\tformat_id\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0b\x66ormat_note\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05width\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12,\n\x06height\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x30\n\nresolution\x18\t \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03tbr\x18\n \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12)\n\x03\x61\x62r\x18\x0b \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06\x61\x63odec\x18\x0c \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x61sr\x18\r \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12)\n\x03vbr\x18\x0e \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12)\n\x03\x66ps\x18\x0f \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06vcodec\x18\x10 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\tcontainer\x18\x11 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x66ilesize\x18\x12 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x35\n\x0f\x66ilesize_approx\x18\x13 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x30\n\nplayer_url\x18\x14 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x08protocol\x18\x15 \x01(\x0e\x32 .python.InfoDict.Format.Protocol\x12\x37\n\x11\x66ragment_base_url\x18\x16 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\tfragments\x18\x17 \x03(\x0b\x32 .python.InfoDict.Format.Fragment\x12/\n\npreference\x18\x18 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12.\n\x08language\x18\x19 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x38\n\x13language_preference\x18\x1a \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12,\n\x07quality\x18\x1b \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x36\n\x11source_preference\x18\x1c \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12>\n\x0chttp_headers\x18\x1d \x03(\x0b\x32(.python.InfoDict.Format.HttpHeadersEntry\x12\x35\n\x0fstretched_ratio\x18\x1e \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12-\n\tno_resume\x18\x1f \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12/\n\tplay_path\x18\x36 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03\x61pp\x18\x37 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08page_url\x18\x38 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0ertmp_real_time\x18\x39 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x31\n\x0b\x66ormat_name\x18= \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12@\n\x1a\x65xtra_param_to_segment_url\x18\x42 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\rflash_version\x18\x43 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\trtmp_conn\x18\x44 \x03(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\trtmp_live\x18\x45 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12(\n\x02id\x18\x46 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xc1\x01\n\x08\x46ragment\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04path\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08\x64uration\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12.\n\x08\x66ilesize\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x1a\x32\n\x10HttpHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8d\x01\n\x08Protocol\x12\x08\n\x04NONE\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\t\n\x05HTTPS\x10\x02\x12\x08\n\x04RTSP\x10\x03\x12\x08\n\x04RTMP\x10\x04\x12\t\n\x05RTMPE\x10\x05\x12\x08\n\x04M3U8\x10\x06\x12\x0f\n\x0bM3U8_NATIVE\x10\x07\x12\x16\n\x12HTTP_DASH_SEGMENTS\x10\x08\x12\x07\n\x03ISM\x10\t\x12\x07\n\x03\x46\x34M\x10\n\x1a\xb0\x03\n\tThumbnail\x12(\n\x02id\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03url\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\npreference\x18\x03 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12*\n\x05width\x18\x04 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12+\n\x06height\x18\x05 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12/\n\nresolution\x18\x06 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12.\n\x08\x66ilesize\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12\x32\n\x0c\x61spect_ratio\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12/\n\tformat_id\x18\t \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\x80\x02\n\tSubtitles\x12)\n\x03tag\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x38\n\nsubformats\x18\x02 \x03(\x0b\x32$.python.InfoDict.Subtitles.Subformat\x1a\x8d\x01\n\tSubformat\x12)\n\x03\x65xt\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04\x64\x61ta\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12)\n\x03url\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xfb\x02\n\x07\x43omment\x12,\n\x06\x61uthor\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\tauthor_id\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\ncomment_id\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04html\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12*\n\x04text\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12/\n\ttimestamp\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12,\n\x06parent\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12(\n\x02id\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\x98\x01\n\x07\x43hapter\x12\x30\n\nstart_time\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12.\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.DoubleValue\x12+\n\x05title\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xa3\x01\n\x0b\x43hapterInfo\x12-\n\x07\x63hapter\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\x0e\x63hapter_number\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x30\n\nchapter_id\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xe3\x02\n\nSeriesInfo\x12,\n\x06series\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06season\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\rseason_number\x18\x03 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12/\n\tseason_id\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12-\n\x07\x65pisode\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\x0e\x65pisode_number\x18\x06 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x30\n\nepisode_id\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\xee\x03\n\tAlbumInfo\x12+\n\x05track\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x31\n\x0ctrack_number\x18\x02 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12.\n\x08track_id\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12,\n\x06\x61rtist\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05genre\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12+\n\x05\x61lbum\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\nalbum_type\x18\x07 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x32\n\x0c\x61lbum_artist\x18\x08 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x30\n\x0b\x64isc_number\x18\t \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x31\n\x0crelease_year\x18\n \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x1a\x32\n\x10HttpHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xeb\x03\n\x07Request\x12+\n\x06job_id\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12@\n\x13url_resolve_request\x18\x02 \x01(\x0b\x32!.python.Request.URLResolveRequestH\x00\x12K\n\x19url_is_resolvable_request\x18\x03 \x01(\x0b\x32&.python.Request.URLIsResolvableRequestH\x00\x1a\xd3\x01\n\x11URLResolveRequest\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08username\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12.\n\x08password\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x12\x33\n\rresolver_name\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.StringValue\x1a\x43\n\x16URLIsResolvableRequest\x12)\n\x03url\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.StringValueB\t\n\x07request\"\xb1\x04\n\x08Response\x12+\n\x06job_id\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x43\n\x14url_resolve_response\x18\x02 \x01(\x0b\x32#.python.Response.URLResolveResponseH\x00\x12N\n\x1aurl_is_resolvable_response\x18\x03 \x01(\x0b\x32(.python.Response.URLIsResolvableResponseH\x00\x1a\xd1\x01\n\x12URLResolveResponse\x12#\n\tinfo_dict\x18\x01 \x03(\x0b\x32\x10.python.InfoDict\x12+\n\x07success\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x35\n\x11password_required\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x32\n\x0egeo_restricted\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x1a\x82\x01\n\x17URLIsResolvableResponse\x12\x31\n\ris_resolvable\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.BoolValue\x12\x34\n\x0eresolver_names\x18\x02 \x03(\x0b\x32\x1c.google.protobuf.StringValueB\n\n\x08responseB7\n%org.schabi.newpipe.extractor.pybridgeB\x0ePyBridgeProtosb\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,])
 
@@ -72,11 +72,15 @@ _INFODICT_FORMAT_PROTOCOL = _descriptor.EnumDescriptor(
       name='ISM', index=9, number=9,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='F4M', index=10, number=10,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=5866,
-  serialized_end=5998,
+  serialized_start=5958,
+  serialized_end=6099,
 )
 _sym_db.RegisterEnumDescriptor(_INFODICT_FORMAT_PROTOCOL)
 
@@ -128,8 +132,8 @@ _INFODICT_FORMAT_FRAGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5618,
-  serialized_end=5811,
+  serialized_start=5710,
+  serialized_end=5903,
 )
 
 _INFODICT_FORMAT_HTTPHEADERSENTRY = _descriptor.Descriptor(
@@ -165,8 +169,8 @@ _INFODICT_FORMAT_HTTPHEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5813,
-  serialized_end=5863,
+  serialized_start=5905,
+  serialized_end=5955,
 )
 
 _INFODICT_FORMAT = _descriptor.Descriptor(
@@ -476,8 +480,8 @@ _INFODICT_FORMAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3588,
-  serialized_end=5998,
+  serialized_start=3680,
+  serialized_end=6099,
 )
 
 _INFODICT_THUMBNAIL = _descriptor.Descriptor(
@@ -543,6 +547,13 @@ _INFODICT_THUMBNAIL = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='format_id', full_name='python.InfoDict.Thumbnail.format_id', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -555,8 +566,8 @@ _INFODICT_THUMBNAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6001,
-  serialized_end=6384,
+  serialized_start=6102,
+  serialized_end=6534,
 )
 
 _INFODICT_SUBTITLES_SUBFORMAT = _descriptor.Descriptor(
@@ -599,8 +610,8 @@ _INFODICT_SUBTITLES_SUBFORMAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6502,
-  serialized_end=6643,
+  serialized_start=6652,
+  serialized_end=6793,
 )
 
 _INFODICT_SUBTITLES = _descriptor.Descriptor(
@@ -636,8 +647,8 @@ _INFODICT_SUBTITLES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6387,
-  serialized_end=6643,
+  serialized_start=6537,
+  serialized_end=6793,
 )
 
 _INFODICT_COMMENT = _descriptor.Descriptor(
@@ -715,8 +726,8 @@ _INFODICT_COMMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6646,
-  serialized_end=7025,
+  serialized_start=6796,
+  serialized_end=7175,
 )
 
 _INFODICT_CHAPTER = _descriptor.Descriptor(
@@ -759,8 +770,8 @@ _INFODICT_CHAPTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7028,
-  serialized_end=7180,
+  serialized_start=7178,
+  serialized_end=7330,
 )
 
 _INFODICT_CHAPTERINFO = _descriptor.Descriptor(
@@ -803,8 +814,8 @@ _INFODICT_CHAPTERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7183,
-  serialized_end=7346,
+  serialized_start=7333,
+  serialized_end=7496,
 )
 
 _INFODICT_SERIESINFO = _descriptor.Descriptor(
@@ -875,8 +886,8 @@ _INFODICT_SERIESINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7349,
-  serialized_end=7704,
+  serialized_start=7499,
+  serialized_end=7854,
 )
 
 _INFODICT_ALBUMINFO = _descriptor.Descriptor(
@@ -968,8 +979,8 @@ _INFODICT_ALBUMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7707,
-  serialized_end=8201,
+  serialized_start=7857,
+  serialized_end=8351,
 )
 
 _INFODICT_HTTPHEADERSENTRY = _descriptor.Descriptor(
@@ -1005,8 +1016,8 @@ _INFODICT_HTTPHEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5813,
-  serialized_end=5863,
+  serialized_start=5905,
+  serialized_end=5955,
 )
 
 _INFODICT = _descriptor.Descriptor(
@@ -1520,6 +1531,20 @@ _INFODICT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='show', full_name='python.InfoDict.show', index=72,
+      number=87, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='category', full_name='python.InfoDict.category', index=73,
+      number=88, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -1533,7 +1558,7 @@ _INFODICT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=57,
-  serialized_end=8253,
+  serialized_end=8403,
 )
 
 
@@ -1584,8 +1609,8 @@ _REQUEST_URLRESOLVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8456,
-  serialized_end=8667,
+  serialized_start=8606,
+  serialized_end=8817,
 )
 
 _REQUEST_URLISRESOLVABLEREQUEST = _descriptor.Descriptor(
@@ -1614,8 +1639,8 @@ _REQUEST_URLISRESOLVABLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8669,
-  serialized_end=8736,
+  serialized_start=8819,
+  serialized_end=8886,
 )
 
 _REQUEST = _descriptor.Descriptor(
@@ -1661,8 +1686,8 @@ _REQUEST = _descriptor.Descriptor(
       name='request', full_name='python.Request.request',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=8256,
-  serialized_end=8747,
+  serialized_start=8406,
+  serialized_end=8897,
 )
 
 
@@ -1713,8 +1738,8 @@ _RESPONSE_URLRESOLVERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8957,
-  serialized_end=9166,
+  serialized_start=9107,
+  serialized_end=9316,
 )
 
 _RESPONSE_URLISRESOLVABLERESPONSE = _descriptor.Descriptor(
@@ -1750,8 +1775,8 @@ _RESPONSE_URLISRESOLVABLERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9169,
-  serialized_end=9299,
+  serialized_start=9319,
+  serialized_end=9449,
 )
 
 _RESPONSE = _descriptor.Descriptor(
@@ -1797,8 +1822,8 @@ _RESPONSE = _descriptor.Descriptor(
       name='response', full_name='python.Response.response',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=8750,
-  serialized_end=9311,
+  serialized_start=8900,
+  serialized_end=9461,
 )
 
 _INFODICT_FORMAT_FRAGMENT.fields_by_name['url'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
@@ -1858,6 +1883,7 @@ _INFODICT_THUMBNAIL.fields_by_name['height'].message_type = google_dot_protobuf_
 _INFODICT_THUMBNAIL.fields_by_name['resolution'].message_type = google_dot_protobuf_dot_wrappers__pb2._INT64VALUE
 _INFODICT_THUMBNAIL.fields_by_name['filesize'].message_type = google_dot_protobuf_dot_wrappers__pb2._DOUBLEVALUE
 _INFODICT_THUMBNAIL.fields_by_name['aspect_ratio'].message_type = google_dot_protobuf_dot_wrappers__pb2._DOUBLEVALUE
+_INFODICT_THUMBNAIL.fields_by_name['format_id'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
 _INFODICT_THUMBNAIL.containing_type = _INFODICT
 _INFODICT_SUBTITLES_SUBFORMAT.fields_by_name['ext'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
 _INFODICT_SUBTITLES_SUBFORMAT.fields_by_name['data'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
@@ -1975,6 +2001,8 @@ _INFODICT.fields_by_name['session_room'].message_type = google_dot_protobuf_dot_
 _INFODICT.fields_by_name['authors'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
 _INFODICT.fields_by_name['likes'].message_type = google_dot_protobuf_dot_wrappers__pb2._DOUBLEVALUE
 _INFODICT.fields_by_name['stretched_ratio'].message_type = google_dot_protobuf_dot_wrappers__pb2._DOUBLEVALUE
+_INFODICT.fields_by_name['show'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
+_INFODICT.fields_by_name['category'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
 _REQUEST_URLRESOLVEREQUEST.fields_by_name['url'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
 _REQUEST_URLRESOLVEREQUEST.fields_by_name['username'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE
 _REQUEST_URLRESOLVEREQUEST.fields_by_name['password'].message_type = google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE

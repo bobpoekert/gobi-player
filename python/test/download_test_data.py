@@ -46,17 +46,26 @@ if __name__ == '__main__':
 
     def downloader((extractor, url)):
         print url
-        with gevent.Timeout(15, False):
+        with gevent.Timeout(120, False):
             try:
                 res = extractor.extract(url)
             except:
                 traceback.print_exc()
                 return
-            outf.write('%s\n' % json.dumps({
-                'url':url,
-                'extractor':extractor.IE_NAME,
-                'res':res
-            }))
+            try:
+                outf.write('%s\n' % json.dumps({
+                    'url':url,
+                    'extractor':extractor.IE_NAME,
+                    'res':res
+                }))
+            except TypeError:
+                for row in res:
+                    outf.write('%s\n' % json.dumps({
+                        'url':url,
+                        'extractor':extractor.IE_NAME,
+                        'res':row
+                    }))
+
             outf.flush()
 
     for url in urls:

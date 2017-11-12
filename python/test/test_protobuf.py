@@ -5,6 +5,7 @@ import random
 import json
 from pprint import pprint
 import traceback
+import gzip
 
 def url_request(url):
     res = python_pb2.Request.URLIsResolvableRequest()
@@ -41,7 +42,9 @@ def remove_none_values(d):
     for k, v in d.iteritems():
         if v is None or v in ({}, []):
             continue
-        if k.startswith('_') or (isinstance(v, basestring) and v.startswith('mincount:')):
+        if type(v) in (list, tuple) and all(vv is None for vv in v):
+            continue
+        if k.startswith('_'):
             continue
         if k == 'id' or '_id' in k:
             res[k] = unicode(v)
@@ -63,7 +66,8 @@ def sanitize_expect_dict(d):
     res = {}
     for k, v in d.iteritems():
         vv = sanitize_expect_value(v)
-        if vv is not None and vv != '' and vv != 0:
+        if vv is not None and vv != '' and vv != 0 and not \
+                (isinstance(vv, basestring) and vv.startswith('mincount:')):
             res[k] = vv
     return res
 
@@ -90,7 +94,7 @@ class TestWithTestData(unittest.TestCase):
         self.test_data = []
         self.test_json = []
 
-        with open('%s/test_data.jsons' % here, 'r') as inf:
+        with gzip.open('%s/test_data.jsons.gz' % here, 'r') as inf:
             for row in inf:
                 self.test_json.append(json.loads(row.strip()))
 
@@ -118,6 +122,8 @@ class TestWithTestData(unittest.TestCase):
         for row in self.test_json:
             if not row.get('res'):
                 continue
+            if type(row['res']) == unicode:
+                continue
             if row['res'].get('_type') not in ('video', None):
                 continue
 
@@ -126,6 +132,7 @@ class TestWithTestData(unittest.TestCase):
             try:
                 res = dict_from_info_dict(_parse(info_dict_from_dict(inp).SerializeToString()))
             except Exception, e:
+                traceback.print_exc()
                 pprint(inp)
                 raise e
             self.assertDictEqual(res, inp)

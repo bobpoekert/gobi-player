@@ -46,6 +46,8 @@ def assign_repeated(target, fieldname, values):
         return
     cursor = getattr(target, fieldname)
     for value in values:
+        if value is None:
+            continue
         row = cursor.add()
         try:
             row.CopyFrom(value)
@@ -100,7 +102,7 @@ def subtitles_from_dict(d):
 
 special_fields = (
                 'formats', 'thumbnails', 'subtitles', 'automatic_captions',
-                'comments', 'chapters', '_type', 'categories', 'tags',
+                'comments', 'chapters', '_type', 'categories', 'tags', 'category',
                 'chapter', 'chapter_number', 'chapter_id', 'http_headers', 'session_speakers', 'authors',
                 'series', 'season', 'season_number', 'season_id', 'episode', 'episode_number', 'episode_id',
                 'track', 'track_number', 'track_id', 'artist', 'genre', 'album', 'album_type', 'album_artist',
@@ -128,6 +130,8 @@ def info_dict_from_dict(ie_dict):
         assign_repeated(res, 'session_speakers', ie_dict.get('session_speakers'))
     if 'authors' in ie_dict:
         assign_repeated(res, 'authors', ie_dict.get('authors'))
+    if 'category' in ie_dict:
+        assign_repeated(res, 'category', ie_dict.get('category'))
 
     protomap(res, ie_dict, python_pb2.InfoDict.Thumbnail, 'thumbnails')
     protomap(res, ie_dict, python_pb2.InfoDict.Comment, 'comments')
@@ -215,7 +219,7 @@ def dict_from_info_dict(pb):
             formats.append(v)
         res['formats'] = formats
 
-    for fieldname in ('categories', 'tags', 'session_speakers', 'authors'):
+    for fieldname in ('categories', 'tags', 'session_speakers', 'authors', 'category'):
         if getattr(pb, fieldname):
             res[fieldname] = map(unpack_value, getattr(pb, fieldname))
 

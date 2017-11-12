@@ -52,6 +52,7 @@ message InfoDict {
             M3U8_NATIVE = 7;
             HTTP_DASH_SEGMENTS = 8;
             ISM = 9;
+            F4M = 10;
         }
 
         Protocol protocol = 21; // The protocol used for the actual download
@@ -144,7 +145,7 @@ message InfoDict {
         google.protobuf.Int64Value resolution = 6; // google.protobuf.StringValue "{width}x{height"}, deprecated
         google.protobuf.DoubleValue filesize = 7;
         google.protobuf.DoubleValue aspect_ratio = 8;
-
+        google.protobuf.StringValue format_id = 9;
     }
 
     repeated Thumbnail thumbnails = 8;
@@ -302,6 +303,8 @@ message InfoDict {
     repeated google.protobuf.StringValue authors = 84;
     google.protobuf.DoubleValue likes = 85;
     google.protobuf.DoubleValue stretched_ratio = 86;
+    google.protobuf.StringValue show = 87;
+    repeated google.protobuf.StringValue category = 88;
 
 }
 
