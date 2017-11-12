@@ -2,12 +2,32 @@ import python_pb2
 from youtube_dl.extractor import gen_extractors, get_info_extractor
 from youtube_dl.utils import GeoRestrictedError
 from google.protobuf.message import Message
+from google.protobuf import wrappers_pb2 as wrappers
+from google.protobuf.internal.containers import MutableMapping, RepeatedCompositeFieldContainer
 import ydl
+
 
 extractors = [v for v in gen_extractors() if v.working()]
 
 def get_fields(pb):
     return [v.name for v in pb.DESCRIPTOR.fields]
+
+def set_value(pb, k, v):
+    target = getattr(pb, k)
+    if isinstance(target, MutableMapping):
+        target.update(**v)
+        return
+    if isinstance(target, RepeatedCompositeFieldContainer):
+        for el in v:
+            target.add().value = v
+        return
+    if isinstance(target, wrappers.StringValue):
+        v = unicode(v)
+    try:
+        target.value = v
+    except Exception, e:
+        print k, v, type(target)
+        raise e
 
 _dict2proto_cache = {}
 
@@ -16,7 +36,7 @@ def dict2proto(proto_type):
         def _(d):
             res = proto_type()
             for k, v in d.iteritems():
-                setattr(res, k, v)
+                set_value(res, k, v)
             return res
         _dict2proto_cache[proto_type] = _
     return _dict2proto_cache[proto_type]
@@ -26,11 +46,11 @@ def assign_repeated(target, fieldname, values):
         return
     cursor = getattr(target, fieldname)
     for value in values:
+        row = cursor.add()
         try:
-            row = cursor.add()
             row.CopyFrom(value)
-        except AttributeError:
-            cursor.append(value)
+        except TypeError:
+            row.value = value
 
 def protomap(res, inp, t, k):
     assign_repeated(res, k, map(dict2proto(t), inp.get(k, [])))
@@ -40,17 +60,20 @@ def set_group(res, inp, t, k, ks):
         res2 = getattr(res, k)
         for k2 in ks:
             if k2 in inp:
-                setattr(res2, k2, inp.get(k2))
+                set_value(res2, k2, inp.get(k2))
 
 def format_from_dict(ie_dict):
     res = python_pb2.InfoDict.Format()
 
     for k, v in ie_dict.iteritems():
-        if k not in ('protocol', 'fragments') and v is not None:
-            setattr(res, k, v)
+        if k not in ('protocol', 'fragments', 'rtmp_conn') and v is not None:
+            set_value(res, k, v)
 
     if 'protocol' in ie_dict:
         res.protocol = getattr(res, ie_dict['protocol'].upper())
+
+    if 'rtmp_conn' in ie_dict:
+        assign_repeated(res, 'rtmp_conn', map(unicode, ie_dict['rtmp_conn']))
 
     protomap(res, ie_dict, python_pb2.InfoDict.Format.Fragment, 'fragments')
 
@@ -59,37 +82,52 @@ def format_from_dict(ie_dict):
 def subtitles_from_dict(d):
     if d is None:
         return []
-    elif isinstance(d, basestring):
+    if isinstance(d, basestring):
         res = python_pb2.InfoDict.Subtitles()
-        res.tag = d
+        res.tag.value = d
         return [res]
     else:
         res = []
         for tag, subformats in d.iteritems():
             row = python_pb2.InfoDict.Subtitles()
-            row.tag = tag
+            row.tag.value = tag
             for subformat in subformats:
                 subpb = row.subformats.add()
                 for k, v in subformat.iteritems():
-                    setattr(subpb, k, v)
+                    set_value(subpb, k, v)
             res.append(row)
         return res
 
 special_fields = (
                 'formats', 'thumbnails', 'subtitles', 'automatic_captions',
                 'comments', 'chapters', '_type', 'categories', 'tags',
-                'chapter', 'chapter_number', 'chapter_id',
+                'chapter', 'chapter_number', 'chapter_id', 'http_headers', 'session_speakers', 'authors',
                 'series', 'season', 'season_number', 'season_id', 'episode', 'episode_number', 'episode_id',
                 'track', 'track_number', 'track_id', 'artist', 'genre', 'album', 'album_type', 'album_artist',
-                'disc_number', 'release_year', 'chapter_info', 'series_info', 'album_info')
+                'disc_number', 'release_year', 'chapter_info', 'series_info', 'album_info', 'protocol')
 
 def info_dict_from_dict(ie_dict):
     res = python_pb2.InfoDict()
 
+    if 'thumnails' in ie_dict:
+        ie_dict['thumbnails'] = ie_dict['thumnails']
+        del ie_dict['thumnails']
+        for row in ie_dict.get('thumbnails', []):
+            if 'aspectRatio' in row:
+                row['aspect_ratio'] = row['aspectRatio']
+                del row['aspectRatio']
+
     for k, v in ie_dict.iteritems():
         if k not in special_fields and v is not None:
-            setattr(res, k, v)
+            set_value(res, k, v)
 
+    if 'protocol' in ie_dict:
+        res.protocol = getattr(python_pb2.InfoDict.Format, ie_dict['protocol'].upper())
+
+    if 'session_speakers' in ie_dict:
+        assign_repeated(res, 'session_speakers', ie_dict.get('session_speakers'))
+    if 'authors' in ie_dict:
+        assign_repeated(res, 'authors', ie_dict.get('authors'))
 
     protomap(res, ie_dict, python_pb2.InfoDict.Thumbnail, 'thumbnails')
     protomap(res, ie_dict, python_pb2.InfoDict.Comment, 'comments')
@@ -106,13 +144,23 @@ def info_dict_from_dict(ie_dict):
     set_group(res, ie_dict, python_pb2.InfoDict.SeriesInfo, 'series_info', ('series', 'season', 'season_number', 'season_id', 'episode', 'episode_number', 'episode_id'))
     set_group(res, ie_dict, python_pb2.InfoDict.AlbumInfo, 'album_info', ('track', 'track_number', 'track_id', 'artist', 'genre', 'album', 'album_type', 'album_artist', 'disc_number', 'release_year'))
 
+    if 'http_headers' in ie_dict:
+        for k, v in ie_dict['http_headers'].iteritems():
+            res.http_headers[k] = v
+
     return res
+
+def unpack_value(v):
+    try:
+        return v.value
+    except AttributeError:
+        return v
 
 def proto2dict(pb):
     if isinstance(pb, Message):
         res = {}
         for field, value in pb.ListFields():
-            res[field.name] = value
+            res[field.name] = unpack_value(value)
         return res
     else:
         return pb
@@ -124,12 +172,33 @@ def dict_from_info_dict(pb):
 
     for k in fields:
         if k not in special_fields:
-            res[k] = getattr(pb, k)
+            res[k] = getattr(pb, k).value
 
     for k in ('thumbnails', 'comments', 'chapters'):
         v = map(proto2dict, getattr(pb, k))
         if v:
             res[k] = v
+    if pb.protocol:
+        res['protocol'] = python_pb2.InfoDict.Format.Protocol.Name(pb.protocol).lower()
+
+    if pb.subtitles:
+        subs = {}
+        for sub in pb.subtitles:
+            tag = sub.tag.value
+            subfs = []
+            for subf in sub.subformats:
+                vv = {}
+                if subf.ext and subf.ext.value:
+                    vv['ext'] = subf.ext.value
+                if subf.data and subf.data.value:
+                    vv['data'] = subf.data.value
+                if subf.url and subf.url.value:
+                    vv['url'] = subf.url.value
+                subfs.append(vv)
+            if subfs:
+                subs[tag] = subfs
+        if subs:
+            res['subtitles'] = subs
 
     if pb.formats:
         formats = []
@@ -139,18 +208,32 @@ def dict_from_info_dict(pb):
                 v['protocol'] = python_pb2.InfoDict.Format.Protocol.Name(f.protocol).lower()
             elif 'protocol' in v:
                 del v['protocol']
+            if 'fragments' in v:
+                v['fragments'] = map(proto2dict, v['fragments'])
+            if 'rtmp_conn' in v:
+                v['rtmp_conn'] = map(unpack_value, v['rtmp_conn'])
             formats.append(v)
         res['formats'] = formats
 
-    if pb.categories:
-        res['categories'] = pb.categories
-    if pb.tags:
-        res['tags'] = pb.tags
+    for fieldname in ('categories', 'tags', 'session_speakers', 'authors'):
+        if getattr(pb, fieldname):
+            res[fieldname] = map(unpack_value, getattr(pb, fieldname))
 
     for k in ('chapter_info', 'series_info', 'album_info'):
         if pb.HasField(k):
             for k, v in getattr(pb, k).ListFields():
-                res[k.name] = proto2dict(v)
+                res[k.name] = proto2dict(v.value)
+
+    headers = {}
+    has_headers = False
+
+    for k in pb.http_headers:
+        headers[k] = pb.http_headers[k]
+        has_headers = True
+
+    if has_headers:
+        res['http_headers'] = headers
+
 
     return res
 
@@ -164,11 +247,11 @@ def extractor_name(ex):
     return ex.IE_NAME
 
 def url_is_resolvable(req):
-    url = req.url
+    url = req.url.value
     names = map(extractor_name, matching_extractors(url))
     is_resolvable = len(names) > 0
     res = python_pb2.Response.URLIsResolvableResponse()
-    res.is_resolvable = is_resolvable
+    res.is_resolvable.value = is_resolvable
     assign_repeated(res, 'resolver_names', names)
     return res
 

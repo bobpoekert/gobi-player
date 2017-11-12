@@ -1,43 +1,45 @@
 syntax = "proto3";
 
-package python;
-
 
 option java_package = "org.schabi.newpipe.extractor.pybridge";
 option java_outer_classname = "PyBridgeProtos";
+
+import "google/protobuf/wrappers.proto";
+
+package python;
 
 
 message InfoDict {
     /* https://github.com/rg3/youtube-dl/blob/master/youtube_dl/extractor/common.py#L75-L257 */
 
     message Format {
-        string url = 1; // The URL of the video file
-        string manifest_url = 2; /* The URL of the manifest file in case of
+        google.protobuf.StringValue url = 1; // The URL of the video file
+        google.protobuf.StringValue manifest_url = 2; /* The URL of the manifest file in case of
                                              fragmented media (DASH, hls, hds) */
-        string ext = 3; //  Will be calculated from URL if missing
-        string format = 4; /*  A human-readable description of the format
+        google.protobuf.StringValue ext = 3; //  Will be calculated from URL if missing
+        google.protobuf.StringValue format = 4; /*  A human-readable description of the format
                                         ("mp4 container with h264/opus").
                                         Calculated from the format_id, width, height.
                                         and format_note fields if missing. */
-        string format_id = 5; /* A short description of the format
+        google.protobuf.StringValue format_id = 5; /* A short description of the format
                                           ("mp4_h264_opus" or "19").
                                           Technically optional, but strongly recommended. */
-        string format_note = 6; /* Additional info about the format
+        google.protobuf.StringValue format_note = 6; /* Additional info about the format
                                             ("3D" or "DASH video") */
-        uint64 width = 7; // Width of the video, if known
-        uint64 height = 8; // Height of the video, if known
-        string resolution = 9; // Textual description of width and height
-        double tbr = 10; // Average bitrate of audio and video in KBit/s
-        double abr = 11; // Average audio bitrate in KBit/s
-        string acodec = 12; // Name of the audio codec in use
-        double asr = 13; // Audio sampling rate in Hertz
-        double vbr = 14; // Average video bitrate in KBit/s
-        double fps = 15; // Frame rate
-        string vcodec = 16; // Name of the video codec in use
-        string container = 17; // Name of the container format
-        uint64 filesize = 18; // The number of bytes, if known in advance
-        uint64 filesize_approx = 19; // An estimate for the number of bytes
-        string player_url = 20; // SWF Player URL (used for rtmpdump).
+        google.protobuf.UInt64Value width = 7; // Width of the video, if known
+        google.protobuf.UInt64Value height = 8; // Height of the video, if known
+        google.protobuf.StringValue resolution = 9; // Textual description of width and height
+        google.protobuf.DoubleValue tbr = 10; // Average bitrate of audio and video in KBit/s
+        google.protobuf.DoubleValue abr = 11; // Average audio bitrate in KBit/s
+        google.protobuf.StringValue acodec = 12; // Name of the audio codec in use
+        google.protobuf.DoubleValue asr = 13; // Audio sampling rate in Hertz
+        google.protobuf.DoubleValue vbr = 14; // Average video bitrate in KBit/s
+        google.protobuf.DoubleValue fps = 15; // Frame rate
+        google.protobuf.StringValue vcodec = 16; // Name of the video codec in use
+        google.protobuf.StringValue container = 17; // Name of the container format
+        google.protobuf.DoubleValue filesize = 18; // The number of bytes, if known in advance
+        google.protobuf.DoubleValue filesize_approx = 19; // An estimate for the number of bytes
+        google.protobuf.StringValue player_url = 20; // SWF Player URL (used for rtmpdump).
 
         enum Protocol {
             NONE = 0;
@@ -49,11 +51,12 @@ message InfoDict {
             M3U8 = 6;
             M3U8_NATIVE = 7;
             HTTP_DASH_SEGMENTS = 8;
+            ISM = 9;
         }
 
         Protocol protocol = 21; // The protocol used for the actual download
 
-        string fragment_base_url = 22; /* Base URL for fragments. Each fragment's path
+        google.protobuf.StringValue fragment_base_url = 22; /* Base URL for fragments. Each fragment's path
                                                    value (if present) will be relative to
                                                    this URL. */
 
@@ -63,16 +66,16 @@ message InfoDict {
                 considered by a client. Otherwise both path and
                 fragment_base_url must be present. */
 
-            string url = 1; // fragment's URL
-            string path = 2; /* fragment's path relative to
+            google.protobuf.StringValue url = 1; // fragment's URL
+            google.protobuf.StringValue path = 2; /* fragment's path relative to
                                          fragment_base_url */
-            double duration = 3;
-            uint64 filesize = 4;
+            google.protobuf.DoubleValue duration = 3;
+            google.protobuf.DoubleValue filesize = 4;
         }
 
         repeated Fragment fragments = 23; // A list of fragments of a fragmented media. 
 
-        int64 preference = 24; /*  Order number of this format. If this field is
+        google.protobuf.Int64Value preference = 24; /*  Order number of this format. If this field is
                                             present and not None, the formats get sorted
                                             by this field, regardless of all other values.
                                             -1 for default (order by other properties),
@@ -80,19 +83,19 @@ message InfoDict {
                                             < -1000 to hide the format (if there is
                                             another one which is strictly better) */
 
-        string language = 25; //  Language code, e.g. "de" or "en-US"
-        int64 language_preference = 26; /* Is this in the language mentioned in
+        google.protobuf.StringValue language = 25; //  Language code, e.g. "de" or "en-US"
+        google.protobuf.Int64Value language_preference = 26; /* Is this in the language mentioned in
                                                     the URL?
                                                     10 if it's what the URL is about,
                                                     -1 for default (don't know),
                                                     -10 otherwise, other values reserved for now. */
 
-        int64 quality = 27; /* Order number of the video quality of this
+        google.protobuf.Int64Value quality = 27; /* Order number of the video quality of this
                                         format, irrespective of the file format.
                                         -1 for default (order by other properties),
                                         -2 or smaller for less than default. */
 
-        int64 source_preference = 28; /* Order number for this video source
+        google.protobuf.Int64Value source_preference = 28; /* Order number for this video source
                                                   (quality takes higher priority)
                                                   -1 for default (order by other properties),
                                                   -2 or smaller for less than default. */
@@ -100,148 +103,162 @@ message InfoDict {
         map<string,string> http_headers = 29; /* A dictionary of additional HTTP headers
                                                           to add to the request. */
 
-        double stretched_ratio = 30; /* If given and not 1, indicates that the
+        google.protobuf.DoubleValue stretched_ratio = 30; /* If given and not 1, indicates that the
                                                  video's pixels are not square.
                                                  width : height ratio as float. */
 
-        bool no_resume = 31; /* The server does not support resuming the
+        google.protobuf.BoolValue no_resume = 31; /* The server does not support resuming the
                                          (HTTP or RTMP) download. */
+
+        google.protobuf.StringValue play_path = 54;
+        google.protobuf.StringValue app = 55;
+        google.protobuf.StringValue page_url = 56;
+        google.protobuf.BoolValue rtmp_real_time = 57;
+        google.protobuf.StringValue format_name = 61;
+        google.protobuf.StringValue extra_param_to_segment_url = 66;
+        google.protobuf.StringValue flash_version = 67;
+        repeated google.protobuf.StringValue rtmp_conn = 68;
+        google.protobuf.BoolValue rtmp_live = 69;
+        google.protobuf.StringValue id = 70;
 
     }
 
     repeated Format formats = 1;
-    string url = 2; // url of video for if formats is not present
-    string ext = 3; // Video filename extension (if formats is not present)
-    string format = 4; // The video format, defaults to ext
-    string player_url = 5; // SWF Player URL (used for rtmpdump).
+    google.protobuf.StringValue url = 2; // url of video for if formats is not present
+    google.protobuf.StringValue ext = 3; // Video filename extension (if formats is not present)
+    google.protobuf.StringValue format = 4; // The video format, defaults to ext
+    google.protobuf.StringValue player_url = 5; // SWF Player URL (used for rtmpdump).
 
-    string alt_title = 6; // A secondary title of the video.
-    string display_id = 7; /* An alternative identifier for the video, not necessarily
+    google.protobuf.StringValue alt_title = 6; // A secondary title of the video.
+    google.protobuf.StringValue display_id = 7; /* An alternative identifier for the video, not necessarily
                                        unique, but available before title. Typically, id is
                                        something like "4234987", title "Dancing naked mole rats",
                                        and display_id "dancing-naked-mole-rats" */
 
     message Thumbnail {
-        string id = 1;
-        string url = 2;
-        int64 preference = 3; // quality of the image
-        int64 width = 4; 
-        int64 height = 5;
-        int64 resolution = 6; // string "{width}x{height"}, deprecated
-        int64 filesize = 7;
+        google.protobuf.StringValue id = 1;
+        google.protobuf.StringValue url = 2;
+        google.protobuf.Int64Value preference = 3; // quality of the image
+        google.protobuf.Int64Value width = 4; 
+        google.protobuf.Int64Value height = 5;
+        google.protobuf.Int64Value resolution = 6; // google.protobuf.StringValue "{width}x{height"}, deprecated
+        google.protobuf.DoubleValue filesize = 7;
+        google.protobuf.DoubleValue aspect_ratio = 8;
+
     }
 
     repeated Thumbnail thumbnails = 8;
-    string thumbnail = 9; // Full URL to a video thumbnail image.
-    string description = 10; // Full video description.
-    string uploader = 11; // Full name of the video uploader.
-    string license = 12; // License name the video is licensed under.
-    string creator = 13; // The creator of the video.
-    string release_date = 14; // The date (YYYYMMDD) when the video was released.
-    int64 timestamp = 15; // UNIX timestamp of the moment the video became available.
-    string upload_date = 16; /* Video upload date (YYYYMMDD).
+    google.protobuf.StringValue thumbnail = 9; // Full URL to a video thumbnail image.
+    google.protobuf.StringValue description = 10; // Full video description.
+    google.protobuf.StringValue uploader = 11; // Full name of the video uploader.
+    google.protobuf.StringValue license = 12; // License name the video is licensed under.
+    google.protobuf.StringValue creator = 13; // The creator of the video.
+    google.protobuf.StringValue release_date = 14; // The date (YYYYMMDD) when the video was released.
+    google.protobuf.DoubleValue timestamp = 15; // UNIX timestamp of the moment the video became available.
+    google.protobuf.StringValue upload_date = 16; /* Video upload date (YYYYMMDD).
                                          If not explicitly set, calculated from timestamp. */
-    string uploader_id = 17; // Nickname or id of the video uploader.
-    string uploader_url = 18; // Full URL to a personal webpage of the video uploader.
-    string location = 19; // Physical location where the video was filmed.
+    google.protobuf.StringValue uploader_id = 17; // Nickname or id of the video uploader.
+    google.protobuf.StringValue uploader_url = 18; // Full URL to a personal webpage of the video uploader.
+    google.protobuf.StringValue location = 19; // Physical location where the video was filmed.
 
     message Subtitles {
         message Subformat {
-            string ext = 1;
-            string data = 2; 
-            string url = 3;
+            google.protobuf.StringValue ext = 1;
+            google.protobuf.StringValue data = 2; 
+            google.protobuf.StringValue url = 3;
         }
 
-        string tag = 1;
+        google.protobuf.StringValue tag = 1;
         repeated Subformat subformats = 2;
     }
 
     repeated Subtitles subtitles = 20;
     repeated Subtitles automatic_captions = 21; /* Like 'subtitles', used by the YoutubeIE for
                                                    automatically generated captions */
-    double duration = 22; // Length of the video in seconds
-    uint64 view_count = 37; // How many users have watched the video on the platform
-    uint64 like_count = 24; // Number of positive ratings of the video
-    uint64 dislike_count = 25; // Number of negative ratings of the video
-    uint64 repost_count = 26; // Number of reposts of the video
-    double average_rating = 27; // Average rating give by users, the scale used depends on the webpage
-    uint64 comment_count = 28; // Number of comments on the video
+    google.protobuf.DoubleValue duration = 22; // Length of the video in seconds
+    google.protobuf.UInt64Value view_count = 37; // How many users have watched the video on the platform
+    google.protobuf.UInt64Value like_count = 24; // Number of positive ratings of the video
+    google.protobuf.UInt64Value dislike_count = 25; // Number of negative ratings of the video
+    google.protobuf.UInt64Value repost_count = 26; // Number of reposts of the video
+    google.protobuf.DoubleValue average_rating = 27; // Average rating give by users, the scale used depends on the webpage
+    google.protobuf.UInt64Value comment_count = 28; // Number of comments on the video
 
     message Comment {
-        string author = 1; // human-readable name of the comment author
-        string author_id = 2; // user ID of the comment author
-        string comment_id = 3; // Comment ID
-        string html = 4; // Comment as HTML
-        string text = 5; // Plain text of the comment
-        int64 timestamp = 6; // UNIX timestamp of comment
-        string parent = 7; /* ID of the comment this one is replying to.
+        google.protobuf.StringValue author = 1; // human-readable name of the comment author
+        google.protobuf.StringValue author_id = 2; // user ID of the comment author
+        google.protobuf.StringValue comment_id = 3; // Comment ID
+        google.protobuf.StringValue html = 4; // Comment as HTML
+        google.protobuf.StringValue text = 5; // Plain text of the comment
+        google.protobuf.DoubleValue timestamp = 6; // UNIX timestamp of comment
+        google.protobuf.StringValue parent = 7; /* ID of the comment this one is replying to.
                                        Set to "root" to indicate that this is a
                                        comment to the original video. */
+        google.protobuf.StringValue id = 8;
     }
 
     repeated Comment comments = 29;
-    int32 age_limit = 30; // Age restriction for the video, as an integer (years)
-    string webpage_url = 31; /*  The URL to the video webpage, if given to youtube-dl it
+    google.protobuf.Int32Value age_limit = 30; // Age restriction for the video, as an integer (years)
+    google.protobuf.StringValue webpage_url = 31; /*  The URL to the video webpage, if given to youtube-dl it
                                           should allow to get the same result again. (It will be set
                                           by YoutubeDL if it's missing) */
-    repeated string categories = 32; /*  A list of categories that the video falls in, for example
+    repeated google.protobuf.StringValue categories = 32; /*  A list of categories that the video falls in, for example
                                                   ["Sports", "Berlin"] */
 
-    repeated string tags = 33; // A list of tags assigned to the video, e.g. ["sweden", "pop music"]
-    bool is_live = 34; /* Whether this video is a
+    repeated google.protobuf.StringValue tags = 33; // A list of tags assigned to the video, e.g. ["sweden", "pop music"]
+    google.protobuf.BoolValue is_live = 34; /* Whether this video is a
                                    live stream that goes on instead of a fixed-length video. */
    
-    uint64 start_time = 35; /* Time in seconds where the reproduction should start, as
+    google.protobuf.DoubleValue start_time = 35; /* Time in seconds where the reproduction should start, as
                                         specified in the URL. */
 
-    uint64 end_time = 36; /* Time in seconds where the reproduction should end, as
+    google.protobuf.DoubleValue end_time = 36; /* Time in seconds where the reproduction should end, as
                                       specified in the URL. */
 
     message Chapter {
-        int64 start_time = 1; // The start time of the chapter in seconds
-        int64 end_time = 2; // The end time of the chapter in seconds
-        string title = 3;
+        google.protobuf.DoubleValue start_time = 1; // The start time of the chapter in seconds
+        google.protobuf.DoubleValue end_time = 2; // The end time of the chapter in seconds
+        google.protobuf.StringValue title = 3;
     }
 
     repeated Chapter chapters = 38;
 
     message ChapterInfo {
-        string chapter = 1; // Name or title of the chapter the video belongs to.
-        int64 chapter_number = 2; // Number of the chapter the video belongs to, as an integer.
-        string chapter_id = 3; // Id of the chapter the video belongs to
+        google.protobuf.StringValue chapter = 1; // Name or title of the chapter the video belongs to.
+        google.protobuf.Int64Value chapter_number = 2; // Number of the chapter the video belongs to, as an integer.
+        google.protobuf.StringValue chapter_id = 3; // Id of the chapter the video belongs to
     }
 
     ChapterInfo chapter_info = 39; /* should only be used when the video belongs to some logical
                                                chapter or section */
 
     message SeriesInfo {
-        string series = 1; // Title of the series or programme the video episode belongs to.
-        string season = 2; // Title of the season the video episode belongs to.
-        int64 season_number = 3; // Number of the season the video episode belongs to
-        string season_id = 4; // Id of the season the video episode belongs to
-        string episode = 5; /* Title of the video episode. Unlike mandatory video title field,
+        google.protobuf.StringValue series = 1; // Title of the series or programme the video episode belongs to.
+        google.protobuf.StringValue season = 2; // Title of the season the video episode belongs to.
+        google.protobuf.Int64Value season_number = 3; // Number of the season the video episode belongs to
+        google.protobuf.StringValue season_id = 4; // Id of the season the video episode belongs to
+        google.protobuf.StringValue episode = 5; /* Title of the video episode. Unlike mandatory video title field,
                                         this field should denote the exact title of the video episode
                                         without any kind of decoration. */
-        int64 episode_number = 6; // Number of the video episode within a season
-        string episode_id = 7; // Id of the video episode
+        google.protobuf.Int64Value episode_number = 6; // Number of the video episode within a season
+        google.protobuf.StringValue episode_id = 7; // Id of the video episode
     }
 
     SeriesInfo series_info = 40; /* should only be used when the video is an episode of some
                                              series, programme or podcast */
    
     message AlbumInfo {
-        string track = 1; // Title of the track.
-        int64 track_number = 2; // Number of the track within an album or a disc
-        string track_id = 3; // Id of the track (useful in case of custom indexing, e.g. 6.iii)
-        string artist = 4;
-        string genre = 5;
-        string album = 6; // Title of the album the track belongs to
-        string album_type = 7; //  Type of the album (e.g. "Demo", "Full-length", "Split", "Compilation", etc).
-        repeated string album_artist = 8; /* List of all artists appeared on the album (e.g.
+        google.protobuf.StringValue track = 1; // Title of the track.
+        google.protobuf.Int64Value track_number = 2; // Number of the track within an album or a disc
+        google.protobuf.StringValue track_id = 3; // Id of the track (useful in case of custom indexing, e.g. 6.iii)
+        google.protobuf.StringValue artist = 4;
+        google.protobuf.StringValue genre = 5;
+        google.protobuf.StringValue album = 6; // Title of the album the track belongs to
+        google.protobuf.StringValue album_type = 7; //  Type of the album (e.g. "Demo", "Full-length", "Split", "Compilation", etc).
+        google.protobuf.StringValue album_artist = 8; /* List of all artists appeared on the album (e.g.
                                                       "Ash Borer / Fell Voices" or "Various Artists", useful for splits
                                                       and compilations). */
-        int64 disc_number = 9; // Number of the disc or other physical medium the track belongs to
-        int32 release_year = 10; // Year (YYYY) when the album was released
+        google.protobuf.Int64Value disc_number = 9; // Number of the disc or other physical medium the track belongs to
+        google.protobuf.Int32Value release_year = 10; // Year (YYYY) when the album was released
     }
 
     AlbumInfo album_info = 41; /* should only be used when the media is a track or a part of
@@ -250,31 +267,57 @@ message InfoDict {
 
     repeated InfoDict children = 42; /* Child videos of this video, if any
                                                  corresponds to _type='playlist' or _type='multi_video' in youtube-dl */
-    repeated string child_urls = 43; /* like children, except lazy
+    repeated google.protobuf.StringValue child_urls = 43; /* like children, except lazy
                                                  urls can be run through youtube-dl to get the data that would go in children */
 
-    string extractor_name = 44;
+    google.protobuf.StringValue extractor_name = 44;
 
-    string title = 45;
-    string id = 46;
-    string resolution = 47;
-    string ie_key = 48;
+    google.protobuf.StringValue title = 45;
+    google.protobuf.StringValue id = 46;
+    google.protobuf.StringValue resolution = 47;
+    google.protobuf.StringValue ie_key = 48;
+    map<string,string> http_headers = 49; /* A dictionary of additional HTTP headers
+                                                      to add to the request. */
+    google.protobuf.DoubleValue height = 50;
+    google.protobuf.DoubleValue width = 51;
+    google.protobuf.StringValue vcodec = 52;
+    google.protobuf.DoubleValue filesize = 53;
+    google.protobuf.StringValue __x_forwarded_for_ip = 58;
+    google.protobuf.StringValue page_url = 59;
+    google.protobuf.BoolValue direct = 60;
+    google.protobuf.DoubleValue filesize_approx = 65;
+    google.protobuf.StringValue video_url = 71;
+    google.protobuf.StringValue playlist_id = 72;
+    google.protobuf.StringValue playlist_title = 73;
+    google.protobuf.StringValue extractor_key = 74;
+    Format.Protocol protocol = 75;
+    google.protobuf.DoubleValue abr = 76;
+    google.protobuf.StringValue acodec = 77;
+    google.protobuf.StringValue author = 78;
+    google.protobuf.DoubleValue tbr = 79;
+    google.protobuf.StringValue format_id = 80;
+    google.protobuf.StringValue session_code = 81;
+    repeated google.protobuf.StringValue session_speakers = 82;
+    google.protobuf.StringValue session_room = 83;
+    repeated google.protobuf.StringValue authors = 84;
+    google.protobuf.DoubleValue likes = 85;
+    google.protobuf.DoubleValue stretched_ratio = 86;
 
 }
 
 message Request {
 
-    int64 job_id = 1;
+    google.protobuf.Int64Value job_id = 1;
 
     message URLResolveRequest {
-        string url = 1;
-        string username = 2; // optional username & pass for sites that require login
-        string password = 3;
-        string resolver_name = 4; // specify which info extractor to use (optional)
+        google.protobuf.StringValue url = 1;
+        google.protobuf.StringValue username = 2; // optional username & pass for sites that require login
+        google.protobuf.StringValue password = 3;
+        google.protobuf.StringValue resolver_name = 4; // specify which info extractor to use (optional)
     }
 
     message URLIsResolvableRequest {
-        string url = 1;
+        google.protobuf.StringValue url = 1;
     }
 
     oneof request {
@@ -286,18 +329,18 @@ message Request {
 
 message Response {
 
-    int64 job_id = 1;
+    google.protobuf.Int64Value job_id = 1;
 
     message URLResolveResponse {
         repeated InfoDict info_dict = 1;
-        bool success = 2; // did the request succeed?
-        bool password_required = 3; // did this fail because it requires a password?
-        bool geo_restricted = 4; // did this fail because it's blocked in the country we're in?
+        google.protobuf.BoolValue success = 2; // did the request succeed?
+        google.protobuf.BoolValue password_required = 3; // did this fail because it requires a password?
+        google.protobuf.BoolValue geo_restricted = 4; // did this fail because it's blocked in the country we're in?
     }
 
     message URLIsResolvableResponse {
-        bool is_resolvable = 1;
-        repeated string resolver_names = 2; // which IE's support this url
+        google.protobuf.BoolValue is_resolvable = 1;
+        repeated google.protobuf.StringValue resolver_names = 2; // which IE's support this url
     }
 
     oneof response {
