@@ -268,6 +268,7 @@ def extractor_name(ex):
 def url_is_resolvable(req):
     url = req.url.value
     names = map(extractor_name, matching_extractors(url))
+    names = [v for v in names if v != 'generic']
     is_resolvable = len(names) > 0
     res = python_pb2.Response.URLIsResolvableResponse()
     res.is_resolvable.value = is_resolvable
@@ -324,22 +325,28 @@ def resolve(req):
             res.append(row)
 
     res_pb = python_pb2.Response.URLResolveResponse()
-    res_pb.success.value = bool(res and not exceptions)
-    res_pb.password_required.value = any(isinstance(v, LoginRequiredException) for v in exceptions)
-    res_pb.geo_restricted.value = any(isinstance(v, GeoRestrictedError) for v in exceptions)
+    res_pb.success.value = bool(len(results) > 0 and len(exceptions) < 1)
+    res_pb.password_required.value = bool(any(isinstance(v, LoginRequiredException) for v in exceptions))
+    res_pb.geo_restricted.value = bool(any(isinstance(v, GeoRestrictedError) for v in exceptions))
     if redirect_ie_key:
         res_pb.redirect.resolver.value = redirect_ie_key
     if redirect_url:
         res_pb.redirect.url.value = redirect_url
-    assign_repeated(res_pb, 'info_dict', res)
+    for result in res:
+        item = res_pb.info_dict.add()
+        item.CopyFrom(result)
     return res_pb
 
-def handle_request_blob(req_blob):
-    req = python_pb2.Request().ParseFromString(req_blob)
+def handle_request(req):
     res = python_pb2.Response()
-    res.job_id = req.job_id
-    if req.url_is_resolvable_request:
-        res.url_is_resolvable_response = url_is_resolvable(req.url_is_resolvable_request)
-    elif req.url_resolve_request:
-        res.url_resolve_response = resolve(req.url_resolve_request)
-    return res.SerializeToString()
+    res.job_id.value = req.job_id.value
+    if req.HasField('url_is_resolvable_request'):
+        res.url_is_resolvable_response.CopyFrom(url_is_resolvable(req.url_is_resolvable_request))
+    elif req.HasField('url_resolve_request'):
+        res.url_resolve_response.CopyFrom(resolve(req.url_resolve_request))
+    return res
+
+def handle_request_blob(req_blob):
+    req = python_pb2.Request()
+    req.ParseFromString(req_blob)
+    return handle_request(req).SerializeToString()

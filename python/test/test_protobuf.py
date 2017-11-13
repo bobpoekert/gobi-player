@@ -186,12 +186,14 @@ class TestWithTestData(unittest.TestCase):
         urls = []
 
         for row in self.test_json:
-            urls.append((row['url'], row['extractor']))
+            if row['extractor'] != 'generic':
+                urls.append((row['url'], row['extractor']))
 
         for row in self.test_data:
             if 'url' not in row:
                 continue
-            urls.append((row['url'], row['info_extractor']))
+            if row['info_extractor'] != 'generic':
+                urls.append((row['url'], row['info_extractor']))
 
         for url, info_extractor in urls:
             response = url_is_resolvable(url_request(url))
@@ -247,6 +249,28 @@ class TestWithTestData(unittest.TestCase):
                 self.assertEqual(response.info_dict[0].extractor_name.value, row['extractor'])
                 self.assertDictEqual(res, response_dict)
 
+    def test_handle_resolve_request(self):
+        row = self.test_json[0]
+        req = python_pb2.Request()
+        req.job_id.value = 1
+        req.url_resolve_request.url.value = row['url']
+        inp = sanitize_info_dict(row['res'])
+        with extraction_results([inp], []):
+            res = handle_request(req)
+        self.assertEqual(res.url_resolve_response.success.value, True)
+        self.assertEqual(res.url_resolve_response.password_required.value, False)
+        self.assertEqual(res.url_resolve_response.geo_restricted.value, False)
+        self.assertEqual(res.job_id.value, 1)
+        response_dict = dict_from_info_dict(res.url_resolve_response.info_dict[0])
+        del response_dict['extractor_name']
+        self.assertDictEqual(inp, response_dict)
+
+    def test_handle_is_resolvable_request(self):
+        req = python_pb2.Request()
+        req.url_is_resolvable_request.url.value = 'https://www.youtube.com/watch?v=0uPZwMg5B3k'
+        res = handle_request(req)
+        self.assertEqual(res.url_is_resolvable_response.is_resolvable.value, True)
+        self.assertListEqual([v.value for v in res.url_is_resolvable_response.resolver_names], ['youtube'])
 
 if __name__ == '__main__':
     unittest.main()
