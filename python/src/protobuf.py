@@ -5,6 +5,7 @@ from google.protobuf.message import Message
 from google.protobuf import wrappers_pb2 as wrappers
 from google.protobuf.internal.containers import MutableMapping, RepeatedCompositeFieldContainer
 import ydl
+import traceback
 
 extractors = [v for v in gen_extractors() if v.working()]
 extractor_index = {}
@@ -23,6 +24,7 @@ def raise_login_required(*args, **kwargs):
 
 for extractor in extractors:
     extractor.raise_login_required = raise_login_required
+    extractor.set_downloader(ydl.downloader)
 
 def get_fields(pb):
     return [v.name for v in pb.DESCRIPTOR.fields]
@@ -283,11 +285,17 @@ def playlist_pb2(result):
 def extract(url, username=None, password=None, extractors=None):
     res = []
     exc = []
+    if extractors is None:
+        extractors = matching_extractors(url)
     for extractor in extractors:
         with ydl.login_context(username, password):
             try:
-                res.append((extractor, extractor.extract(url)))
+                x = extractor.extract(url)
+                res.append((extractor, x))
+                if x and x.get('_type') not in ('url', 'url_transparent'):
+                    break
             except Exception, e:
+                traceback.print_exc()
                 exc.append(e)
     return res, exc
 

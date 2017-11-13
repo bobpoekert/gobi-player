@@ -15,9 +15,38 @@ import android.app.Application;
 import android.content.res.AssetManager;
 import android.util.SparseArray;
 
-import org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Request;
-import org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response;
-import com.google.protobuf.InvalidProtocolBufferException;
+import org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.*;
+import com.google.protobuf.*;
+
+class TypeBuilders {
+
+    public static UInt64Value _uint64(long v) {
+        return UInt64Value.newBuilder().setValue(v).build();
+    }
+    public static Int64Value _int64(long v) {
+        return Int64Value.newBuilder().setValue(v).build();
+    }
+    public static UInt32Value _uint32(int v) {
+        return UInt32Value.newBuilder().setValue(v).build();
+    }
+    public static Int32Value _int32(int v) {
+        return Int32Value.newBuilder().setValue(v).build();
+    }
+
+    public static DoubleValue _double(double v) {
+        return DoubleValue.newBuilder().setValue(v).build();
+    }
+    
+    public static BoolValue _bool(boolean v) {
+        return BoolValue.newBuilder().setValue(v).build();
+    }
+    
+    public static StringValue _string(String v) {
+        return StringValue.newBuilder().setValue(v).build();
+    }
+
+}
+
 
 abstract class Job<ResultType> {
 
@@ -37,7 +66,7 @@ abstract class Job<ResultType> {
 
     public byte[] serializeRequest() {
         Request.Builder builder = Request.newBuilder(); 
-        builder.setJobId(this.id);
+        builder.setJobId(TypeBuilders._int64(this.id));
         this.setRequest(builder);
 
         return builder.build().toByteArray();
@@ -63,10 +92,10 @@ class URLResolveJob extends Job<Response.URLResolveResponse> {
     @Override
     public void setRequest(Request.Builder b) {
         b.setUrlResolveRequest(Request.URLResolveRequest.newBuilder()
-                .setUrl(this.url)
-                .setUsername(this.username)
-                .setPassword(this.password)
-                .setResolverName(this.resolverName));
+                .setUrl(TypeBuilders._string(this.url))
+                .setUsername(TypeBuilders._string(this.username))
+                .setPassword(TypeBuilders._string(this.password))
+                .setResolverName(TypeBuilders._string(this.resolverName)));
     }
 
 }
@@ -83,7 +112,7 @@ class URLIsResolvableJob extends Job<Response.URLIsResolvableResponse> {
     @Override
     void setRequest(Request.Builder b) {
         b.setUrlIsResolvableRequest(Request.URLIsResolvableRequest.newBuilder()
-                .setUrl(this.url));
+                .setUrl(TypeBuilders._string(this.url)));
     }
 
 }
@@ -123,7 +152,7 @@ class PyThread implements Runnable {
             } catch (InvalidProtocolBufferException e) {
                 throw new RuntimeException(e);
             }
-            Integer id = Integer.valueOf((int) response.getJobId());
+            Integer id = Integer.valueOf((int) response.getJobId().getValue());
             Job job = pendingJobs.get(id);
             if (job != null) {
                 job.complete(response);

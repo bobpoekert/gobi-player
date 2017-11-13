@@ -1,6 +1,7 @@
 from youtube_dl.downloader.common import FileDownloader
 from youtube_dl.YoutubeDL import YoutubeDL
 from contextlib import contextmanager
+from cookielib import CookieJar
 
 ydl = YoutubeDL(auto_init=False)
 
@@ -11,6 +12,7 @@ class Downloader(FileDownloader):
     def __init__(self):
         self.ydl = ydl
         self.urlopen = self.ydl.urlopen
+        self.cookiejar = CookieJar()
 
     def to_screen(self, message, skip_eol=False):
         print message
