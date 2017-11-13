@@ -339,6 +339,11 @@ message Response {
         google.protobuf.BoolValue success = 2; // did the request succeed?
         google.protobuf.BoolValue password_required = 3; // did this fail because it requires a password?
         google.protobuf.BoolValue geo_restricted = 4; // did this fail because it's blocked in the country we're in?
+        message Redirect {
+            google.protobuf.StringValue url = 1;
+            google.protobuf.StringValue resolver = 2;
+        }
+        Redirect redirect = 5;
     }
 
     message URLIsResolvableResponse {

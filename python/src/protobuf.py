@@ -306,17 +306,17 @@ def resolve(req):
 
     results, exceptions = extract(url, username=username, password=password, extractors=extractors)
 
+    redirect_ie_key = None
+    redirect_url = None
+
     for extractor, result in results:
         _type = result.get('_type')
         row = None
         if _type in ('playlist', 'multi_video'):
             row = playlist_pb2(results)
         elif _type in ('url', 'url_transparent'):
-            ie_key = result.get('ie_key')
-            if ie_key:
-                url_queue.append((result['url'], get_info_extractor(ie_key)))
-            else:
-                url_queue.append((result['url'], None))
+            redirect_ie_key = result.get('ie_key')
+            redirect_url = result['url']
         else:
             row = info_dict_from_dict(result)
         if row:
@@ -327,6 +327,10 @@ def resolve(req):
     res_pb.success.value = bool(res and not exceptions)
     res_pb.password_required.value = any(isinstance(v, LoginRequiredException) for v in exceptions)
     res_pb.geo_restricted.value = any(isinstance(v, GeoRestrictedError) for v in exceptions)
+    if redirect_ie_key:
+        res_pb.redirect.resolver.value = redirect_ie_key
+    if redirect_url:
+        res_pb.redirect.url.value = redirect_url
     assign_repeated(res_pb, 'info_dict', res)
     return res_pb
 

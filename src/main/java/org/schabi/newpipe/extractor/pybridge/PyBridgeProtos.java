@@ -49427,6 +49427,19 @@ public final class PyBridgeProtos {
        * <code>.google.protobuf.BoolValue geo_restricted = 4;</code>
        */
       com.google.protobuf.BoolValueOrBuilder getGeoRestrictedOrBuilder();
+
+      /**
+       * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+       */
+      boolean hasRedirect();
+      /**
+       * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+       */
+      org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect getRedirect();
+      /**
+       * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+       */
+      org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder getRedirectOrBuilder();
     }
     /**
      * Protobuf type {@code python.Response.URLResolveResponse}
@@ -49520,6 +49533,19 @@ public final class PyBridgeProtos {
 
                 break;
               }
+              case 42: {
+                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder subBuilder = null;
+                if (redirect_ != null) {
+                  subBuilder = redirect_.toBuilder();
+                }
+                redirect_ = input.readMessage(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(redirect_);
+                  redirect_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -49545,6 +49571,779 @@ public final class PyBridgeProtos {
         return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.internal_static_python_Response_URLResolveResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.class, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Builder.class);
+      }
+
+      public interface RedirectOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:python.Response.URLResolveResponse.Redirect)
+          com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.google.protobuf.StringValue url = 1;</code>
+         */
+        boolean hasUrl();
+        /**
+         * <code>.google.protobuf.StringValue url = 1;</code>
+         */
+        com.google.protobuf.StringValue getUrl();
+        /**
+         * <code>.google.protobuf.StringValue url = 1;</code>
+         */
+        com.google.protobuf.StringValueOrBuilder getUrlOrBuilder();
+
+        /**
+         * <code>.google.protobuf.StringValue resolver = 2;</code>
+         */
+        boolean hasResolver();
+        /**
+         * <code>.google.protobuf.StringValue resolver = 2;</code>
+         */
+        com.google.protobuf.StringValue getResolver();
+        /**
+         * <code>.google.protobuf.StringValue resolver = 2;</code>
+         */
+        com.google.protobuf.StringValueOrBuilder getResolverOrBuilder();
+      }
+      /**
+       * Protobuf type {@code python.Response.URLResolveResponse.Redirect}
+       */
+      public  static final class Redirect extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:python.Response.URLResolveResponse.Redirect)
+          RedirectOrBuilder {
+      private static final long serialVersionUID = 0L;
+        // Use Redirect.newBuilder() to construct.
+        private Redirect(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+          super(builder);
+        }
+        private Redirect() {
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+          return this.unknownFields;
+        }
+        private Redirect(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          this();
+          int mutable_bitField0_ = 0;
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                default: {
+                  if (!parseUnknownFieldProto3(
+                      input, unknownFields, extensionRegistry, tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+                case 10: {
+                  com.google.protobuf.StringValue.Builder subBuilder = null;
+                  if (url_ != null) {
+                    subBuilder = url_.toBuilder();
+                  }
+                  url_ = input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(url_);
+                    url_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 18: {
+                  com.google.protobuf.StringValue.Builder subBuilder = null;
+                  if (resolver_ != null) {
+                    subBuilder = resolver_.toBuilder();
+                  }
+                  resolver_ = input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(resolver_);
+                    resolver_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(this);
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+          } finally {
+            this.unknownFields = unknownFields.build();
+            makeExtensionsImmutable();
+          }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.internal_static_python_Response_URLResolveResponse_Redirect_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.internal_static_python_Response_URLResolveResponse_Redirect_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.class, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder.class);
+        }
+
+        public static final int URL_FIELD_NUMBER = 1;
+        private com.google.protobuf.StringValue url_;
+        /**
+         * <code>.google.protobuf.StringValue url = 1;</code>
+         */
+        public boolean hasUrl() {
+          return url_ != null;
+        }
+        /**
+         * <code>.google.protobuf.StringValue url = 1;</code>
+         */
+        public com.google.protobuf.StringValue getUrl() {
+          return url_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : url_;
+        }
+        /**
+         * <code>.google.protobuf.StringValue url = 1;</code>
+         */
+        public com.google.protobuf.StringValueOrBuilder getUrlOrBuilder() {
+          return getUrl();
+        }
+
+        public static final int RESOLVER_FIELD_NUMBER = 2;
+        private com.google.protobuf.StringValue resolver_;
+        /**
+         * <code>.google.protobuf.StringValue resolver = 2;</code>
+         */
+        public boolean hasResolver() {
+          return resolver_ != null;
+        }
+        /**
+         * <code>.google.protobuf.StringValue resolver = 2;</code>
+         */
+        public com.google.protobuf.StringValue getResolver() {
+          return resolver_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : resolver_;
+        }
+        /**
+         * <code>.google.protobuf.StringValue resolver = 2;</code>
+         */
+        public com.google.protobuf.StringValueOrBuilder getResolverOrBuilder() {
+          return getResolver();
+        }
+
+        private byte memoizedIsInitialized = -1;
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (url_ != null) {
+            output.writeMessage(1, getUrl());
+          }
+          if (resolver_ != null) {
+            output.writeMessage(2, getResolver());
+          }
+          unknownFields.writeTo(output);
+        }
+
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (url_ != null) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeMessageSize(1, getUrl());
+          }
+          if (resolver_ != null) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeMessageSize(2, getResolver());
+          }
+          size += unknownFields.getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+           return true;
+          }
+          if (!(obj instanceof org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect)) {
+            return super.equals(obj);
+          }
+          org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect other = (org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect) obj;
+
+          boolean result = true;
+          result = result && (hasUrl() == other.hasUrl());
+          if (hasUrl()) {
+            result = result && getUrl()
+                .equals(other.getUrl());
+          }
+          result = result && (hasResolver() == other.hasResolver());
+          if (hasResolver()) {
+            result = result && getResolver()
+                .equals(other.getResolver());
+          }
+          result = result && unknownFields.equals(other.unknownFields);
+          return result;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          if (hasUrl()) {
+            hash = (37 * hash) + URL_FIELD_NUMBER;
+            hash = (53 * hash) + getUrl().hashCode();
+          }
+          if (hasResolver()) {
+            hash = (37 * hash) + RESOLVER_FIELD_NUMBER;
+            hash = (53 * hash) + getResolver().hashCode();
+          }
+          hash = (29 * hash) + unknownFields.hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+        }
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * Protobuf type {@code python.Response.URLResolveResponse.Redirect}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:python.Response.URLResolveResponse.Redirect)
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+              getDescriptor() {
+            return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.internal_static_python_Response_URLResolveResponse_Redirect_descriptor;
+          }
+
+          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+              internalGetFieldAccessorTable() {
+            return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.internal_static_python_Response_URLResolveResponse_Redirect_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.class, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder.class);
+          }
+
+          // Construct using org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.newBuilder()
+          private Builder() {
+            maybeForceBuilderInitialization();
+          }
+
+          private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            super(parent);
+            maybeForceBuilderInitialization();
+          }
+          private void maybeForceBuilderInitialization() {
+            if (com.google.protobuf.GeneratedMessageV3
+                    .alwaysUseFieldBuilders) {
+            }
+          }
+          public Builder clear() {
+            super.clear();
+            if (urlBuilder_ == null) {
+              url_ = null;
+            } else {
+              url_ = null;
+              urlBuilder_ = null;
+            }
+            if (resolverBuilder_ == null) {
+              resolver_ = null;
+            } else {
+              resolver_ = null;
+              resolverBuilder_ = null;
+            }
+            return this;
+          }
+
+          public com.google.protobuf.Descriptors.Descriptor
+              getDescriptorForType() {
+            return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.internal_static_python_Response_URLResolveResponse_Redirect_descriptor;
+          }
+
+          public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect getDefaultInstanceForType() {
+            return org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.getDefaultInstance();
+          }
+
+          public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect build() {
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect buildPartial() {
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect result = new org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect(this);
+            if (urlBuilder_ == null) {
+              result.url_ = url_;
+            } else {
+              result.url_ = urlBuilder_.build();
+            }
+            if (resolverBuilder_ == null) {
+              result.resolver_ = resolver_;
+            } else {
+              result.resolver_ = resolverBuilder_.build();
+            }
+            onBuilt();
+            return result;
+          }
+
+          public Builder clone() {
+            return (Builder) super.clone();
+          }
+          public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+            return (Builder) super.setField(field, value);
+          }
+          public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+            return (Builder) super.clearField(field);
+          }
+          public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+            return (Builder) super.clearOneof(oneof);
+          }
+          public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+            return (Builder) super.setRepeatedField(field, index, value);
+          }
+          public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+            return (Builder) super.addRepeatedField(field, value);
+          }
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect) {
+              return mergeFrom((org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect other) {
+            if (other == org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.getDefaultInstance()) return this;
+            if (other.hasUrl()) {
+              mergeUrl(other.getUrl());
+            }
+            if (other.hasResolver()) {
+              mergeResolver(other.getResolver());
+            }
+            this.mergeUnknownFields(other.unknownFields);
+            onChanged();
+            return this;
+          }
+
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect parsedMessage = null;
+            try {
+              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              parsedMessage = (org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect) e.getUnfinishedMessage();
+              throw e.unwrapIOException();
+            } finally {
+              if (parsedMessage != null) {
+                mergeFrom(parsedMessage);
+              }
+            }
+            return this;
+          }
+
+          private com.google.protobuf.StringValue url_ = null;
+          private com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> urlBuilder_;
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public boolean hasUrl() {
+            return urlBuilder_ != null || url_ != null;
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public com.google.protobuf.StringValue getUrl() {
+            if (urlBuilder_ == null) {
+              return url_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : url_;
+            } else {
+              return urlBuilder_.getMessage();
+            }
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public Builder setUrl(com.google.protobuf.StringValue value) {
+            if (urlBuilder_ == null) {
+              if (value == null) {
+                throw new NullPointerException();
+              }
+              url_ = value;
+              onChanged();
+            } else {
+              urlBuilder_.setMessage(value);
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public Builder setUrl(
+              com.google.protobuf.StringValue.Builder builderForValue) {
+            if (urlBuilder_ == null) {
+              url_ = builderForValue.build();
+              onChanged();
+            } else {
+              urlBuilder_.setMessage(builderForValue.build());
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public Builder mergeUrl(com.google.protobuf.StringValue value) {
+            if (urlBuilder_ == null) {
+              if (url_ != null) {
+                url_ =
+                  com.google.protobuf.StringValue.newBuilder(url_).mergeFrom(value).buildPartial();
+              } else {
+                url_ = value;
+              }
+              onChanged();
+            } else {
+              urlBuilder_.mergeFrom(value);
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public Builder clearUrl() {
+            if (urlBuilder_ == null) {
+              url_ = null;
+              onChanged();
+            } else {
+              url_ = null;
+              urlBuilder_ = null;
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public com.google.protobuf.StringValue.Builder getUrlBuilder() {
+            
+            onChanged();
+            return getUrlFieldBuilder().getBuilder();
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          public com.google.protobuf.StringValueOrBuilder getUrlOrBuilder() {
+            if (urlBuilder_ != null) {
+              return urlBuilder_.getMessageOrBuilder();
+            } else {
+              return url_ == null ?
+                  com.google.protobuf.StringValue.getDefaultInstance() : url_;
+            }
+          }
+          /**
+           * <code>.google.protobuf.StringValue url = 1;</code>
+           */
+          private com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> 
+              getUrlFieldBuilder() {
+            if (urlBuilder_ == null) {
+              urlBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                  com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
+                      getUrl(),
+                      getParentForChildren(),
+                      isClean());
+              url_ = null;
+            }
+            return urlBuilder_;
+          }
+
+          private com.google.protobuf.StringValue resolver_ = null;
+          private com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> resolverBuilder_;
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public boolean hasResolver() {
+            return resolverBuilder_ != null || resolver_ != null;
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public com.google.protobuf.StringValue getResolver() {
+            if (resolverBuilder_ == null) {
+              return resolver_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : resolver_;
+            } else {
+              return resolverBuilder_.getMessage();
+            }
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public Builder setResolver(com.google.protobuf.StringValue value) {
+            if (resolverBuilder_ == null) {
+              if (value == null) {
+                throw new NullPointerException();
+              }
+              resolver_ = value;
+              onChanged();
+            } else {
+              resolverBuilder_.setMessage(value);
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public Builder setResolver(
+              com.google.protobuf.StringValue.Builder builderForValue) {
+            if (resolverBuilder_ == null) {
+              resolver_ = builderForValue.build();
+              onChanged();
+            } else {
+              resolverBuilder_.setMessage(builderForValue.build());
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public Builder mergeResolver(com.google.protobuf.StringValue value) {
+            if (resolverBuilder_ == null) {
+              if (resolver_ != null) {
+                resolver_ =
+                  com.google.protobuf.StringValue.newBuilder(resolver_).mergeFrom(value).buildPartial();
+              } else {
+                resolver_ = value;
+              }
+              onChanged();
+            } else {
+              resolverBuilder_.mergeFrom(value);
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public Builder clearResolver() {
+            if (resolverBuilder_ == null) {
+              resolver_ = null;
+              onChanged();
+            } else {
+              resolver_ = null;
+              resolverBuilder_ = null;
+            }
+
+            return this;
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public com.google.protobuf.StringValue.Builder getResolverBuilder() {
+            
+            onChanged();
+            return getResolverFieldBuilder().getBuilder();
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          public com.google.protobuf.StringValueOrBuilder getResolverOrBuilder() {
+            if (resolverBuilder_ != null) {
+              return resolverBuilder_.getMessageOrBuilder();
+            } else {
+              return resolver_ == null ?
+                  com.google.protobuf.StringValue.getDefaultInstance() : resolver_;
+            }
+          }
+          /**
+           * <code>.google.protobuf.StringValue resolver = 2;</code>
+           */
+          private com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> 
+              getResolverFieldBuilder() {
+            if (resolverBuilder_ == null) {
+              resolverBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                  com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
+                      getResolver(),
+                      getParentForChildren(),
+                      isClean());
+              resolver_ = null;
+            }
+            return resolverBuilder_;
+          }
+          public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.setUnknownFieldsProto3(unknownFields);
+          }
+
+          public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.mergeUnknownFields(unknownFields);
+          }
+
+
+          // @@protoc_insertion_point(builder_scope:python.Response.URLResolveResponse.Redirect)
+        }
+
+        // @@protoc_insertion_point(class_scope:python.Response.URLResolveResponse.Redirect)
+        private static final org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect();
+        }
+
+        public static org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<Redirect>
+            PARSER = new com.google.protobuf.AbstractParser<Redirect>() {
+          public Redirect parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+              return new Redirect(input, extensionRegistry);
+          }
+        };
+
+        public static com.google.protobuf.Parser<Redirect> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Redirect> getParserForType() {
+          return PARSER;
+        }
+
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
       }
 
       private int bitField0_;
@@ -49682,6 +50481,27 @@ public final class PyBridgeProtos {
         return getGeoRestricted();
       }
 
+      public static final int REDIRECT_FIELD_NUMBER = 5;
+      private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect redirect_;
+      /**
+       * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+       */
+      public boolean hasRedirect() {
+        return redirect_ != null;
+      }
+      /**
+       * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect getRedirect() {
+        return redirect_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.getDefaultInstance() : redirect_;
+      }
+      /**
+       * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+       */
+      public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder getRedirectOrBuilder() {
+        return getRedirect();
+      }
+
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
@@ -49706,6 +50526,9 @@ public final class PyBridgeProtos {
         if (geoRestricted_ != null) {
           output.writeMessage(4, getGeoRestricted());
         }
+        if (redirect_ != null) {
+          output.writeMessage(5, getRedirect());
+        }
         unknownFields.writeTo(output);
       }
 
@@ -49729,6 +50552,10 @@ public final class PyBridgeProtos {
         if (geoRestricted_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(4, getGeoRestricted());
+        }
+        if (redirect_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(5, getRedirect());
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -49763,6 +50590,11 @@ public final class PyBridgeProtos {
           result = result && getGeoRestricted()
               .equals(other.getGeoRestricted());
         }
+        result = result && (hasRedirect() == other.hasRedirect());
+        if (hasRedirect()) {
+          result = result && getRedirect()
+              .equals(other.getRedirect());
+        }
         result = result && unknownFields.equals(other.unknownFields);
         return result;
       }
@@ -49789,6 +50621,10 @@ public final class PyBridgeProtos {
         if (hasGeoRestricted()) {
           hash = (37 * hash) + GEO_RESTRICTED_FIELD_NUMBER;
           hash = (53 * hash) + getGeoRestricted().hashCode();
+        }
+        if (hasRedirect()) {
+          hash = (37 * hash) + REDIRECT_FIELD_NUMBER;
+          hash = (53 * hash) + getRedirect().hashCode();
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
@@ -49944,6 +50780,12 @@ public final class PyBridgeProtos {
             geoRestricted_ = null;
             geoRestrictedBuilder_ = null;
           }
+          if (redirectBuilder_ == null) {
+            redirect_ = null;
+          } else {
+            redirect_ = null;
+            redirectBuilder_ = null;
+          }
           return this;
         }
 
@@ -49991,6 +50833,11 @@ public final class PyBridgeProtos {
             result.geoRestricted_ = geoRestricted_;
           } else {
             result.geoRestricted_ = geoRestrictedBuilder_.build();
+          }
+          if (redirectBuilder_ == null) {
+            result.redirect_ = redirect_;
+          } else {
+            result.redirect_ = redirectBuilder_.build();
           }
           result.bitField0_ = to_bitField0_;
           onBuilt();
@@ -50068,6 +50915,9 @@ public final class PyBridgeProtos {
           }
           if (other.hasGeoRestricted()) {
             mergeGeoRestricted(other.getGeoRestricted());
+          }
+          if (other.hasRedirect()) {
+            mergeRedirect(other.getRedirect());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -50794,6 +51644,123 @@ public final class PyBridgeProtos {
             geoRestricted_ = null;
           }
           return geoRestrictedBuilder_;
+        }
+
+        private org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect redirect_ = null;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder> redirectBuilder_;
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public boolean hasRedirect() {
+          return redirectBuilder_ != null || redirect_ != null;
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect getRedirect() {
+          if (redirectBuilder_ == null) {
+            return redirect_ == null ? org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.getDefaultInstance() : redirect_;
+          } else {
+            return redirectBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public Builder setRedirect(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect value) {
+          if (redirectBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            redirect_ = value;
+            onChanged();
+          } else {
+            redirectBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public Builder setRedirect(
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder builderForValue) {
+          if (redirectBuilder_ == null) {
+            redirect_ = builderForValue.build();
+            onChanged();
+          } else {
+            redirectBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public Builder mergeRedirect(org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect value) {
+          if (redirectBuilder_ == null) {
+            if (redirect_ != null) {
+              redirect_ =
+                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.newBuilder(redirect_).mergeFrom(value).buildPartial();
+            } else {
+              redirect_ = value;
+            }
+            onChanged();
+          } else {
+            redirectBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public Builder clearRedirect() {
+          if (redirectBuilder_ == null) {
+            redirect_ = null;
+            onChanged();
+          } else {
+            redirect_ = null;
+            redirectBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder getRedirectBuilder() {
+          
+          onChanged();
+          return getRedirectFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        public org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder getRedirectOrBuilder() {
+          if (redirectBuilder_ != null) {
+            return redirectBuilder_.getMessageOrBuilder();
+          } else {
+            return redirect_ == null ?
+                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.getDefaultInstance() : redirect_;
+          }
+        }
+        /**
+         * <code>.python.Response.URLResolveResponse.Redirect redirect = 5;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder> 
+            getRedirectFieldBuilder() {
+          if (redirectBuilder_ == null) {
+            redirectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.Redirect.Builder, org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.Response.URLResolveResponse.RedirectOrBuilder>(
+                    getRedirect(),
+                    getParentForChildren(),
+                    isClean());
+            redirect_ = null;
+          }
+          return redirectBuilder_;
         }
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -52928,6 +53895,11 @@ public final class PyBridgeProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_python_Response_URLResolveResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_python_Response_URLResolveResponse_Redirect_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_python_Response_URLResolveResponse_Redirect_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_python_Response_URLIsResolvableResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -53163,23 +54135,27 @@ public final class PyBridgeProtos {
       "alue\0223\n\rresolver_name\030\004 \001(\0132\034.google.pro",
       "tobuf.StringValue\032C\n\026URLIsResolvableRequ" +
       "est\022)\n\003url\030\001 \001(\0132\034.google.protobuf.Strin" +
-      "gValueB\t\n\007request\"\261\004\n\010Response\022+\n\006job_id" +
+      "gValueB\t\n\007request\"\330\005\n\010Response\022+\n\006job_id" +
       "\030\001 \001(\0132\033.google.protobuf.Int64Value\022C\n\024u" +
       "rl_resolve_response\030\002 \001(\0132#.python.Respo" +
       "nse.URLResolveResponseH\000\022N\n\032url_is_resol" +
       "vable_response\030\003 \001(\0132(.python.Response.U" +
-      "RLIsResolvableResponseH\000\032\321\001\n\022URLResolveR" +
+      "RLIsResolvableResponseH\000\032\370\002\n\022URLResolveR" +
       "esponse\022#\n\tinfo_dict\030\001 \003(\0132\020.python.Info" +
       "Dict\022+\n\007success\030\002 \001(\0132\032.google.protobuf.",
       "BoolValue\0225\n\021password_required\030\003 \001(\0132\032.g" +
       "oogle.protobuf.BoolValue\0222\n\016geo_restrict" +
-      "ed\030\004 \001(\0132\032.google.protobuf.BoolValue\032\202\001\n" +
-      "\027URLIsResolvableResponse\0221\n\ris_resolvabl" +
-      "e\030\001 \001(\0132\032.google.protobuf.BoolValue\0224\n\016r" +
-      "esolver_names\030\002 \003(\0132\034.google.protobuf.St" +
-      "ringValueB\n\n\010responseB7\n%org.schabi.newp" +
-      "ipe.extractor.pybridgeB\016PyBridgeProtosb\006" +
-      "proto3"
+      "ed\030\004 \001(\0132\032.google.protobuf.BoolValue\022>\n\010" +
+      "redirect\030\005 \001(\0132,.python.Response.URLReso" +
+      "lveResponse.Redirect\032e\n\010Redirect\022)\n\003url\030" +
+      "\001 \001(\0132\034.google.protobuf.StringValue\022.\n\010r" +
+      "esolver\030\002 \001(\0132\034.google.protobuf.StringVa" +
+      "lue\032\202\001\n\027URLIsResolvableResponse\0221\n\ris_re" +
+      "solvable\030\001 \001(\0132\032.google.protobuf.BoolVal" +
+      "ue\0224\n\016resolver_names\030\002 \003(\0132\034.google.prot",
+      "obuf.StringValueB\n\n\010responseB7\n%org.scha" +
+      "bi.newpipe.extractor.pybridgeB\016PyBridgeP" +
+      "rotosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -53301,7 +54277,13 @@ public final class PyBridgeProtos {
     internal_static_python_Response_URLResolveResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_python_Response_URLResolveResponse_descriptor,
-        new java.lang.String[] { "InfoDict", "Success", "PasswordRequired", "GeoRestricted", });
+        new java.lang.String[] { "InfoDict", "Success", "PasswordRequired", "GeoRestricted", "Redirect", });
+    internal_static_python_Response_URLResolveResponse_Redirect_descriptor =
+      internal_static_python_Response_URLResolveResponse_descriptor.getNestedTypes().get(0);
+    internal_static_python_Response_URLResolveResponse_Redirect_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_python_Response_URLResolveResponse_Redirect_descriptor,
+        new java.lang.String[] { "Url", "Resolver", });
     internal_static_python_Response_URLIsResolvableResponse_descriptor =
       internal_static_python_Response_descriptor.getNestedTypes().get(1);
     internal_static_python_Response_URLIsResolvableResponse_fieldAccessorTable = new

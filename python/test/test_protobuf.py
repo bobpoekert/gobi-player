@@ -110,6 +110,8 @@ def extraction_results(results, exceptions):
 
 here = '/'.join(__file__.split('/')[:-1])
 
+fast_mode = True
+
 class TestWithTestData(unittest.TestCase):
 
     def setUp(self):
@@ -118,8 +120,13 @@ class TestWithTestData(unittest.TestCase):
         self.test_json = []
 
         with gzip.open('%s/test_data.jsons.gz' % here, 'r') as inf:
+            ctr = 0
             for row in inf:
                 self.test_json.append(json.loads(row.strip()))
+                ctr += 1
+                if fast_mode and ctr > 1000:
+                    break
+
 
         for extractor in extractors:
             try:
@@ -190,6 +197,22 @@ class TestWithTestData(unittest.TestCase):
             self.assertTrue(response.is_resolvable.value)
             self.assertIn(info_extractor, [v.value for v in response.resolver_names])
 
+    def test_redirect(self):
+        with extraction_results([{'_type':'url', 'url':'foo', 'ie_key':'bar'}], []):
+            req = python_pb2.Request.URLResolveRequest()
+            req.url.value = 'asdfasdf'
+            req.resolver_name.value = 'default'
+            res = resolve(req)
+            self.assertEqual(res.redirect.url.value, 'foo')
+            self.assertEqual(res.redirect.resolver.value, 'bar')
+        with extraction_results([{'_type':'url', 'url':'foo'}], []):
+            req = python_pb2.Request.URLResolveRequest()
+            req.url.value = 'asdfasdf'
+            req.resolver_name.value = 'default'
+            res = resolve(req)
+            self.assertEqual(res.redirect.url.value, 'foo')
+            self.assertEqual(res.redirect.resolver.value, '')
+
     def test_resolve_request(self):
         for row in self.test_json:
             if not row.get('res'):
@@ -222,6 +245,7 @@ class TestWithTestData(unittest.TestCase):
                 self.assertEqual(response.geo_restricted.value, False)
                 self.assertEqual(response.info_dict[0].extractor_name.value, row['extractor'])
                 self.assertDictEqual(res, response_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
