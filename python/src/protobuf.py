@@ -117,7 +117,7 @@ def subtitles_from_dict(d):
 
 special_fields = (
                 'formats', 'thumbnails', 'subtitles', 'automatic_captions',
-                'comments', 'chapters', '_type', 'categories', 'tags', 'category',
+                'comments', 'chapters', '_type', 'categories', 'tags', 'category', 'entries',
                 'chapter', 'chapter_number', 'chapter_id', 'http_headers', 'session_speakers', 'authors',
                 'series', 'season', 'season_number', 'season_id', 'episode', 'episode_number', 'episode_id',
                 'track', 'track_number', 'track_id', 'artist', 'genre', 'album', 'album_type', 'album_artist',
@@ -276,7 +276,7 @@ def url_is_resolvable(req):
 
 def playlist_pb2(result):
     res = info_dict_from_dict(result)
-    res.children = map(playlist_entry_pb2, result['entries'])
+    assign_repeated(res, 'children', map(info_dict_from_dict, result['entries']))
     return res
 
 def extract(url, username=None, password=None, extractors=None):

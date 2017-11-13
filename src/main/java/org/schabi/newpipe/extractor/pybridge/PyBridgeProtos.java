@@ -1228,6 +1228,19 @@ public final class PyBridgeProtos {
     com.google.protobuf.StringValueOrBuilder getExtractorNameOrBuilder();
 
     /**
+     * <code>.google.protobuf.StringValue extractor = 89;</code>
+     */
+    boolean hasExtractor();
+    /**
+     * <code>.google.protobuf.StringValue extractor = 89;</code>
+     */
+    com.google.protobuf.StringValue getExtractor();
+    /**
+     * <code>.google.protobuf.StringValue extractor = 89;</code>
+     */
+    com.google.protobuf.StringValueOrBuilder getExtractorOrBuilder();
+
+    /**
      * <code>.google.protobuf.StringValue title = 45;</code>
      */
     boolean hasTitle();
@@ -1704,6 +1717,19 @@ public final class PyBridgeProtos {
      */
     com.google.protobuf.StringValueOrBuilder getCategoryOrBuilder(
         int index);
+
+    /**
+     * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+     */
+    boolean hasWebpageUrlBasename();
+    /**
+     * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+     */
+    com.google.protobuf.StringValue getWebpageUrlBasename();
+    /**
+     * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+     */
+    com.google.protobuf.StringValueOrBuilder getWebpageUrlBasenameOrBuilder();
   }
   /**
    * <pre>
@@ -2340,10 +2366,10 @@ public final class PyBridgeProtos {
               break;
             }
             case 394: {
-              if (!((mutable_bitField1_ & 0x00008000) == 0x00008000)) {
+              if (!((mutable_bitField1_ & 0x00010000) == 0x00010000)) {
                 httpHeaders_ = com.google.protobuf.MapField.newMapField(
                     HttpHeadersDefaultEntryHolder.defaultEntry);
-                mutable_bitField1_ |= 0x00008000;
+                mutable_bitField1_ |= 0x00010000;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               httpHeaders__ = input.readMessage(
@@ -2593,9 +2619,9 @@ public final class PyBridgeProtos {
               break;
             }
             case 658: {
-              if (!((mutable_bitField2_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField2_ & 0x00000010) == 0x00000010)) {
                 sessionSpeakers_ = new java.util.ArrayList<com.google.protobuf.StringValue>();
-                mutable_bitField2_ |= 0x00000008;
+                mutable_bitField2_ |= 0x00000010;
               }
               sessionSpeakers_.add(
                   input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry));
@@ -2615,9 +2641,9 @@ public final class PyBridgeProtos {
               break;
             }
             case 674: {
-              if (!((mutable_bitField2_ & 0x00000020) == 0x00000020)) {
+              if (!((mutable_bitField2_ & 0x00000040) == 0x00000040)) {
                 authors_ = new java.util.ArrayList<com.google.protobuf.StringValue>();
-                mutable_bitField2_ |= 0x00000020;
+                mutable_bitField2_ |= 0x00000040;
               }
               authors_.add(
                   input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry));
@@ -2663,12 +2689,38 @@ public final class PyBridgeProtos {
               break;
             }
             case 706: {
-              if (!((mutable_bitField2_ & 0x00000200) == 0x00000200)) {
+              if (!((mutable_bitField2_ & 0x00000400) == 0x00000400)) {
                 category_ = new java.util.ArrayList<com.google.protobuf.StringValue>();
-                mutable_bitField2_ |= 0x00000200;
+                mutable_bitField2_ |= 0x00000400;
               }
               category_.add(
                   input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry));
+              break;
+            }
+            case 714: {
+              com.google.protobuf.StringValue.Builder subBuilder = null;
+              if (extractor_ != null) {
+                subBuilder = extractor_.toBuilder();
+              }
+              extractor_ = input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(extractor_);
+                extractor_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 722: {
+              com.google.protobuf.StringValue.Builder subBuilder = null;
+              if (webpageUrlBasename_ != null) {
+                subBuilder = webpageUrlBasename_.toBuilder();
+              }
+              webpageUrlBasename_ = input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(webpageUrlBasename_);
+                webpageUrlBasename_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           }
@@ -2709,13 +2761,13 @@ public final class PyBridgeProtos {
         if (((mutable_bitField1_ & 0x00000200) == 0x00000200)) {
           childUrls_ = java.util.Collections.unmodifiableList(childUrls_);
         }
-        if (((mutable_bitField2_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField2_ & 0x00000010) == 0x00000010)) {
           sessionSpeakers_ = java.util.Collections.unmodifiableList(sessionSpeakers_);
         }
-        if (((mutable_bitField2_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField2_ & 0x00000040) == 0x00000040)) {
           authors_ = java.util.Collections.unmodifiableList(authors_);
         }
-        if (((mutable_bitField2_ & 0x00000200) == 0x00000200)) {
+        if (((mutable_bitField2_ & 0x00000400) == 0x00000400)) {
           category_ = java.util.Collections.unmodifiableList(category_);
         }
         this.unknownFields = unknownFields.build();
@@ -30671,6 +30723,27 @@ public final class PyBridgeProtos {
       return getExtractorName();
     }
 
+    public static final int EXTRACTOR_FIELD_NUMBER = 89;
+    private com.google.protobuf.StringValue extractor_;
+    /**
+     * <code>.google.protobuf.StringValue extractor = 89;</code>
+     */
+    public boolean hasExtractor() {
+      return extractor_ != null;
+    }
+    /**
+     * <code>.google.protobuf.StringValue extractor = 89;</code>
+     */
+    public com.google.protobuf.StringValue getExtractor() {
+      return extractor_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : extractor_;
+    }
+    /**
+     * <code>.google.protobuf.StringValue extractor = 89;</code>
+     */
+    public com.google.protobuf.StringValueOrBuilder getExtractorOrBuilder() {
+      return getExtractor();
+    }
+
     public static final int TITLE_FIELD_NUMBER = 45;
     private com.google.protobuf.StringValue title_;
     /**
@@ -31434,6 +31507,27 @@ public final class PyBridgeProtos {
       return category_.get(index);
     }
 
+    public static final int WEBPAGE_URL_BASENAME_FIELD_NUMBER = 90;
+    private com.google.protobuf.StringValue webpageUrlBasename_;
+    /**
+     * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+     */
+    public boolean hasWebpageUrlBasename() {
+      return webpageUrlBasename_ != null;
+    }
+    /**
+     * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+     */
+    public com.google.protobuf.StringValue getWebpageUrlBasename() {
+      return webpageUrlBasename_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : webpageUrlBasename_;
+    }
+    /**
+     * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+     */
+    public com.google.protobuf.StringValueOrBuilder getWebpageUrlBasenameOrBuilder() {
+      return getWebpageUrlBasename();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -31670,6 +31764,12 @@ public final class PyBridgeProtos {
       }
       for (int i = 0; i < category_.size(); i++) {
         output.writeMessage(88, category_.get(i));
+      }
+      if (extractor_ != null) {
+        output.writeMessage(89, getExtractor());
+      }
+      if (webpageUrlBasename_ != null) {
+        output.writeMessage(90, getWebpageUrlBasename());
       }
       unknownFields.writeTo(output);
     }
@@ -31981,6 +32081,14 @@ public final class PyBridgeProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(88, category_.get(i));
       }
+      if (extractor_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(89, getExtractor());
+      }
+      if (webpageUrlBasename_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(90, getWebpageUrlBasename());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -32182,6 +32290,11 @@ public final class PyBridgeProtos {
         result = result && getExtractorName()
             .equals(other.getExtractorName());
       }
+      result = result && (hasExtractor() == other.hasExtractor());
+      if (hasExtractor()) {
+        result = result && getExtractor()
+            .equals(other.getExtractor());
+      }
       result = result && (hasTitle() == other.hasTitle());
       if (hasTitle()) {
         result = result && getTitle()
@@ -32321,6 +32434,11 @@ public final class PyBridgeProtos {
       }
       result = result && getCategoryList()
           .equals(other.getCategoryList());
+      result = result && (hasWebpageUrlBasename() == other.hasWebpageUrlBasename());
+      if (hasWebpageUrlBasename()) {
+        result = result && getWebpageUrlBasename()
+            .equals(other.getWebpageUrlBasename());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -32504,6 +32622,10 @@ public final class PyBridgeProtos {
         hash = (37 * hash) + EXTRACTOR_NAME_FIELD_NUMBER;
         hash = (53 * hash) + getExtractorName().hashCode();
       }
+      if (hasExtractor()) {
+        hash = (37 * hash) + EXTRACTOR_FIELD_NUMBER;
+        hash = (53 * hash) + getExtractor().hashCode();
+      }
       if (hasTitle()) {
         hash = (37 * hash) + TITLE_FIELD_NUMBER;
         hash = (53 * hash) + getTitle().hashCode();
@@ -32625,6 +32747,10 @@ public final class PyBridgeProtos {
       if (getCategoryCount() > 0) {
         hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
         hash = (53 * hash) + getCategoryList().hashCode();
+      }
+      if (hasWebpageUrlBasename()) {
+        hash = (37 * hash) + WEBPAGE_URL_BASENAME_FIELD_NUMBER;
+        hash = (53 * hash) + getWebpageUrlBasename().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -33052,6 +33178,12 @@ public final class PyBridgeProtos {
           extractorName_ = null;
           extractorNameBuilder_ = null;
         }
+        if (extractorBuilder_ == null) {
+          extractor_ = null;
+        } else {
+          extractor_ = null;
+          extractorBuilder_ = null;
+        }
         if (titleBuilder_ == null) {
           title_ = null;
         } else {
@@ -33189,7 +33321,7 @@ public final class PyBridgeProtos {
         }
         if (sessionSpeakersBuilder_ == null) {
           sessionSpeakers_ = java.util.Collections.emptyList();
-          bitField2_ = (bitField2_ & ~0x00000008);
+          bitField2_ = (bitField2_ & ~0x00000010);
         } else {
           sessionSpeakersBuilder_.clear();
         }
@@ -33201,7 +33333,7 @@ public final class PyBridgeProtos {
         }
         if (authorsBuilder_ == null) {
           authors_ = java.util.Collections.emptyList();
-          bitField2_ = (bitField2_ & ~0x00000020);
+          bitField2_ = (bitField2_ & ~0x00000040);
         } else {
           authorsBuilder_.clear();
         }
@@ -33225,9 +33357,15 @@ public final class PyBridgeProtos {
         }
         if (categoryBuilder_ == null) {
           category_ = java.util.Collections.emptyList();
-          bitField2_ = (bitField2_ & ~0x00000200);
+          bitField2_ = (bitField2_ & ~0x00000400);
         } else {
           categoryBuilder_.clear();
+        }
+        if (webpageUrlBasenameBuilder_ == null) {
+          webpageUrlBasename_ = null;
+        } else {
+          webpageUrlBasename_ = null;
+          webpageUrlBasenameBuilder_ = null;
         }
         return this;
       }
@@ -33511,6 +33649,11 @@ public final class PyBridgeProtos {
         } else {
           result.extractorName_ = extractorNameBuilder_.build();
         }
+        if (extractorBuilder_ == null) {
+          result.extractor_ = extractor_;
+        } else {
+          result.extractor_ = extractorBuilder_.build();
+        }
         if (titleBuilder_ == null) {
           result.title_ = title_;
         } else {
@@ -33625,9 +33768,9 @@ public final class PyBridgeProtos {
           result.sessionCode_ = sessionCodeBuilder_.build();
         }
         if (sessionSpeakersBuilder_ == null) {
-          if (((bitField2_ & 0x00000008) == 0x00000008)) {
+          if (((bitField2_ & 0x00000010) == 0x00000010)) {
             sessionSpeakers_ = java.util.Collections.unmodifiableList(sessionSpeakers_);
-            bitField2_ = (bitField2_ & ~0x00000008);
+            bitField2_ = (bitField2_ & ~0x00000010);
           }
           result.sessionSpeakers_ = sessionSpeakers_;
         } else {
@@ -33639,9 +33782,9 @@ public final class PyBridgeProtos {
           result.sessionRoom_ = sessionRoomBuilder_.build();
         }
         if (authorsBuilder_ == null) {
-          if (((bitField2_ & 0x00000020) == 0x00000020)) {
+          if (((bitField2_ & 0x00000040) == 0x00000040)) {
             authors_ = java.util.Collections.unmodifiableList(authors_);
-            bitField2_ = (bitField2_ & ~0x00000020);
+            bitField2_ = (bitField2_ & ~0x00000040);
           }
           result.authors_ = authors_;
         } else {
@@ -33663,13 +33806,18 @@ public final class PyBridgeProtos {
           result.show_ = showBuilder_.build();
         }
         if (categoryBuilder_ == null) {
-          if (((bitField2_ & 0x00000200) == 0x00000200)) {
+          if (((bitField2_ & 0x00000400) == 0x00000400)) {
             category_ = java.util.Collections.unmodifiableList(category_);
-            bitField2_ = (bitField2_ & ~0x00000200);
+            bitField2_ = (bitField2_ & ~0x00000400);
           }
           result.category_ = category_;
         } else {
           result.category_ = categoryBuilder_.build();
+        }
+        if (webpageUrlBasenameBuilder_ == null) {
+          result.webpageUrlBasename_ = webpageUrlBasename_;
+        } else {
+          result.webpageUrlBasename_ = webpageUrlBasenameBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
@@ -34073,6 +34221,9 @@ public final class PyBridgeProtos {
         if (other.hasExtractorName()) {
           mergeExtractorName(other.getExtractorName());
         }
+        if (other.hasExtractor()) {
+          mergeExtractor(other.getExtractor());
+        }
         if (other.hasTitle()) {
           mergeTitle(other.getTitle());
         }
@@ -34148,7 +34299,7 @@ public final class PyBridgeProtos {
           if (!other.sessionSpeakers_.isEmpty()) {
             if (sessionSpeakers_.isEmpty()) {
               sessionSpeakers_ = other.sessionSpeakers_;
-              bitField2_ = (bitField2_ & ~0x00000008);
+              bitField2_ = (bitField2_ & ~0x00000010);
             } else {
               ensureSessionSpeakersIsMutable();
               sessionSpeakers_.addAll(other.sessionSpeakers_);
@@ -34161,7 +34312,7 @@ public final class PyBridgeProtos {
               sessionSpeakersBuilder_.dispose();
               sessionSpeakersBuilder_ = null;
               sessionSpeakers_ = other.sessionSpeakers_;
-              bitField2_ = (bitField2_ & ~0x00000008);
+              bitField2_ = (bitField2_ & ~0x00000010);
               sessionSpeakersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSessionSpeakersFieldBuilder() : null;
@@ -34177,7 +34328,7 @@ public final class PyBridgeProtos {
           if (!other.authors_.isEmpty()) {
             if (authors_.isEmpty()) {
               authors_ = other.authors_;
-              bitField2_ = (bitField2_ & ~0x00000020);
+              bitField2_ = (bitField2_ & ~0x00000040);
             } else {
               ensureAuthorsIsMutable();
               authors_.addAll(other.authors_);
@@ -34190,7 +34341,7 @@ public final class PyBridgeProtos {
               authorsBuilder_.dispose();
               authorsBuilder_ = null;
               authors_ = other.authors_;
-              bitField2_ = (bitField2_ & ~0x00000020);
+              bitField2_ = (bitField2_ & ~0x00000040);
               authorsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getAuthorsFieldBuilder() : null;
@@ -34212,7 +34363,7 @@ public final class PyBridgeProtos {
           if (!other.category_.isEmpty()) {
             if (category_.isEmpty()) {
               category_ = other.category_;
-              bitField2_ = (bitField2_ & ~0x00000200);
+              bitField2_ = (bitField2_ & ~0x00000400);
             } else {
               ensureCategoryIsMutable();
               category_.addAll(other.category_);
@@ -34225,7 +34376,7 @@ public final class PyBridgeProtos {
               categoryBuilder_.dispose();
               categoryBuilder_ = null;
               category_ = other.category_;
-              bitField2_ = (bitField2_ & ~0x00000200);
+              bitField2_ = (bitField2_ & ~0x00000400);
               categoryBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getCategoryFieldBuilder() : null;
@@ -34233,6 +34384,9 @@ public final class PyBridgeProtos {
               categoryBuilder_.addAllMessages(other.category_);
             }
           }
+        }
+        if (other.hasWebpageUrlBasename()) {
+          mergeWebpageUrlBasename(other.getWebpageUrlBasename());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -42217,6 +42371,123 @@ public final class PyBridgeProtos {
         return extractorNameBuilder_;
       }
 
+      private com.google.protobuf.StringValue extractor_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> extractorBuilder_;
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public boolean hasExtractor() {
+        return extractorBuilder_ != null || extractor_ != null;
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public com.google.protobuf.StringValue getExtractor() {
+        if (extractorBuilder_ == null) {
+          return extractor_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : extractor_;
+        } else {
+          return extractorBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public Builder setExtractor(com.google.protobuf.StringValue value) {
+        if (extractorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          extractor_ = value;
+          onChanged();
+        } else {
+          extractorBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public Builder setExtractor(
+          com.google.protobuf.StringValue.Builder builderForValue) {
+        if (extractorBuilder_ == null) {
+          extractor_ = builderForValue.build();
+          onChanged();
+        } else {
+          extractorBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public Builder mergeExtractor(com.google.protobuf.StringValue value) {
+        if (extractorBuilder_ == null) {
+          if (extractor_ != null) {
+            extractor_ =
+              com.google.protobuf.StringValue.newBuilder(extractor_).mergeFrom(value).buildPartial();
+          } else {
+            extractor_ = value;
+          }
+          onChanged();
+        } else {
+          extractorBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public Builder clearExtractor() {
+        if (extractorBuilder_ == null) {
+          extractor_ = null;
+          onChanged();
+        } else {
+          extractor_ = null;
+          extractorBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public com.google.protobuf.StringValue.Builder getExtractorBuilder() {
+        
+        onChanged();
+        return getExtractorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      public com.google.protobuf.StringValueOrBuilder getExtractorOrBuilder() {
+        if (extractorBuilder_ != null) {
+          return extractorBuilder_.getMessageOrBuilder();
+        } else {
+          return extractor_ == null ?
+              com.google.protobuf.StringValue.getDefaultInstance() : extractor_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.StringValue extractor = 89;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> 
+          getExtractorFieldBuilder() {
+        if (extractorBuilder_ == null) {
+          extractorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
+                  getExtractor(),
+                  getParentForChildren(),
+                  isClean());
+          extractor_ = null;
+        }
+        return extractorBuilder_;
+      }
+
       private com.google.protobuf.StringValue title_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> titleBuilder_;
@@ -44996,9 +45267,9 @@ public final class PyBridgeProtos {
       private java.util.List<com.google.protobuf.StringValue> sessionSpeakers_ =
         java.util.Collections.emptyList();
       private void ensureSessionSpeakersIsMutable() {
-        if (!((bitField2_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField2_ & 0x00000010) == 0x00000010)) {
           sessionSpeakers_ = new java.util.ArrayList<com.google.protobuf.StringValue>(sessionSpeakers_);
-          bitField2_ |= 0x00000008;
+          bitField2_ |= 0x00000010;
          }
       }
 
@@ -45148,7 +45419,7 @@ public final class PyBridgeProtos {
       public Builder clearSessionSpeakers() {
         if (sessionSpeakersBuilder_ == null) {
           sessionSpeakers_ = java.util.Collections.emptyList();
-          bitField2_ = (bitField2_ & ~0x00000008);
+          bitField2_ = (bitField2_ & ~0x00000010);
           onChanged();
         } else {
           sessionSpeakersBuilder_.clear();
@@ -45225,7 +45496,7 @@ public final class PyBridgeProtos {
           sessionSpeakersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
                   sessionSpeakers_,
-                  ((bitField2_ & 0x00000008) == 0x00000008),
+                  ((bitField2_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           sessionSpeakers_ = null;
@@ -45353,9 +45624,9 @@ public final class PyBridgeProtos {
       private java.util.List<com.google.protobuf.StringValue> authors_ =
         java.util.Collections.emptyList();
       private void ensureAuthorsIsMutable() {
-        if (!((bitField2_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField2_ & 0x00000040) == 0x00000040)) {
           authors_ = new java.util.ArrayList<com.google.protobuf.StringValue>(authors_);
-          bitField2_ |= 0x00000020;
+          bitField2_ |= 0x00000040;
          }
       }
 
@@ -45505,7 +45776,7 @@ public final class PyBridgeProtos {
       public Builder clearAuthors() {
         if (authorsBuilder_ == null) {
           authors_ = java.util.Collections.emptyList();
-          bitField2_ = (bitField2_ & ~0x00000020);
+          bitField2_ = (bitField2_ & ~0x00000040);
           onChanged();
         } else {
           authorsBuilder_.clear();
@@ -45582,7 +45853,7 @@ public final class PyBridgeProtos {
           authorsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
                   authors_,
-                  ((bitField2_ & 0x00000020) == 0x00000020),
+                  ((bitField2_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
                   isClean());
           authors_ = null;
@@ -45944,9 +46215,9 @@ public final class PyBridgeProtos {
       private java.util.List<com.google.protobuf.StringValue> category_ =
         java.util.Collections.emptyList();
       private void ensureCategoryIsMutable() {
-        if (!((bitField2_ & 0x00000200) == 0x00000200)) {
+        if (!((bitField2_ & 0x00000400) == 0x00000400)) {
           category_ = new java.util.ArrayList<com.google.protobuf.StringValue>(category_);
-          bitField2_ |= 0x00000200;
+          bitField2_ |= 0x00000400;
          }
       }
 
@@ -46096,7 +46367,7 @@ public final class PyBridgeProtos {
       public Builder clearCategory() {
         if (categoryBuilder_ == null) {
           category_ = java.util.Collections.emptyList();
-          bitField2_ = (bitField2_ & ~0x00000200);
+          bitField2_ = (bitField2_ & ~0x00000400);
           onChanged();
         } else {
           categoryBuilder_.clear();
@@ -46173,12 +46444,129 @@ public final class PyBridgeProtos {
           categoryBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
                   category_,
-                  ((bitField2_ & 0x00000200) == 0x00000200),
+                  ((bitField2_ & 0x00000400) == 0x00000400),
                   getParentForChildren(),
                   isClean());
           category_ = null;
         }
         return categoryBuilder_;
+      }
+
+      private com.google.protobuf.StringValue webpageUrlBasename_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> webpageUrlBasenameBuilder_;
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public boolean hasWebpageUrlBasename() {
+        return webpageUrlBasenameBuilder_ != null || webpageUrlBasename_ != null;
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public com.google.protobuf.StringValue getWebpageUrlBasename() {
+        if (webpageUrlBasenameBuilder_ == null) {
+          return webpageUrlBasename_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : webpageUrlBasename_;
+        } else {
+          return webpageUrlBasenameBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public Builder setWebpageUrlBasename(com.google.protobuf.StringValue value) {
+        if (webpageUrlBasenameBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          webpageUrlBasename_ = value;
+          onChanged();
+        } else {
+          webpageUrlBasenameBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public Builder setWebpageUrlBasename(
+          com.google.protobuf.StringValue.Builder builderForValue) {
+        if (webpageUrlBasenameBuilder_ == null) {
+          webpageUrlBasename_ = builderForValue.build();
+          onChanged();
+        } else {
+          webpageUrlBasenameBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public Builder mergeWebpageUrlBasename(com.google.protobuf.StringValue value) {
+        if (webpageUrlBasenameBuilder_ == null) {
+          if (webpageUrlBasename_ != null) {
+            webpageUrlBasename_ =
+              com.google.protobuf.StringValue.newBuilder(webpageUrlBasename_).mergeFrom(value).buildPartial();
+          } else {
+            webpageUrlBasename_ = value;
+          }
+          onChanged();
+        } else {
+          webpageUrlBasenameBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public Builder clearWebpageUrlBasename() {
+        if (webpageUrlBasenameBuilder_ == null) {
+          webpageUrlBasename_ = null;
+          onChanged();
+        } else {
+          webpageUrlBasename_ = null;
+          webpageUrlBasenameBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public com.google.protobuf.StringValue.Builder getWebpageUrlBasenameBuilder() {
+        
+        onChanged();
+        return getWebpageUrlBasenameFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      public com.google.protobuf.StringValueOrBuilder getWebpageUrlBasenameOrBuilder() {
+        if (webpageUrlBasenameBuilder_ != null) {
+          return webpageUrlBasenameBuilder_.getMessageOrBuilder();
+        } else {
+          return webpageUrlBasename_ == null ?
+              com.google.protobuf.StringValue.getDefaultInstance() : webpageUrlBasename_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.StringValue webpage_url_basename = 90;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> 
+          getWebpageUrlBasenameFieldBuilder() {
+        if (webpageUrlBasenameBuilder_ == null) {
+          webpageUrlBasenameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
+                  getWebpageUrlBasename(),
+                  getParentForChildren(),
+                  isClean());
+          webpageUrlBasename_ = null;
+        }
+        return webpageUrlBasenameBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -53914,7 +54302,7 @@ public final class PyBridgeProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\014python.proto\022\006python\032\036google/protobuf/" +
-      "wrappers.proto\"\232A\n\010InfoDict\022(\n\007formats\030\001" +
+      "wrappers.proto\"\207B\n\010InfoDict\022(\n\007formats\030\001" +
       " \003(\0132\027.python.InfoDict.Format\022)\n\003url\030\002 \001" +
       "(\0132\034.google.protobuf.StringValue\022)\n\003ext\030" +
       "\003 \001(\0132\034.google.protobuf.StringValue\022,\n\006f" +
@@ -53967,195 +54355,198 @@ public final class PyBridgeProtos {
       ".python.InfoDict\0220\n\nchild_urls\030+ \003(\0132\034.g" +
       "oogle.protobuf.StringValue\0224\n\016extractor_" +
       "name\030, \001(\0132\034.google.protobuf.StringValue" +
-      "\022+\n\005title\030- \001(\0132\034.google.protobuf.String" +
-      "Value\022(\n\002id\030. \001(\0132\034.google.protobuf.Stri" +
-      "ngValue\0220\n\nresolution\030/ \001(\0132\034.google.pro" +
-      "tobuf.StringValue\022,\n\006ie_key\0300 \001(\0132\034.goog" +
-      "le.protobuf.StringValue\0227\n\014http_headers\030" +
-      "1 \003(\0132!.python.InfoDict.HttpHeadersEntry",
-      "\022,\n\006height\0302 \001(\0132\034.google.protobuf.Doubl" +
-      "eValue\022+\n\005width\0303 \001(\0132\034.google.protobuf." +
-      "DoubleValue\022,\n\006vcodec\0304 \001(\0132\034.google.pro" +
-      "tobuf.StringValue\022.\n\010filesize\0305 \001(\0132\034.go" +
-      "ogle.protobuf.DoubleValue\022:\n\024__x_forward" +
-      "ed_for_ip\030: \001(\0132\034.google.protobuf.String" +
-      "Value\022.\n\010page_url\030; \001(\0132\034.google.protobu" +
-      "f.StringValue\022*\n\006direct\030< \001(\0132\032.google.p" +
-      "rotobuf.BoolValue\0225\n\017filesize_approx\030A \001" +
-      "(\0132\034.google.protobuf.DoubleValue\022/\n\tvide",
-      "o_url\030G \001(\0132\034.google.protobuf.StringValu" +
-      "e\0221\n\013playlist_id\030H \001(\0132\034.google.protobuf" +
-      ".StringValue\0224\n\016playlist_title\030I \001(\0132\034.g" +
-      "oogle.protobuf.StringValue\0223\n\rextractor_" +
-      "key\030J \001(\0132\034.google.protobuf.StringValue\022" +
-      "2\n\010protocol\030K \001(\0162 .python.InfoDict.Form" +
-      "at.Protocol\022)\n\003abr\030L \001(\0132\034.google.protob" +
-      "uf.DoubleValue\022,\n\006acodec\030M \001(\0132\034.google." +
-      "protobuf.StringValue\022,\n\006author\030N \001(\0132\034.g" +
-      "oogle.protobuf.StringValue\022)\n\003tbr\030O \001(\0132",
-      "\034.google.protobuf.DoubleValue\022/\n\tformat_" +
-      "id\030P \001(\0132\034.google.protobuf.StringValue\0222" +
-      "\n\014session_code\030Q \001(\0132\034.google.protobuf.S" +
-      "tringValue\0226\n\020session_speakers\030R \003(\0132\034.g" +
-      "oogle.protobuf.StringValue\0222\n\014session_ro" +
-      "om\030S \001(\0132\034.google.protobuf.StringValue\022-" +
-      "\n\007authors\030T \003(\0132\034.google.protobuf.String" +
-      "Value\022+\n\005likes\030U \001(\0132\034.google.protobuf.D" +
-      "oubleValue\0225\n\017stretched_ratio\030V \001(\0132\034.go" +
-      "ogle.protobuf.DoubleValue\022*\n\004show\030W \001(\0132",
-      "\034.google.protobuf.StringValue\022.\n\010categor" +
-      "y\030X \003(\0132\034.google.protobuf.StringValue\032\363\022" +
-      "\n\006Format\022)\n\003url\030\001 \001(\0132\034.google.protobuf." +
-      "StringValue\0222\n\014manifest_url\030\002 \001(\0132\034.goog" +
-      "le.protobuf.StringValue\022)\n\003ext\030\003 \001(\0132\034.g" +
-      "oogle.protobuf.StringValue\022,\n\006format\030\004 \001" +
-      "(\0132\034.google.protobuf.StringValue\022/\n\tform" +
-      "at_id\030\005 \001(\0132\034.google.protobuf.StringValu" +
-      "e\0221\n\013format_note\030\006 \001(\0132\034.google.protobuf" +
-      ".StringValue\022+\n\005width\030\007 \001(\0132\034.google.pro",
-      "tobuf.UInt64Value\022,\n\006height\030\010 \001(\0132\034.goog" +
-      "le.protobuf.UInt64Value\0220\n\nresolution\030\t " +
-      "\001(\0132\034.google.protobuf.StringValue\022)\n\003tbr" +
-      "\030\n \001(\0132\034.google.protobuf.DoubleValue\022)\n\003" +
-      "abr\030\013 \001(\0132\034.google.protobuf.DoubleValue\022" +
-      ",\n\006acodec\030\014 \001(\0132\034.google.protobuf.String" +
-      "Value\022)\n\003asr\030\r \001(\0132\034.google.protobuf.Dou" +
-      "bleValue\022)\n\003vbr\030\016 \001(\0132\034.google.protobuf." +
-      "DoubleValue\022)\n\003fps\030\017 \001(\0132\034.google.protob" +
-      "uf.DoubleValue\022,\n\006vcodec\030\020 \001(\0132\034.google.",
-      "protobuf.StringValue\022/\n\tcontainer\030\021 \001(\0132" +
-      "\034.google.protobuf.StringValue\022.\n\010filesiz" +
-      "e\030\022 \001(\0132\034.google.protobuf.DoubleValue\0225\n" +
-      "\017filesize_approx\030\023 \001(\0132\034.google.protobuf" +
-      ".DoubleValue\0220\n\nplayer_url\030\024 \001(\0132\034.googl" +
-      "e.protobuf.StringValue\0222\n\010protocol\030\025 \001(\016" +
-      "2 .python.InfoDict.Format.Protocol\0227\n\021fr" +
-      "agment_base_url\030\026 \001(\0132\034.google.protobuf." +
-      "StringValue\0223\n\tfragments\030\027 \003(\0132 .python." +
-      "InfoDict.Format.Fragment\022/\n\npreference\030\030",
-      " \001(\0132\033.google.protobuf.Int64Value\022.\n\010lan" +
-      "guage\030\031 \001(\0132\034.google.protobuf.StringValu" +
-      "e\0228\n\023language_preference\030\032 \001(\0132\033.google." +
-      "protobuf.Int64Value\022,\n\007quality\030\033 \001(\0132\033.g" +
-      "oogle.protobuf.Int64Value\0226\n\021source_pref" +
-      "erence\030\034 \001(\0132\033.google.protobuf.Int64Valu" +
-      "e\022>\n\014http_headers\030\035 \003(\0132(.python.InfoDic" +
-      "t.Format.HttpHeadersEntry\0225\n\017stretched_r" +
-      "atio\030\036 \001(\0132\034.google.protobuf.DoubleValue" +
-      "\022-\n\tno_resume\030\037 \001(\0132\032.google.protobuf.Bo",
-      "olValue\022/\n\tplay_path\0306 \001(\0132\034.google.prot" +
-      "obuf.StringValue\022)\n\003app\0307 \001(\0132\034.google.p" +
-      "rotobuf.StringValue\022.\n\010page_url\0308 \001(\0132\034." +
-      "google.protobuf.StringValue\0222\n\016rtmp_real" +
-      "_time\0309 \001(\0132\032.google.protobuf.BoolValue\022" +
-      "1\n\013format_name\030= \001(\0132\034.google.protobuf.S" +
-      "tringValue\022@\n\032extra_param_to_segment_url" +
-      "\030B \001(\0132\034.google.protobuf.StringValue\0223\n\r" +
-      "flash_version\030C \001(\0132\034.google.protobuf.St" +
-      "ringValue\022/\n\trtmp_conn\030D \003(\0132\034.google.pr",
-      "otobuf.StringValue\022-\n\trtmp_live\030E \001(\0132\032." +
-      "google.protobuf.BoolValue\022(\n\002id\030F \001(\0132\034." +
-      "google.protobuf.StringValue\032\301\001\n\010Fragment" +
-      "\022)\n\003url\030\001 \001(\0132\034.google.protobuf.StringVa" +
-      "lue\022*\n\004path\030\002 \001(\0132\034.google.protobuf.Stri" +
-      "ngValue\022.\n\010duration\030\003 \001(\0132\034.google.proto" +
-      "buf.DoubleValue\022.\n\010filesize\030\004 \001(\0132\034.goog" +
-      "le.protobuf.DoubleValue\0322\n\020HttpHeadersEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\215\001\n\010" +
-      "Protocol\022\010\n\004NONE\020\000\022\010\n\004HTTP\020\001\022\t\n\005HTTPS\020\002\022",
-      "\010\n\004RTSP\020\003\022\010\n\004RTMP\020\004\022\t\n\005RTMPE\020\005\022\010\n\004M3U8\020\006" +
-      "\022\017\n\013M3U8_NATIVE\020\007\022\026\n\022HTTP_DASH_SEGMENTS\020" +
-      "\010\022\007\n\003ISM\020\t\022\007\n\003F4M\020\n\032\260\003\n\tThumbnail\022(\n\002id\030" +
-      "\001 \001(\0132\034.google.protobuf.StringValue\022)\n\003u" +
-      "rl\030\002 \001(\0132\034.google.protobuf.StringValue\022/" +
-      "\n\npreference\030\003 \001(\0132\033.google.protobuf.Int" +
-      "64Value\022*\n\005width\030\004 \001(\0132\033.google.protobuf" +
-      ".Int64Value\022+\n\006height\030\005 \001(\0132\033.google.pro" +
-      "tobuf.Int64Value\022/\n\nresolution\030\006 \001(\0132\033.g" +
-      "oogle.protobuf.Int64Value\022.\n\010filesize\030\007 ",
-      "\001(\0132\034.google.protobuf.DoubleValue\0222\n\014asp" +
-      "ect_ratio\030\010 \001(\0132\034.google.protobuf.Double" +
-      "Value\022/\n\tformat_id\030\t \001(\0132\034.google.protob" +
-      "uf.StringValue\032\200\002\n\tSubtitles\022)\n\003tag\030\001 \001(" +
-      "\0132\034.google.protobuf.StringValue\0228\n\nsubfo" +
-      "rmats\030\002 \003(\0132$.python.InfoDict.Subtitles." +
-      "Subformat\032\215\001\n\tSubformat\022)\n\003ext\030\001 \001(\0132\034.g" +
-      "oogle.protobuf.StringValue\022*\n\004data\030\002 \001(\013" +
-      "2\034.google.protobuf.StringValue\022)\n\003url\030\003 " +
-      "\001(\0132\034.google.protobuf.StringValue\032\373\002\n\007Co",
-      "mment\022,\n\006author\030\001 \001(\0132\034.google.protobuf." +
-      "StringValue\022/\n\tauthor_id\030\002 \001(\0132\034.google." +
-      "protobuf.StringValue\0220\n\ncomment_id\030\003 \001(\013" +
-      "2\034.google.protobuf.StringValue\022*\n\004html\030\004" +
-      " \001(\0132\034.google.protobuf.StringValue\022*\n\004te" +
-      "xt\030\005 \001(\0132\034.google.protobuf.StringValue\022/" +
-      "\n\ttimestamp\030\006 \001(\0132\034.google.protobuf.Doub" +
-      "leValue\022,\n\006parent\030\007 \001(\0132\034.google.protobu" +
-      "f.StringValue\022(\n\002id\030\010 \001(\0132\034.google.proto" +
-      "buf.StringValue\032\230\001\n\007Chapter\0220\n\nstart_tim",
-      "e\030\001 \001(\0132\034.google.protobuf.DoubleValue\022.\n" +
-      "\010end_time\030\002 \001(\0132\034.google.protobuf.Double" +
-      "Value\022+\n\005title\030\003 \001(\0132\034.google.protobuf.S" +
-      "tringValue\032\243\001\n\013ChapterInfo\022-\n\007chapter\030\001 " +
-      "\001(\0132\034.google.protobuf.StringValue\0223\n\016cha" +
-      "pter_number\030\002 \001(\0132\033.google.protobuf.Int6" +
-      "4Value\0220\n\nchapter_id\030\003 \001(\0132\034.google.prot" +
-      "obuf.StringValue\032\343\002\n\nSeriesInfo\022,\n\006serie" +
-      "s\030\001 \001(\0132\034.google.protobuf.StringValue\022,\n" +
-      "\006season\030\002 \001(\0132\034.google.protobuf.StringVa",
-      "lue\0222\n\rseason_number\030\003 \001(\0132\033.google.prot" +
-      "obuf.Int64Value\022/\n\tseason_id\030\004 \001(\0132\034.goo" +
-      "gle.protobuf.StringValue\022-\n\007episode\030\005 \001(" +
-      "\0132\034.google.protobuf.StringValue\0223\n\016episo" +
-      "de_number\030\006 \001(\0132\033.google.protobuf.Int64V" +
-      "alue\0220\n\nepisode_id\030\007 \001(\0132\034.google.protob" +
-      "uf.StringValue\032\356\003\n\tAlbumInfo\022+\n\005track\030\001 " +
-      "\001(\0132\034.google.protobuf.StringValue\0221\n\014tra" +
-      "ck_number\030\002 \001(\0132\033.google.protobuf.Int64V" +
-      "alue\022.\n\010track_id\030\003 \001(\0132\034.google.protobuf",
-      ".StringValue\022,\n\006artist\030\004 \001(\0132\034.google.pr" +
-      "otobuf.StringValue\022+\n\005genre\030\005 \001(\0132\034.goog" +
-      "le.protobuf.StringValue\022+\n\005album\030\006 \001(\0132\034" +
-      ".google.protobuf.StringValue\0220\n\nalbum_ty" +
-      "pe\030\007 \001(\0132\034.google.protobuf.StringValue\0222" +
-      "\n\014album_artist\030\010 \001(\0132\034.google.protobuf.S" +
-      "tringValue\0220\n\013disc_number\030\t \001(\0132\033.google" +
-      ".protobuf.Int64Value\0221\n\014release_year\030\n \001" +
-      "(\0132\033.google.protobuf.Int32Value\0322\n\020HttpH" +
-      "eadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:",
-      "\0028\001\"\353\003\n\007Request\022+\n\006job_id\030\001 \001(\0132\033.google" +
-      ".protobuf.Int64Value\022@\n\023url_resolve_requ" +
-      "est\030\002 \001(\0132!.python.Request.URLResolveReq" +
-      "uestH\000\022K\n\031url_is_resolvable_request\030\003 \001(" +
-      "\0132&.python.Request.URLIsResolvableReques" +
-      "tH\000\032\323\001\n\021URLResolveRequest\022)\n\003url\030\001 \001(\0132\034" +
-      ".google.protobuf.StringValue\022.\n\010username" +
+      "\022/\n\textractor\030Y \001(\0132\034.google.protobuf.St" +
+      "ringValue\022+\n\005title\030- \001(\0132\034.google.protob" +
+      "uf.StringValue\022(\n\002id\030. \001(\0132\034.google.prot" +
+      "obuf.StringValue\0220\n\nresolution\030/ \001(\0132\034.g" +
+      "oogle.protobuf.StringValue\022,\n\006ie_key\0300 \001" +
+      "(\0132\034.google.protobuf.StringValue\0227\n\014http",
+      "_headers\0301 \003(\0132!.python.InfoDict.HttpHea" +
+      "dersEntry\022,\n\006height\0302 \001(\0132\034.google.proto" +
+      "buf.DoubleValue\022+\n\005width\0303 \001(\0132\034.google." +
+      "protobuf.DoubleValue\022,\n\006vcodec\0304 \001(\0132\034.g" +
+      "oogle.protobuf.StringValue\022.\n\010filesize\0305" +
+      " \001(\0132\034.google.protobuf.DoubleValue\022:\n\024__" +
+      "x_forwarded_for_ip\030: \001(\0132\034.google.protob" +
+      "uf.StringValue\022.\n\010page_url\030; \001(\0132\034.googl" +
+      "e.protobuf.StringValue\022*\n\006direct\030< \001(\0132\032" +
+      ".google.protobuf.BoolValue\0225\n\017filesize_a",
+      "pprox\030A \001(\0132\034.google.protobuf.DoubleValu" +
+      "e\022/\n\tvideo_url\030G \001(\0132\034.google.protobuf.S" +
+      "tringValue\0221\n\013playlist_id\030H \001(\0132\034.google" +
+      ".protobuf.StringValue\0224\n\016playlist_title\030" +
+      "I \001(\0132\034.google.protobuf.StringValue\0223\n\re" +
+      "xtractor_key\030J \001(\0132\034.google.protobuf.Str" +
+      "ingValue\0222\n\010protocol\030K \001(\0162 .python.Info" +
+      "Dict.Format.Protocol\022)\n\003abr\030L \001(\0132\034.goog" +
+      "le.protobuf.DoubleValue\022,\n\006acodec\030M \001(\0132" +
+      "\034.google.protobuf.StringValue\022,\n\006author\030",
+      "N \001(\0132\034.google.protobuf.StringValue\022)\n\003t" +
+      "br\030O \001(\0132\034.google.protobuf.DoubleValue\022/" +
+      "\n\tformat_id\030P \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\0222\n\014session_code\030Q \001(\0132\034.google.p" +
+      "rotobuf.StringValue\0226\n\020session_speakers\030" +
+      "R \003(\0132\034.google.protobuf.StringValue\0222\n\014s" +
+      "ession_room\030S \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\022-\n\007authors\030T \003(\0132\034.google.protob" +
+      "uf.StringValue\022+\n\005likes\030U \001(\0132\034.google.p" +
+      "rotobuf.DoubleValue\0225\n\017stretched_ratio\030V",
+      " \001(\0132\034.google.protobuf.DoubleValue\022*\n\004sh" +
+      "ow\030W \001(\0132\034.google.protobuf.StringValue\022." +
+      "\n\010category\030X \003(\0132\034.google.protobuf.Strin" +
+      "gValue\022:\n\024webpage_url_basename\030Z \001(\0132\034.g" +
+      "oogle.protobuf.StringValue\032\363\022\n\006Format\022)\n" +
+      "\003url\030\001 \001(\0132\034.google.protobuf.StringValue" +
+      "\0222\n\014manifest_url\030\002 \001(\0132\034.google.protobuf" +
+      ".StringValue\022)\n\003ext\030\003 \001(\0132\034.google.proto" +
+      "buf.StringValue\022,\n\006format\030\004 \001(\0132\034.google" +
+      ".protobuf.StringValue\022/\n\tformat_id\030\005 \001(\013",
+      "2\034.google.protobuf.StringValue\0221\n\013format" +
+      "_note\030\006 \001(\0132\034.google.protobuf.StringValu" +
+      "e\022+\n\005width\030\007 \001(\0132\034.google.protobuf.UInt6" +
+      "4Value\022,\n\006height\030\010 \001(\0132\034.google.protobuf" +
+      ".UInt64Value\0220\n\nresolution\030\t \001(\0132\034.googl" +
+      "e.protobuf.StringValue\022)\n\003tbr\030\n \001(\0132\034.go" +
+      "ogle.protobuf.DoubleValue\022)\n\003abr\030\013 \001(\0132\034" +
+      ".google.protobuf.DoubleValue\022,\n\006acodec\030\014" +
+      " \001(\0132\034.google.protobuf.StringValue\022)\n\003as" +
+      "r\030\r \001(\0132\034.google.protobuf.DoubleValue\022)\n",
+      "\003vbr\030\016 \001(\0132\034.google.protobuf.DoubleValue" +
+      "\022)\n\003fps\030\017 \001(\0132\034.google.protobuf.DoubleVa" +
+      "lue\022,\n\006vcodec\030\020 \001(\0132\034.google.protobuf.St" +
+      "ringValue\022/\n\tcontainer\030\021 \001(\0132\034.google.pr" +
+      "otobuf.StringValue\022.\n\010filesize\030\022 \001(\0132\034.g" +
+      "oogle.protobuf.DoubleValue\0225\n\017filesize_a" +
+      "pprox\030\023 \001(\0132\034.google.protobuf.DoubleValu" +
+      "e\0220\n\nplayer_url\030\024 \001(\0132\034.google.protobuf." +
+      "StringValue\0222\n\010protocol\030\025 \001(\0162 .python.I" +
+      "nfoDict.Format.Protocol\0227\n\021fragment_base",
+      "_url\030\026 \001(\0132\034.google.protobuf.StringValue" +
+      "\0223\n\tfragments\030\027 \003(\0132 .python.InfoDict.Fo" +
+      "rmat.Fragment\022/\n\npreference\030\030 \001(\0132\033.goog" +
+      "le.protobuf.Int64Value\022.\n\010language\030\031 \001(\013" +
+      "2\034.google.protobuf.StringValue\0228\n\023langua" +
+      "ge_preference\030\032 \001(\0132\033.google.protobuf.In" +
+      "t64Value\022,\n\007quality\030\033 \001(\0132\033.google.proto" +
+      "buf.Int64Value\0226\n\021source_preference\030\034 \001(" +
+      "\0132\033.google.protobuf.Int64Value\022>\n\014http_h" +
+      "eaders\030\035 \003(\0132(.python.InfoDict.Format.Ht",
+      "tpHeadersEntry\0225\n\017stretched_ratio\030\036 \001(\0132" +
+      "\034.google.protobuf.DoubleValue\022-\n\tno_resu" +
+      "me\030\037 \001(\0132\032.google.protobuf.BoolValue\022/\n\t" +
+      "play_path\0306 \001(\0132\034.google.protobuf.String" +
+      "Value\022)\n\003app\0307 \001(\0132\034.google.protobuf.Str" +
+      "ingValue\022.\n\010page_url\0308 \001(\0132\034.google.prot" +
+      "obuf.StringValue\0222\n\016rtmp_real_time\0309 \001(\013" +
+      "2\032.google.protobuf.BoolValue\0221\n\013format_n" +
+      "ame\030= \001(\0132\034.google.protobuf.StringValue\022" +
+      "@\n\032extra_param_to_segment_url\030B \001(\0132\034.go",
+      "ogle.protobuf.StringValue\0223\n\rflash_versi" +
+      "on\030C \001(\0132\034.google.protobuf.StringValue\022/" +
+      "\n\trtmp_conn\030D \003(\0132\034.google.protobuf.Stri" +
+      "ngValue\022-\n\trtmp_live\030E \001(\0132\032.google.prot" +
+      "obuf.BoolValue\022(\n\002id\030F \001(\0132\034.google.prot" +
+      "obuf.StringValue\032\301\001\n\010Fragment\022)\n\003url\030\001 \001" +
+      "(\0132\034.google.protobuf.StringValue\022*\n\004path" +
       "\030\002 \001(\0132\034.google.protobuf.StringValue\022.\n\010" +
-      "password\030\003 \001(\0132\034.google.protobuf.StringV" +
-      "alue\0223\n\rresolver_name\030\004 \001(\0132\034.google.pro",
-      "tobuf.StringValue\032C\n\026URLIsResolvableRequ" +
-      "est\022)\n\003url\030\001 \001(\0132\034.google.protobuf.Strin" +
-      "gValueB\t\n\007request\"\330\005\n\010Response\022+\n\006job_id" +
-      "\030\001 \001(\0132\033.google.protobuf.Int64Value\022C\n\024u" +
-      "rl_resolve_response\030\002 \001(\0132#.python.Respo" +
-      "nse.URLResolveResponseH\000\022N\n\032url_is_resol" +
-      "vable_response\030\003 \001(\0132(.python.Response.U" +
-      "RLIsResolvableResponseH\000\032\370\002\n\022URLResolveR" +
-      "esponse\022#\n\tinfo_dict\030\001 \003(\0132\020.python.Info" +
-      "Dict\022+\n\007success\030\002 \001(\0132\032.google.protobuf.",
-      "BoolValue\0225\n\021password_required\030\003 \001(\0132\032.g" +
-      "oogle.protobuf.BoolValue\0222\n\016geo_restrict" +
-      "ed\030\004 \001(\0132\032.google.protobuf.BoolValue\022>\n\010" +
-      "redirect\030\005 \001(\0132,.python.Response.URLReso" +
-      "lveResponse.Redirect\032e\n\010Redirect\022)\n\003url\030" +
-      "\001 \001(\0132\034.google.protobuf.StringValue\022.\n\010r" +
-      "esolver\030\002 \001(\0132\034.google.protobuf.StringVa" +
-      "lue\032\202\001\n\027URLIsResolvableResponse\0221\n\ris_re" +
-      "solvable\030\001 \001(\0132\032.google.protobuf.BoolVal" +
-      "ue\0224\n\016resolver_names\030\002 \003(\0132\034.google.prot",
-      "obuf.StringValueB\n\n\010responseB7\n%org.scha" +
-      "bi.newpipe.extractor.pybridgeB\016PyBridgeP" +
-      "rotosb\006proto3"
+      "duration\030\003 \001(\0132\034.google.protobuf.DoubleV" +
+      "alue\022.\n\010filesize\030\004 \001(\0132\034.google.protobuf",
+      ".DoubleValue\0322\n\020HttpHeadersEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\215\001\n\010Protocol\022\010\n" +
+      "\004NONE\020\000\022\010\n\004HTTP\020\001\022\t\n\005HTTPS\020\002\022\010\n\004RTSP\020\003\022\010" +
+      "\n\004RTMP\020\004\022\t\n\005RTMPE\020\005\022\010\n\004M3U8\020\006\022\017\n\013M3U8_NA" +
+      "TIVE\020\007\022\026\n\022HTTP_DASH_SEGMENTS\020\010\022\007\n\003ISM\020\t\022" +
+      "\007\n\003F4M\020\n\032\260\003\n\tThumbnail\022(\n\002id\030\001 \001(\0132\034.goo" +
+      "gle.protobuf.StringValue\022)\n\003url\030\002 \001(\0132\034." +
+      "google.protobuf.StringValue\022/\n\npreferenc" +
+      "e\030\003 \001(\0132\033.google.protobuf.Int64Value\022*\n\005" +
+      "width\030\004 \001(\0132\033.google.protobuf.Int64Value",
+      "\022+\n\006height\030\005 \001(\0132\033.google.protobuf.Int64" +
+      "Value\022/\n\nresolution\030\006 \001(\0132\033.google.proto" +
+      "buf.Int64Value\022.\n\010filesize\030\007 \001(\0132\034.googl" +
+      "e.protobuf.DoubleValue\0222\n\014aspect_ratio\030\010" +
+      " \001(\0132\034.google.protobuf.DoubleValue\022/\n\tfo" +
+      "rmat_id\030\t \001(\0132\034.google.protobuf.StringVa" +
+      "lue\032\200\002\n\tSubtitles\022)\n\003tag\030\001 \001(\0132\034.google." +
+      "protobuf.StringValue\0228\n\nsubformats\030\002 \003(\013" +
+      "2$.python.InfoDict.Subtitles.Subformat\032\215" +
+      "\001\n\tSubformat\022)\n\003ext\030\001 \001(\0132\034.google.proto",
+      "buf.StringValue\022*\n\004data\030\002 \001(\0132\034.google.p" +
+      "rotobuf.StringValue\022)\n\003url\030\003 \001(\0132\034.googl" +
+      "e.protobuf.StringValue\032\373\002\n\007Comment\022,\n\006au" +
+      "thor\030\001 \001(\0132\034.google.protobuf.StringValue" +
+      "\022/\n\tauthor_id\030\002 \001(\0132\034.google.protobuf.St" +
+      "ringValue\0220\n\ncomment_id\030\003 \001(\0132\034.google.p" +
+      "rotobuf.StringValue\022*\n\004html\030\004 \001(\0132\034.goog" +
+      "le.protobuf.StringValue\022*\n\004text\030\005 \001(\0132\034." +
+      "google.protobuf.StringValue\022/\n\ttimestamp" +
+      "\030\006 \001(\0132\034.google.protobuf.DoubleValue\022,\n\006",
+      "parent\030\007 \001(\0132\034.google.protobuf.StringVal" +
+      "ue\022(\n\002id\030\010 \001(\0132\034.google.protobuf.StringV" +
+      "alue\032\230\001\n\007Chapter\0220\n\nstart_time\030\001 \001(\0132\034.g" +
+      "oogle.protobuf.DoubleValue\022.\n\010end_time\030\002" +
+      " \001(\0132\034.google.protobuf.DoubleValue\022+\n\005ti" +
+      "tle\030\003 \001(\0132\034.google.protobuf.StringValue\032" +
+      "\243\001\n\013ChapterInfo\022-\n\007chapter\030\001 \001(\0132\034.googl" +
+      "e.protobuf.StringValue\0223\n\016chapter_number" +
+      "\030\002 \001(\0132\033.google.protobuf.Int64Value\0220\n\nc" +
+      "hapter_id\030\003 \001(\0132\034.google.protobuf.String",
+      "Value\032\343\002\n\nSeriesInfo\022,\n\006series\030\001 \001(\0132\034.g" +
+      "oogle.protobuf.StringValue\022,\n\006season\030\002 \001" +
+      "(\0132\034.google.protobuf.StringValue\0222\n\rseas" +
+      "on_number\030\003 \001(\0132\033.google.protobuf.Int64V" +
+      "alue\022/\n\tseason_id\030\004 \001(\0132\034.google.protobu" +
+      "f.StringValue\022-\n\007episode\030\005 \001(\0132\034.google." +
+      "protobuf.StringValue\0223\n\016episode_number\030\006" +
+      " \001(\0132\033.google.protobuf.Int64Value\0220\n\nepi" +
+      "sode_id\030\007 \001(\0132\034.google.protobuf.StringVa" +
+      "lue\032\356\003\n\tAlbumInfo\022+\n\005track\030\001 \001(\0132\034.googl",
+      "e.protobuf.StringValue\0221\n\014track_number\030\002" +
+      " \001(\0132\033.google.protobuf.Int64Value\022.\n\010tra" +
+      "ck_id\030\003 \001(\0132\034.google.protobuf.StringValu" +
+      "e\022,\n\006artist\030\004 \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\022+\n\005genre\030\005 \001(\0132\034.google.protobuf" +
+      ".StringValue\022+\n\005album\030\006 \001(\0132\034.google.pro" +
+      "tobuf.StringValue\0220\n\nalbum_type\030\007 \001(\0132\034." +
+      "google.protobuf.StringValue\0222\n\014album_art" +
+      "ist\030\010 \001(\0132\034.google.protobuf.StringValue\022" +
+      "0\n\013disc_number\030\t \001(\0132\033.google.protobuf.I",
+      "nt64Value\0221\n\014release_year\030\n \001(\0132\033.google" +
+      ".protobuf.Int32Value\0322\n\020HttpHeadersEntry" +
+      "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\353\003\n\007Req" +
+      "uest\022+\n\006job_id\030\001 \001(\0132\033.google.protobuf.I" +
+      "nt64Value\022@\n\023url_resolve_request\030\002 \001(\0132!" +
+      ".python.Request.URLResolveRequestH\000\022K\n\031u" +
+      "rl_is_resolvable_request\030\003 \001(\0132&.python." +
+      "Request.URLIsResolvableRequestH\000\032\323\001\n\021URL" +
+      "ResolveRequest\022)\n\003url\030\001 \001(\0132\034.google.pro" +
+      "tobuf.StringValue\022.\n\010username\030\002 \001(\0132\034.go",
+      "ogle.protobuf.StringValue\022.\n\010password\030\003 " +
+      "\001(\0132\034.google.protobuf.StringValue\0223\n\rres" +
+      "olver_name\030\004 \001(\0132\034.google.protobuf.Strin" +
+      "gValue\032C\n\026URLIsResolvableRequest\022)\n\003url\030" +
+      "\001 \001(\0132\034.google.protobuf.StringValueB\t\n\007r" +
+      "equest\"\330\005\n\010Response\022+\n\006job_id\030\001 \001(\0132\033.go" +
+      "ogle.protobuf.Int64Value\022C\n\024url_resolve_" +
+      "response\030\002 \001(\0132#.python.Response.URLReso" +
+      "lveResponseH\000\022N\n\032url_is_resolvable_respo" +
+      "nse\030\003 \001(\0132(.python.Response.URLIsResolva",
+      "bleResponseH\000\032\370\002\n\022URLResolveResponse\022#\n\t" +
+      "info_dict\030\001 \003(\0132\020.python.InfoDict\022+\n\007suc" +
+      "cess\030\002 \001(\0132\032.google.protobuf.BoolValue\0225" +
+      "\n\021password_required\030\003 \001(\0132\032.google.proto" +
+      "buf.BoolValue\0222\n\016geo_restricted\030\004 \001(\0132\032." +
+      "google.protobuf.BoolValue\022>\n\010redirect\030\005 " +
+      "\001(\0132,.python.Response.URLResolveResponse" +
+      ".Redirect\032e\n\010Redirect\022)\n\003url\030\001 \001(\0132\034.goo" +
+      "gle.protobuf.StringValue\022.\n\010resolver\030\002 \001" +
+      "(\0132\034.google.protobuf.StringValue\032\202\001\n\027URL",
+      "IsResolvableResponse\0221\n\ris_resolvable\030\001 " +
+      "\001(\0132\032.google.protobuf.BoolValue\0224\n\016resol" +
+      "ver_names\030\002 \003(\0132\034.google.protobuf.String" +
+      "ValueB\n\n\010responseB7\n%org.schabi.newpipe." +
+      "extractor.pybridgeB\016PyBridgeProtosb\006prot" +
+      "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -54175,7 +54566,7 @@ public final class PyBridgeProtos {
     internal_static_python_InfoDict_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_python_InfoDict_descriptor,
-        new java.lang.String[] { "Formats", "Url", "Ext", "Format", "PlayerUrl", "AltTitle", "DisplayId", "Thumbnails", "Thumbnail", "Description", "Uploader", "License", "Creator", "ReleaseDate", "Timestamp", "UploadDate", "UploaderId", "UploaderUrl", "Location", "Subtitles", "AutomaticCaptions", "Duration", "ViewCount", "LikeCount", "DislikeCount", "RepostCount", "AverageRating", "CommentCount", "Comments", "AgeLimit", "WebpageUrl", "Categories", "Tags", "IsLive", "StartTime", "EndTime", "Chapters", "ChapterInfo", "SeriesInfo", "AlbumInfo", "Children", "ChildUrls", "ExtractorName", "Title", "Id", "Resolution", "IeKey", "HttpHeaders", "Height", "Width", "Vcodec", "Filesize", "XForwardedForIp", "PageUrl", "Direct", "FilesizeApprox", "VideoUrl", "PlaylistId", "PlaylistTitle", "ExtractorKey", "Protocol", "Abr", "Acodec", "Author", "Tbr", "FormatId", "SessionCode", "SessionSpeakers", "SessionRoom", "Authors", "Likes", "StretchedRatio", "Show", "Category", });
+        new java.lang.String[] { "Formats", "Url", "Ext", "Format", "PlayerUrl", "AltTitle", "DisplayId", "Thumbnails", "Thumbnail", "Description", "Uploader", "License", "Creator", "ReleaseDate", "Timestamp", "UploadDate", "UploaderId", "UploaderUrl", "Location", "Subtitles", "AutomaticCaptions", "Duration", "ViewCount", "LikeCount", "DislikeCount", "RepostCount", "AverageRating", "CommentCount", "Comments", "AgeLimit", "WebpageUrl", "Categories", "Tags", "IsLive", "StartTime", "EndTime", "Chapters", "ChapterInfo", "SeriesInfo", "AlbumInfo", "Children", "ChildUrls", "ExtractorName", "Extractor", "Title", "Id", "Resolution", "IeKey", "HttpHeaders", "Height", "Width", "Vcodec", "Filesize", "XForwardedForIp", "PageUrl", "Direct", "FilesizeApprox", "VideoUrl", "PlaylistId", "PlaylistTitle", "ExtractorKey", "Protocol", "Abr", "Acodec", "Author", "Tbr", "FormatId", "SessionCode", "SessionSpeakers", "SessionRoom", "Authors", "Likes", "StretchedRatio", "Show", "Category", "WebpageUrlBasename", });
     internal_static_python_InfoDict_Format_descriptor =
       internal_static_python_InfoDict_descriptor.getNestedTypes().get(0);
     internal_static_python_InfoDict_Format_fieldAccessorTable = new

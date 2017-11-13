@@ -272,6 +272,7 @@ message InfoDict {
                                                  urls can be run through youtube-dl to get the data that would go in children */
 
     google.protobuf.StringValue extractor_name = 44;
+    google.protobuf.StringValue extractor = 89;
 
     google.protobuf.StringValue title = 45;
     google.protobuf.StringValue id = 46;
@@ -305,6 +306,7 @@ message InfoDict {
     google.protobuf.DoubleValue stretched_ratio = 86;
     google.protobuf.StringValue show = 87;
     repeated google.protobuf.StringValue category = 88;
+    google.protobuf.StringValue webpage_url_basename = 90;
 
 }
 

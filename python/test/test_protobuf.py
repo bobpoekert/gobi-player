@@ -8,6 +8,7 @@ from pprint import pprint
 import traceback
 import gzip
 from contextlib import contextmanager
+import os
 
 def url_request(url):
     res = python_pb2.Request.URLIsResolvableRequest()
@@ -110,7 +111,7 @@ def extraction_results(results, exceptions):
 
 here = '/'.join(__file__.split('/')[:-1])
 
-fast_mode = True
+fast_mode = os.environ.get('FAST_MODE', '').lower() == 'true'
 
 class TestWithTestData(unittest.TestCase):
 
@@ -175,11 +176,11 @@ class TestWithTestData(unittest.TestCase):
                 self.assertDictEqual(san, res)
 
     def test_playlist_roundtrip(self):
-        playlists = [v for v in self.test_json if v.get('_type') in ('playlist', 'multi_video')]
-        for playlist in playlists:
-            res = playlist_pb2(playlist)
-            for a, b in zip(res.entries, playlist['entries']):
-                self.assertDictEquals(dict_from_info_dict(a), b)
+        raw_playlist = json.load(open('%s/playlist.json' % here, 'r'))
+        playlist = sanitize_info_dict(sanitize_expect_value(raw_playlist))
+        res = playlist_pb2(playlist)
+        for a, b in zip(res.children, playlist['entries']):
+            self.assertDictEqual(dict_from_info_dict(a), b)
 
     def test_url_resolution(self):
         urls = []
