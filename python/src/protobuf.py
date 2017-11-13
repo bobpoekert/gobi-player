@@ -1,13 +1,28 @@
 import python_pb2
-from youtube_dl.extractor import gen_extractors, get_info_extractor
+from youtube_dl.extractor import gen_extractors
 from youtube_dl.utils import GeoRestrictedError
 from google.protobuf.message import Message
 from google.protobuf import wrappers_pb2 as wrappers
 from google.protobuf.internal.containers import MutableMapping, RepeatedCompositeFieldContainer
 import ydl
 
-
 extractors = [v for v in gen_extractors() if v.working()]
+extractor_index = {}
+for extractor in extractors:
+    extractor_index[extractor.IE_NAME] = extractor
+
+def get_info_extractor(name):
+    return extractor_index.get(name)
+
+
+class LoginRequiredException(Exception):
+    pass
+
+def raise_login_required(*args, **kwargs):
+    raise LoginRequiredException()
+
+for extractor in extractors:
+    extractor.raise_login_required = raise_login_required
 
 def get_fields(pb):
     return [v.name for v in pb.DESCRIPTOR.fields]
@@ -259,77 +274,60 @@ def url_is_resolvable(req):
     assign_repeated(res, 'resolver_names', names)
     return res
 
-def playlist_entry_pb2(result):
+def playlist_pb2(result):
     res = info_dict_from_dict(result)
     res.children = map(playlist_entry_pb2, result['entries'])
     return res
 
-def resolve(req):
-    if req.resolver_name:
-        init_extractors = [get_info_extractor(req.resolver_name)]
-    else:
-        init_extractors = matching_extractors(req.url)
-
-    has_login = bool(req.username and req.password)
-
-    url_queue = [(req.url, init_extractors)]
-
-    exc = None
-    login_requred = False
-    geo_restricted = False
+def extract(url, username=None, password=None, extractors=None):
     res = []
-
-    def monkeypatch(ie):
-        old_login_required = ie.raise_login_required
-        def _login_required(*args, **kwargs):
-            login_required = True
-            return old_login_required(*args, **kwargs)
-        ie.raise_login_required = _login_required
-
-    while url_queue:
-        url, extractors = url_queue.pop()
-        if extractors is None:
-            extractors = matching_extractors(url)
-        for extractor in extractors:
-            extractor.set_downloader(ydl.downloader)
-            monkeypatch(extractor)
+    exc = []
+    for extractor in extractors:
+        with ydl.login_context(username, password):
             try:
-                if has_login:
-                    with ydl.login_context(req.username, req.password):
-                        results = extractor.extract(url)
-                else:
-                    results = extractor.extract(url)
-            except GeoRestrictedError, e:
-                geo_restricted = True
-                continue
+                res.append((extractor, extractor.extract(url)))
             except Exception, e:
-                exc = e
-                continue
-            if len(results) < 1:
-                continue
+                exc.append(e)
+    return res, exc
 
-            for result in results:
-                _type = result.get('_type')
-                row = None
-                if _type in ('playlist', 'multi_video'):
-                    row = playlist_pb2(results)
-                elif extractor._type in ('url', 'url_transparent'):
-                    ie_key = result.get('ie_key')
-                    if ie_key:
-                        url_queue.append((result['url'], get_info_extractor(ie_key)))
-                    else:
-                        url_queue.append((result['url'], None))
-                else:
-                    row = info_dict_from_dict(result)
-                if row:
-                    row.extractor_name = extractor.IE_NAME
-                    res.append(row)
+def resolve(req):
+    resolver_name = req.resolver_name.value if req.resolver_name and req.resolver_name.value else None
+    url = req.url.value
+    username = req.username.value if req.username else None
+    password = req.password.value if req.password else None
+
+    has_login = bool(username and password)
+
+    res = []
+    if not resolver_name:
+        extractors = matching_extractors(url)
+    else:
+        extractors = [get_info_extractor(resolver_name)]
+
+    results, exceptions = extract(url, username=username, password=password, extractors=extractors)
+
+    for extractor, result in results:
+        _type = result.get('_type')
+        row = None
+        if _type in ('playlist', 'multi_video'):
+            row = playlist_pb2(results)
+        elif _type in ('url', 'url_transparent'):
+            ie_key = result.get('ie_key')
+            if ie_key:
+                url_queue.append((result['url'], get_info_extractor(ie_key)))
+            else:
+                url_queue.append((result['url'], None))
+        else:
+            row = info_dict_from_dict(result)
+        if row:
+            row.extractor_name.value = extractor_name(extractor)
+            res.append(row)
 
     res_pb = python_pb2.Response.URLResolveResponse()
-    res_pb.success = bool(res and not exc)
-    res_pb.login_required = login_required
-    res_pb.geo_restricted = geo_restricted
-    res_pb.info_dict = res
+    res_pb.success.value = bool(res and not exceptions)
+    res_pb.password_required.value = any(isinstance(v, LoginRequiredException) for v in exceptions)
+    res_pb.geo_restricted.value = any(isinstance(v, GeoRestrictedError) for v in exceptions)
+    assign_repeated(res_pb, 'info_dict', res)
     return res_pb
 
 def handle_request_blob(req_blob):

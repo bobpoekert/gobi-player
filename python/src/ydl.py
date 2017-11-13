@@ -33,16 +33,19 @@ class Downloader(FileDownloader):
 
 @contextmanager
 def login_context(username, password):
-    old_username = Downloader.params.get('username')
-    old_password = Downloader.params.get('password')
+    if username is not None and password is not None:
+        old_username = Downloader.params.get('username')
+        old_password = Downloader.params.get('password')
 
-    Downloader.params['username'] = username
-    Downloader.params['password'] = password
+        Downloader.params['username'] = username
+        Downloader.params['password'] = password
 
-    yield
+        yield
 
-    Downloader.params['username'] = old_username
-    Downloader.params['password'] = old_password
+        Downloader.params['username'] = old_username
+        Downloader.params['password'] = old_password
+    else:
+        yield
 
 
 downloader = Downloader()
