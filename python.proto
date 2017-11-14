@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 
-option java_package = "org.schabi.newpipe.extractor.pybridge";
+option java_package = "cheap.hella.gobi.pybridge";
 option java_outer_classname = "PyBridgeProtos";
 
 import "google/protobuf/wrappers.proto";

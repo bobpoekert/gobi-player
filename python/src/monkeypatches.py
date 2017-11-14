@@ -5,7 +5,7 @@ import marshal
 
 ModuleType = type(sys)
 
-dirname = "org_schabi_newpipe_extractor_PyBridge"
+dirname = "cheap_hella_gobi_PyBridge"
 
 def load_bytecode(fname):
     return marshal.loads(androidbridge.load_asset('%s/%s' % (dirname, fname)))

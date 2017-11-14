@@ -4,6 +4,7 @@ from os.path import join
 import py_compile
 import struct
 import imp
+import subprocess
 
 def is_unchanged(source_path, bytecode_path):
     if not os.path.exists(bytecode_path):
@@ -17,11 +18,14 @@ def is_unchanged(source_path, bytecode_path):
 
 if __name__ == '__main__':
 
-    dirname = "org_schabi_newpipe_extractor_PyBridge"
+    dirname = "cheap_hella_gobi_PyBridge"
 
     here = '/'.join(__file__.split('/')[:-1])
 
     asset_dir = '%s/../src/main/assets/%s' % (here, dirname)
+
+    if not os.path.exists(asset_dir):
+        subprocess.call(['mkdir', '-p', asset_dir])
 
     src_dirnames = ['%s/src' % here, '%s/stdlib' % here]
     for src_dirname in src_dirnames:

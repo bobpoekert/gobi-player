@@ -7,7 +7,7 @@
 
 #define LOG(x) __android_log_write(ANDROID_LOG_INFO, "pybridge", (x))
 
-#define ASSET_DIRNAME "org_schabi_newpipe_extractor_PyBridge"
+#define ASSET_DIRNAME "cheap_hella_gobi_PyBridge"
 
 static AAssetManager *bootstrap_asset_manager;
 static jobject bootstrap_pythread;
@@ -160,7 +160,7 @@ PyMODINIT_FUNC PyInit_androidbridge(void)
     (void) Py_InitModule("androidbridge", AndroidbridgeMethods);
 }
 
-#define JNIMETH(name) Java_org_schabi_newpipe_extractor_pybridge_PyBridge_ ## name
+#define JNIMETH(name) Java_cheap_hella_gobi_pybridge_PyBridge_ ## name
 
 
 JNIEXPORT jint JNICALL JNIMETH(run)
@@ -179,7 +179,7 @@ JNIEXPORT jint JNICALL JNIMETH(run)
         (*env)->GetMethodID(env, bootstrap_class, "processResult", "([B)V");
 
     Py_NoSiteFlag = 1;
-    Py_SetProgramName("NewPipeExtractor");
+    Py_SetProgramName("GobiPlayer");
     
     Py_Initialize();
     PyInit_androidbridge();

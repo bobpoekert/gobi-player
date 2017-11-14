@@ -1,4 +1,4 @@
-package org.schabi.newpipe.extractor.pybridge;
+package cheap.hella.gobi.pybridge;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Future;
@@ -15,7 +15,7 @@ import android.app.Application;
 import android.content.res.AssetManager;
 import android.util.SparseArray;
 
-import org.schabi.newpipe.extractor.pybridge.PyBridgeProtos.*;
+import cheap.hella.gobi.pybridge.PyBridgeProtos.*;
 import com.google.protobuf.*;
 
 class TypeBuilders {
@@ -46,7 +46,6 @@ class TypeBuilders {
     }
 
 }
-
 
 abstract class Job<ResultType> {
 
