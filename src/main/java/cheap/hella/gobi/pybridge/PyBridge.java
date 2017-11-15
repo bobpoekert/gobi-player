@@ -58,9 +58,10 @@ abstract class Job<ResultType> {
     }
 
     abstract void setRequest(Request.Builder b);
+    abstract ResultType parseResponse(Response r);
 
-    public void complete(ResultType v) {
-        this.result.set(v);
+    public void complete(Response v) {
+        this.result.set(this.parseResponse(v));
     }
 
     public byte[] serializeRequest() {
@@ -97,6 +98,11 @@ class URLResolveJob extends Job<Response.URLResolveResponse> {
                 .setResolverName(TypeBuilders._string(this.resolverName)));
     }
 
+    @Override
+    Response.URLResolveResponse parseResponse(Response r) {
+        return r.getUrlResolveResponse();
+    }
+
 }
 
 class URLIsResolvableJob extends Job<Response.URLIsResolvableResponse> {
@@ -112,6 +118,11 @@ class URLIsResolvableJob extends Job<Response.URLIsResolvableResponse> {
     void setRequest(Request.Builder b) {
         b.setUrlIsResolvableRequest(Request.URLIsResolvableRequest.newBuilder()
                 .setUrl(TypeBuilders._string(this.url)));
+    }
+
+    @Override
+    Response.URLIsResolvableResponse parseResponse(Response r) {
+        return r.getUrlIsResolvableResponse();
     }
 
 }
@@ -184,17 +195,16 @@ public class PyBridge {
      Thread pythonThread;
      AtomicInteger idCtr;
 
-     static PyBridge instance = new PyBridge();
+     static PyBridge instance = null;
 
-     PyBridge() {
-         AssetManager assetManager;
-         try {
-             Application app = (Application) Class.forName("android.app.ActivityThread")
-                 .getDeclaredMethod("currentApplication").invoke(null);
-             assetManager = app.getApplicationContext().getAssets();
-         } catch (Exception e) {
-             throw new RuntimeException(e);
+     public static void init(Context ctx) {
+         if (instance == null) {
+             instance = new PyBridge(ctx.getApplicationContext());
          }
+     }
+
+     PyBridge(Context ctx) {
+         AssetManager assetManager = ctx.getAssets();
 
          jobQueue = new LinkedBlockingQueue();
          runner = new PyThread(assetManager, jobQueue);
