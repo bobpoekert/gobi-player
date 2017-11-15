@@ -135,6 +135,7 @@ class PyThread implements Runnable {
     AtomicBoolean running;
 
     public PyThread(AssetManager assetManager, LinkedBlockingQueue jobQueue) {
+        this.running = new AtomicBoolean(false);
         this.jobQueue = jobQueue;
         this.assetManager = assetManager;
         this.pendingJobs = new SparseArray<Job>();
@@ -204,6 +205,7 @@ public class PyBridge {
      }
 
      PyBridge(Context ctx) {
+         System.loadLibrary("pybridge");
          AssetManager assetManager = ctx.getAssets();
 
          jobQueue = new LinkedBlockingQueue();

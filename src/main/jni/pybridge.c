@@ -160,10 +160,8 @@ PyMODINIT_FUNC PyInit_androidbridge(void)
     (void) Py_InitModule("androidbridge", AndroidbridgeMethods);
 }
 
-#define JNIMETH(name) Java_cheap_hella_gobi_pybridge_PyBridge_ ## name
 
-
-JNIEXPORT jint JNICALL JNIMETH(run)
+JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
         (JNIEnv *env, jclass jc, jobject asset_manager_obj, jobject pythread)
 {
     LOG("Initializing the Python interpreter");
