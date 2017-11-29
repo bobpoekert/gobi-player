@@ -4,6 +4,7 @@
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define LOG(x) __android_log_write(ANDROID_LOG_INFO, "pybridge", (x))
 
@@ -164,23 +165,39 @@ PyMODINIT_FUNC PyInit_androidbridge(void)
 JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
         (JNIEnv *env, jclass jc, jobject asset_manager_obj, jobject pythread)
 {
-    LOG("Initializing the Python interpreter");
+    int pipefd[2];
+    if (pipe(pipefd) < 0) {
+        LOG("pipe error");
+        return -1;
+    }
 
+    dup2(pipefd[1], STDIN_FILENO);
+    
     bootstrap_asset_manager = AAssetManager_fromJava(env, asset_manager_obj);
 
+    LOG("1");
     bootstrap_pythread = pythread;
+    LOG("2");
     bootstrap_jni_env = env;
+    LOG("3");
     bootstrap_class = (*env)->GetObjectClass(env, pythread);
+    LOG("4");
     bootstrap_getJob_id = (*env)->GetMethodID(env, bootstrap_class, "getJob", "()[B");
+    LOG("5");
     bootstrap_isRunning_id = (*env)->GetMethodID(env, bootstrap_class, "isRunning", "()Z");
+    LOG("6");
     bootstrap_processResult_id =
         (*env)->GetMethodID(env, bootstrap_class, "processResult", "([B)V");
+    LOG("7");
 
     Py_NoSiteFlag = 1;
     Py_SetProgramName("GobiPlayer");
     
+    LOG("8");
     Py_Initialize();
+    LOG("9");
     PyInit_androidbridge();
+    LOG("10");
     PyRun_SimpleString(
             "import androidbridge, marshal\n"
             "exec(marshal.loads(androidbridge.load_asset('"
@@ -198,5 +215,5 @@ JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
 
     Py_Finalize();
 
-    return 0;
+    return pipefd[0];
 }

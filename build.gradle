@@ -38,7 +38,6 @@ task protobufBuild(type:Exec) {
 
 project.afterEvaluate {
     preBuild.dependsOn pythonBuild
-    pythonBuild.dependsOn protobufBuild
 }
 
 /*task pythonTests(type:Test) {
@@ -50,9 +49,12 @@ android {
     compileSdkVersion 26
     buildToolsVersion '26.0.1'
    
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
     lintOptions {
         abortOnError false
-        disable 'GradleDependency'
     }   
    
     dexOptions {
@@ -64,9 +66,6 @@ android {
         targetSdkVersion 26
         versionCode 39
         versionName "0.10.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        testApplicationId "cheap.hella.gobi.test"
-
     }
 
     externalNativeBuild {
@@ -77,6 +76,7 @@ android {
 
     defaultConfig {
         ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'mips', 'x86'
         }
     }
 
