@@ -46,8 +46,8 @@ project.afterEvaluate {
 }*/
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.1'
+    compileSdkVersion 21
+    buildToolsVersion '25.0.0'
    
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -63,22 +63,24 @@ android {
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 21
         versionCode 39
         versionName "0.10.1"
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_PLATFORM=android-15", "-DANDROID_TOOLCHAIN=gcc" 
+            }
+        }
+        ndk {
+            abiFilters 'x86', 'armeabi', 'mips'
+        }
     }
-
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
         }
     }
 
-    defaultConfig {
-        ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'mips', 'x86'
-        }
-    }
 
     sourceSets.main {
         jniLibs.srcDirs 'src/main/libs'

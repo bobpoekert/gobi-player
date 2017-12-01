@@ -205,6 +205,8 @@ public class PyBridge {
      }
 
      PyBridge(Context ctx) {
+         System.loadLibrary("c");
+         System.loadLibrary("python2.7");
          System.loadLibrary("pybridge");
          AssetManager assetManager = ctx.getAssets();
 

@@ -192,6 +192,7 @@ JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
 
     Py_NoSiteFlag = 1;
     Py_SetProgramName("GobiPlayer");
+    Py_SetPath("/data/app");
     
     LOG("8");
     Py_Initialize();
@@ -200,6 +201,7 @@ JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
     LOG("10");
     PyRun_SimpleString(
             "import androidbridge, marshal\n"
+            "print 'hello'\n"
             "exec(marshal.loads(androidbridge.load_asset('"
                 ASSET_DIRNAME
                 "/monkeypatches.pyc')))");
