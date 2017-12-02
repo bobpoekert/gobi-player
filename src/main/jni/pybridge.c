@@ -5,6 +5,7 @@
 #include <android/asset_manager_jni.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <dlfcn.h>
 
 #define LOG(x) __android_log_write(ANDROID_LOG_INFO, "pybridge", (x))
 
@@ -17,6 +18,7 @@ static jmethodID bootstrap_getJob_id;
 static jmethodID bootstrap_isRunning_id;
 static jmethodID bootstrap_processResult_id;
 static JNIEnv *bootstrap_jni_env;
+static PyObject *py_lib_path;
 
 static PyObject *androidlog(PyObject *self, PyObject *args) {
     char *str;
@@ -31,6 +33,9 @@ static PyObject *load_asset(PyObject *self, PyObject *args) {
     char *filename;
     if (!PyArg_ParseTuple(args, "s", &filename)) return 0;
     if (!bootstrap_asset_manager) return 0;
+
+    LOG("loading asset");
+    LOG(filename);
 
     AAsset *asset = AAssetManager_open(bootstrap_asset_manager, filename, AASSET_MODE_STREAMING);
     off64_t asset_length = AAsset_getLength64(asset);
@@ -88,6 +93,10 @@ static PyObject *asset_filenames(PyObject *self, PyObject *args) {
 
     return res;
 
+}
+
+static PyObject *get_py_lib_path(PyObject *self, PyObject *args) {
+    return py_lib_path;
 }
 
 static PyObject *java_bytes_to_python(jbyteArray data) {
@@ -152,6 +161,7 @@ static PyMethodDef AndroidbridgeMethods[] = {
     {"get_job", get_job, METH_VARARGS, "Get the next job to run"},
     {"is_running", is_running, METH_VARARGS, "Returns whether python should continue running"},
     {"process_result", process_result, METH_VARARGS, "Pass the result of a job back to java"},
+    {"lib_path", get_py_lib_path, METH_VARARGS, "Returns the .so library directory"},
     {NULL, NULL, 0, NULL}
 };
 
@@ -163,7 +173,7 @@ PyMODINIT_FUNC PyInit_androidbridge(void)
 
 
 JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
-        (JNIEnv *env, jclass jc, jobject asset_manager_obj, jobject pythread)
+        (JNIEnv *env, jclass jc, jobject asset_manager_obj, jobject pythread, jstring lib_path)
 {
     int pipefd[2];
     if (pipe(pipefd) < 0) {
@@ -199,13 +209,18 @@ JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
     LOG("9");
     PyInit_androidbridge();
     LOG("10");
+
+    const char *lib_path_string = (*env)->GetStringUTFChars(env, lib_path, 0);
+    py_lib_path = PyString_FromString(lib_path_string);
+    (*env)->ReleaseStringUTFChars(env, lib_path, lib_path_string);
+
+
     PyRun_SimpleString(
             "import androidbridge, marshal\n"
-            "print 'hello'\n"
             "exec(marshal.loads(androidbridge.load_asset('"
                 ASSET_DIRNAME
-                "/monkeypatches.pyc')))");
-   
+                "/monkeypatches.pyc')[8:]))");
+    LOG("11"); 
     (*env)->DeleteLocalRef(env, asset_manager_obj);
     (*env)->DeleteLocalRef(env, pythread);
     bootstrap_pythread = 0;
@@ -215,6 +230,7 @@ JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
     bootstrap_isRunning_id = 0;
     bootstrap_processResult_id = 0;
 
+    Py_DECREF(py_lib_path);
     Py_Finalize();
 
     return pipefd[0];

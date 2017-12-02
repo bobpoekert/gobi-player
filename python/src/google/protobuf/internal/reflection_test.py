@@ -620,14 +620,6 @@ class ReflectionTest(BaseTestCase):
     self.assertRaises(TypeError, setattr, proto, 'optional_int32', 'foo')
     self.assertRaises(TypeError, setattr, proto, 'optional_string', 10)
     self.assertRaises(TypeError, setattr, proto, 'optional_bytes', 10)
-    self.assertRaises(TypeError, setattr, proto, 'optional_bool', 'foo')
-    self.assertRaises(TypeError, setattr, proto, 'optional_float', 'foo')
-    self.assertRaises(TypeError, setattr, proto, 'optional_double', 'foo')
-    # TODO(jieluo): Fix type checking difference for python and c extension
-    if api_implementation.Type() == 'python':
-      self.assertRaises(TypeError, setattr, proto, 'optional_bool', 1.1)
-    else:
-      proto.optional_bool = 1.1
 
   def assertIntegerTypes(self, integer_fn):
     """Verifies setting of scalar integers.
@@ -694,10 +686,8 @@ class ReflectionTest(BaseTestCase):
       self.assertEqual(expected_min, getattr(pb, field_name))
       setattr(pb, field_name, expected_max)
       self.assertEqual(expected_max, getattr(pb, field_name))
-      self.assertRaises((ValueError, TypeError), setattr, pb, field_name,
-                        expected_min - 1)
-      self.assertRaises((ValueError, TypeError), setattr, pb, field_name,
-                        expected_max + 1)
+      self.assertRaises(ValueError, setattr, pb, field_name, expected_min - 1)
+      self.assertRaises(ValueError, setattr, pb, field_name, expected_max + 1)
 
     TestMinAndMaxIntegers('optional_int32', -(1 << 31), (1 << 31) - 1)
     TestMinAndMaxIntegers('optional_uint32', 0, 0xffffffff)
@@ -706,7 +696,7 @@ class ReflectionTest(BaseTestCase):
     # A bit of white-box testing since -1 is an int and not a long in C++ and
     # so goes down a different path.
     pb = unittest_pb2.TestAllTypes()
-    with self.assertRaises((ValueError, TypeError)):
+    with self.assertRaises(ValueError):
       pb.optional_uint64 = integer_fn(-(1 << 63))
 
     pb = unittest_pb2.TestAllTypes()
@@ -730,12 +720,6 @@ class ReflectionTest(BaseTestCase):
     proto.repeated_int32[0] = 23
     self.assertRaises(IndexError, proto.repeated_int32.__setitem__, 500, 23)
     self.assertRaises(TypeError, proto.repeated_int32.__setitem__, 0, 'abc')
-    self.assertRaises(TypeError, proto.repeated_int32.__setitem__, 0, [])
-    self.assertRaises(TypeError, proto.repeated_int32.__setitem__,
-                      'index', 23)
-
-    proto.repeated_string.append('2')
-    self.assertRaises(TypeError, proto.repeated_string.__setitem__, 0, 10)
 
     # Repeated enums tests.
     #proto.repeated_nested_enum.append(0)
@@ -1023,14 +1007,6 @@ class ReflectionTest(BaseTestCase):
     self.assertEqual(4, len(proto.repeated_nested_message))
     self.assertEqual(n1, proto.repeated_nested_message[2])
     self.assertEqual(n2, proto.repeated_nested_message[3])
-    self.assertRaises(TypeError,
-                      proto.repeated_nested_message.extend, n1)
-    self.assertRaises(TypeError,
-                      proto.repeated_nested_message.extend, [0])
-    wrong_message_type = unittest_pb2.TestAllTypes()
-    self.assertRaises(TypeError,
-                      proto.repeated_nested_message.extend,
-                      [wrong_message_type])
 
     # Test clearing.
     proto.ClearField('repeated_nested_message')
@@ -1042,8 +1018,6 @@ class ReflectionTest(BaseTestCase):
     self.assertEqual(1, len(proto.repeated_nested_message))
     self.assertEqual(23, proto.repeated_nested_message[0].bb)
     self.assertRaises(TypeError, proto.repeated_nested_message.add, 23)
-    with self.assertRaises(Exception):
-      proto.repeated_nested_message[0] = 23
 
   def testRepeatedCompositeRemove(self):
     proto = unittest_pb2.TestAllTypes()
@@ -1668,11 +1642,8 @@ class ReflectionTest(BaseTestCase):
     proto.SerializeToString()
     proto.SerializePartialToString()
 
-  def assertNotInitialized(self, proto, error_size=None):
-    errors = []
+  def assertNotInitialized(self, proto):
     self.assertFalse(proto.IsInitialized())
-    self.assertFalse(proto.IsInitialized(errors))
-    self.assertEqual(error_size, len(errors))
     self.assertRaises(message.EncodeError, proto.SerializeToString)
     # "Partial" serialization doesn't care if message is uninitialized.
     proto.SerializePartialToString()
@@ -1686,7 +1657,7 @@ class ReflectionTest(BaseTestCase):
 
     # The case of uninitialized required fields.
     proto = unittest_pb2.TestRequired()
-    self.assertNotInitialized(proto, 3)
+    self.assertNotInitialized(proto)
     proto.a = proto.b = proto.c = 2
     self.assertInitialized(proto)
 
@@ -1694,14 +1665,14 @@ class ReflectionTest(BaseTestCase):
     proto = unittest_pb2.TestRequiredForeign()
     self.assertInitialized(proto)
     proto.optional_message.a = 1
-    self.assertNotInitialized(proto, 2)
+    self.assertNotInitialized(proto)
     proto.optional_message.b = 0
     proto.optional_message.c = 0
     self.assertInitialized(proto)
 
     # Uninitialized repeated submessage.
     message1 = proto.repeated_message.add()
-    self.assertNotInitialized(proto, 3)
+    self.assertNotInitialized(proto)
     message1.a = message1.b = message1.c = 0
     self.assertInitialized(proto)
 
@@ -1710,11 +1681,11 @@ class ReflectionTest(BaseTestCase):
     extension = unittest_pb2.TestRequired.multi
     message1 = proto.Extensions[extension].add()
     message2 = proto.Extensions[extension].add()
-    self.assertNotInitialized(proto, 6)
+    self.assertNotInitialized(proto)
     message1.a = 1
     message1.b = 1
     message1.c = 1
-    self.assertNotInitialized(proto, 3)
+    self.assertNotInitialized(proto)
     message2.a = 2
     message2.b = 2
     message2.c = 2
@@ -1724,7 +1695,7 @@ class ReflectionTest(BaseTestCase):
     proto = unittest_pb2.TestAllExtensions()
     extension = unittest_pb2.TestRequired.single
     proto.Extensions[extension].a = 1
-    self.assertNotInitialized(proto, 2)
+    self.assertNotInitialized(proto)
     proto.Extensions[extension].b = 2
     proto.Extensions[extension].c = 3
     self.assertInitialized(proto)
@@ -2183,8 +2154,6 @@ class ByteSizeTest(BaseTestCase):
     foreign_message_1 = self.proto.repeated_nested_message.add()
     foreign_message_1.bb = 9
     self.assertEqual(2 + 1 + 2 + 1 + 1 + 1, self.Size())
-    repeated_nested_message = copy.deepcopy(
-        self.proto.repeated_nested_message)
 
     # 2 bytes tag plus 1 byte length plus 1 byte bb tag 1 byte int.
     del self.proto.repeated_nested_message[0]
@@ -2205,16 +2174,6 @@ class ByteSizeTest(BaseTestCase):
     del self.proto.repeated_nested_message[0]
     self.assertEqual(0, self.Size())
 
-    self.assertEqual(2, len(repeated_nested_message))
-    del repeated_nested_message[0:1]
-    # TODO(jieluo): Fix cpp extension bug when delete repeated message.
-    if api_implementation.Type() == 'python':
-      self.assertEqual(1, len(repeated_nested_message))
-    del repeated_nested_message[-1]
-    # TODO(jieluo): Fix cpp extension bug when delete repeated message.
-    if api_implementation.Type() == 'python':
-      self.assertEqual(0, len(repeated_nested_message))
-
   def testRepeatedGroups(self):
     # 2-byte START_GROUP plus 2-byte END_GROUP.
     group_0 = self.proto.repeatedgroup.add()
@@ -2231,10 +2190,6 @@ class ByteSizeTest(BaseTestCase):
     proto.Extensions[extension] = 23
     # 1 byte for tag, 1 byte for value.
     self.assertEqual(2, proto.ByteSize())
-    field = unittest_pb2.TestAllTypes.DESCRIPTOR.fields_by_name[
-        'optional_int32']
-    with self.assertRaises(KeyError):
-      proto.Extensions[field] = 23
 
   def testCacheInvalidationForNonrepeatedScalar(self):
     # Test non-extension.

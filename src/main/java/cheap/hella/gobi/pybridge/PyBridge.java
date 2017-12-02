@@ -133,8 +133,10 @@ class PyThread implements Runnable {
     SparseArray<Job> pendingJobs;
     AssetManager assetManager; // IMPORTANT: this reference must be held as long as python is running
     AtomicBoolean running;
+    String libPath;
 
-    public PyThread(AssetManager assetManager, LinkedBlockingQueue jobQueue) {
+    public PyThread(AssetManager assetManager, LinkedBlockingQueue jobQueue, String libPath) {
+        this.libPath = libPath;
         this.running = new AtomicBoolean(false);
         this.jobQueue = jobQueue;
         this.assetManager = assetManager;
@@ -175,7 +177,7 @@ class PyThread implements Runnable {
     public void run() {
         this.running.set(true);
         try {
-            PyBridge.run(this.assetManager, this);
+            PyBridge.run(this.assetManager, this, this.libPath);
         } finally {
             this.running.set(false);
         }
@@ -189,7 +191,7 @@ class PyThread implements Runnable {
 
 public class PyBridge {
 
-     static native int run(AssetManager assetManager, PyThread thread);
+     static native int run(AssetManager assetManager, PyThread thread, String libPath);
 
      LinkedBlockingQueue jobQueue;
      PyThread runner;
@@ -205,13 +207,18 @@ public class PyBridge {
      }
 
      PyBridge(Context ctx) {
-         System.loadLibrary("c");
+         String libPath = ctx.getApplicationInfo().nativeLibraryDir;
+         String modulePath = libPath;
+
          System.loadLibrary("python2.7");
+        
          System.loadLibrary("pybridge");
+
+
          AssetManager assetManager = ctx.getAssets();
 
          jobQueue = new LinkedBlockingQueue();
-         runner = new PyThread(assetManager, jobQueue);
+         runner = new PyThread(assetManager, jobQueue, libPath);
          pythonThread = new Thread(runner);
          idCtr = new AtomicInteger();
          pythonThread.start();

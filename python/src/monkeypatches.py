@@ -2,22 +2,35 @@
 import androidbridge
 import sys
 import marshal
+import imp
 
 ModuleType = type(sys)
 
 dirname = "cheap_hella_gobi_PyBridge"
 
 def load_bytecode(fname):
-    return marshal.loads(androidbridge.load_asset('%s/%s' % (dirname, fname)))
+    return marshal.loads(androidbridge.load_asset('%s/%s' % (dirname, fname))[8:])
+
+lib_path = androidbridge.lib_path()
+
+for modulename in ['_ctypes', '_socket', '_sqlite3', 'select', 'pyexpat', 'unicodedata']:
+    fullpath = '%s/lib%s.so' % (lib_path, modulename)
+    androidbridge.log(fullpath)
+    try:
+        imp.load_dynamic(modulename, fullpath)
+    except Exception, e:
+        androidbridge.log(str(type(e)))
+        androidbridge.log(str(e))
 
 class ModuleLoader(object):
 
     def __init__(self):
         self.fnames = androidbridge.asset_filenames()
 
-    def generate_fname(self, fullname):
+    def generate_fname(self, fullname, path=None):
         base = fullname.replace('.', '_')
         mod = '%s.pyc' % base
+        print fullname, path, mod
         if mod in self.fnames:
             return mod
         pkg = '%s___init__.pyc' % base
@@ -61,6 +74,13 @@ class ModuleLoader(object):
 
 sys.meta_path = [ModuleLoader()]
 
+import os
+for f in os.listdir(lib_path):
+    androidbridge.log(f)
+
+# we get 'LookupError: no codec search functions registered: can't find encoding' if we don't do this
+import encodings
+
 # Normal imports allowed after this point
 
 class AndroidLogFile(object):
@@ -76,7 +96,9 @@ class AndroidLogFile(object):
         self.buffer = lines[-1]
 
     def flush(self):
-        return
+        if self.buffer:
+            androidbridge.log(self.buffer)
+        self.buffer = ''
 
 logger = AndroidLogFile()
 sys.stdout = logger

@@ -181,7 +181,7 @@ def ReadTag(buffer, pos):
   while six.indexbytes(buffer, pos) & 0x80:
     pos += 1
   pos += 1
-  return (six.binary_type(buffer[start:pos]), pos)
+  return (buffer[start:pos], pos)
 
 
 # --------------------------------------------------------------------

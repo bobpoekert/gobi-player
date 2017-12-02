@@ -30,17 +30,20 @@ if __name__ == '__main__':
     src_dirnames = ['%s/src' % here, '%s/stdlib' % here]
     for src_dirname in src_dirnames:
         for root, dirs, files in os.walk(src_dirname, followlinks=True):
+            if 'site-packages' in root or 'tests' in root:
+                continue
             for f in files:
                 if not f.endswith('.py'):
                     continue
                 fname = join(root, f)
                 basename = f.split('.')[0]
-                keyname = root[len(src_dirname):].replace('/', '_')
+                keyname = root[len(src_dirname):]
                 if keyname:
+                    if keyname[0] == '/':
+                        keyname = keyname[1:]
+                    keyname = keyname.replace('/', '_')
                     keyname = '%s_' % keyname
                 apkname = '%s%s.pyc' % (keyname, basename)
-                if apkname[0] == '_':
-                    apkname = apkname[1:]
                 apk_full = '%s/%s' % (asset_dir, apkname)
                 if not is_unchanged(fname, apk_full):
                     py_compile.compile(

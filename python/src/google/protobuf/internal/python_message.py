@@ -1010,16 +1010,11 @@ def _AddByteSizeMethod(message_descriptor, cls):
       return self._cached_byte_size
 
     size = 0
-    descriptor = self.DESCRIPTOR
-    if descriptor.GetOptions().map_entry:
-      # Fields of map entry should always be serialized.
-      size = descriptor.fields_by_name['key']._sizer(self.key)
-      size += descriptor.fields_by_name['value']._sizer(self.value)
-    else:
-      for field_descriptor, field_value in self.ListFields():
-        size += field_descriptor._sizer(field_value)
-      for tag_bytes, value_bytes in self._unknown_fields:
-        size += len(tag_bytes) + len(value_bytes)
+    for field_descriptor, field_value in self.ListFields():
+      size += field_descriptor._sizer(field_value)
+
+    for tag_bytes, value_bytes in self._unknown_fields:
+      size += len(tag_bytes) + len(value_bytes)
 
     self._cached_byte_size = size
     self._cached_byte_size_dirty = False
@@ -1058,20 +1053,11 @@ def _AddSerializePartialToStringMethod(message_descriptor, cls):
           api_implementation.IsPythonDefaultSerializationDeterministic())
     else:
       deterministic = bool(deterministic)
-
-    descriptor = self.DESCRIPTOR
-    if descriptor.GetOptions().map_entry:
-      # Fields of map entry should always be serialized.
-      descriptor.fields_by_name['key']._encoder(
-          write_bytes, self.key, deterministic)
-      descriptor.fields_by_name['value']._encoder(
-          write_bytes, self.value, deterministic)
-    else:
-      for field_descriptor, field_value in self.ListFields():
-        field_descriptor._encoder(write_bytes, field_value, deterministic)
-      for tag_bytes, value_bytes in self._unknown_fields:
-        write_bytes(tag_bytes)
-        write_bytes(value_bytes)
+    for field_descriptor, field_value in self.ListFields():
+      field_descriptor._encoder(write_bytes, field_value, deterministic)
+    for tag_bytes, value_bytes in self._unknown_fields:
+      write_bytes(tag_bytes)
+      write_bytes(value_bytes)
   cls._InternalSerialize = InternalSerialize
 
 
@@ -1109,8 +1095,7 @@ def _AddMergeFromStringMethod(message_descriptor, cls):
         new_pos = local_SkipField(buffer, new_pos, end, tag_bytes)
         if new_pos == -1:
           return pos
-        if (not is_proto3 or
-            api_implementation.GetPythonProto3PreserveUnknownsDefault()):
+        if not is_proto3:
           if not unknown_field_list:
             unknown_field_list = self._unknown_fields = []
           unknown_field_list.append(
