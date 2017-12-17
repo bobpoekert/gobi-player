@@ -148,7 +148,7 @@ static PyObject *process_result(PyObject *self, PyObject *args) {
     if (!PyArg_ParseTuple(args, "O", &result)) return 0;
 
     jbyteArray arr = python_to_java_bytes(result);
-    (*bootstrap_jni_env)->CallObjectMethod(
+    (*bootstrap_jni_env)->CallVoidMethod(
             bootstrap_jni_env, bootstrap_pythread, bootstrap_processResult_id, arr);
 
     Py_RETURN_NONE;
@@ -214,12 +214,15 @@ JNIEXPORT jint JNICALL Java_cheap_hella_gobi_pybridge_PyBridge_run
     py_lib_path = PyString_FromString(lib_path_string);
     (*env)->ReleaseStringUTFChars(env, lib_path, lib_path_string);
 
-
     PyRun_SimpleString(
             "import androidbridge, marshal\n"
-            "exec(marshal.loads(androidbridge.load_asset('"
+            "androidbridge.log('hello')\n"
+            "try:\n"
+            "    exec(marshal.loads(androidbridge.load_asset('"
                 ASSET_DIRNAME
-                "/monkeypatches.pyc')[8:]))");
+                "/monkeypatches.pyc')[8:]))\n"
+            "except Exception, e:\n"
+            "    androidbridge.log(str(e))");
     LOG("11"); 
     (*env)->DeleteLocalRef(env, asset_manager_obj);
     (*env)->DeleteLocalRef(env, pythread);

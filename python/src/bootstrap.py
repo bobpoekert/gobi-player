@@ -3,7 +3,6 @@ import protobuf
 import androidbridge
 
 androidbridge.log('running bootstrap')
-print 'running bootstrap'
 
 def run():
     while 1:

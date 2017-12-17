@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
     asset_dir = '%s/../src/main/assets/%s' % (here, dirname)
 
+
     if not os.path.exists(asset_dir):
         subprocess.call(['mkdir', '-p', asset_dir])
 

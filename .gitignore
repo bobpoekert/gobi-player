@@ -5,7 +5,6 @@ local.properties
 out/
 *.pyc
 .externalNativeBuild/
-src/main/assets/
 
 # Ignore Gradle GUI config
 gradle-app.setting
